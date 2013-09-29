@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>Reader Book Notes</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
@@ -11,9 +11,13 @@
     <body>
         <header>
             <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
-                </div>
+	            <div class="float-left">
+		            <div>
+			            <a href="@Url.Action("Index", "Home")">
+				            <img src='@Url.Content("~/images/rylinks.png")' class="site-title" />
+			            </a>
+					</div>                   
+	            </div>
                 <div class="float-right">
                     <section id="login">
                         @Html.Partial("_LoginPartial")
@@ -37,7 +41,7 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                    <p>Reader Book Notes - &copy;@DateTime.Now.Year - Rylinks</p>
                 </div>
             </div>
         </footer>
