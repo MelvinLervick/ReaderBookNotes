@@ -10,7 +10,8 @@ namespace rbn.Controllers
 	{
 		public ActionResult Index()
 		{
-			ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+			ViewBag.Message = "Read what other readers have to say about your favorite book.";
+			ViewBag.Message1 = "If you want to add notes for others to read, please register or login.";
 
 			return View();
 		}

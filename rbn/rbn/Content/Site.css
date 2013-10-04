@@ -225,31 +225,25 @@ ul#menu {
 ----------------------------------------------------------*/
 /* featured */
 .featured {
-	background-color: #fff;
+		background-color: #7ac0da;
 }
 
 	.featured .content-wrapper {
-		background-color: #7ac0da;
-		background-image: -ms-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-		background-image: -o-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-		background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #7ac0da), color-stop(1, #a4d4e6));
-		background-image: -webkit-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-		background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
 		color: #3e5667;
-		padding: 20px 40px 30px 40px;
+		padding: 1px 5px 1px 5px;
 	}
 
-	.featured hgroup.title h1, .featured hgroup.title h2 {
+	.featured h1, .featured h2 {
 		color: #fff;
 	}
 
 	.featured p {
-		font-size: 1.1em;
+		font-size: 1.0em;
 	}
 
 /* page titles */
 hgroup.title {
-	margin-bottom: 10px;
+	margin-bottom: 2px;
 }
 
 	hgroup.title h1, hgroup.title h2 {
@@ -271,11 +265,11 @@ section.feature {
 /* ordered list */
 ol.round {
 	list-style-type: none;
-	padding-left: 0;
+	padding-left: 0px;
 }
 
 	ol.round li {
-		margin: 25px 0;
+		margin: 25px 0px;
 		padding-left: 45px;
 	}
 
@@ -285,14 +279,17 @@ ol.round {
 
 		ol.round li.one {
 			background: url("../Images/orderedList1.png") no-repeat;
+			min-height: 30px;
 		}
 
 		ol.round li.two {
 			background: url("../Images/orderedList2.png") no-repeat;
+			min-height: 30px;
 		}
 
 		ol.round li.three {
 			background: url("../Images/orderedList3.png") no-repeat;
+			min-height: 30px;
 		}
 
 		ol.round li.four {
