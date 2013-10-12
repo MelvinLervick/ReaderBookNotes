@@ -327,7 +327,8 @@ ol.round {
 /* content */
 article {
 	float: left;
-	width: 70%;
+	margin-left: 75px;
+	margin-right: 75px;
 }
 
 aside {
