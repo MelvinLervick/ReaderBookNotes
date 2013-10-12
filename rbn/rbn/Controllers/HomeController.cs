@@ -18,14 +18,14 @@ namespace rbn.Controllers
 
 		public ActionResult About()
 		{
-			ViewBag.Message = "Your app description page.";
+			ViewBag.Message = "Reader Book Notes";
 
 			return View();
 		}
 
 		public ActionResult Contact()
 		{
-			ViewBag.Message = "Your contact page.";
+			ViewBag.Message = "Contact Us";
 
 			return View();
 		}

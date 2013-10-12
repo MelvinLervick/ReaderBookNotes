@@ -1,5 +1,4 @@
 ﻿html {
-	background-color: #e2e2e2;
 	margin: 0;
 	padding: 0;
 }
@@ -169,7 +168,7 @@ footer {
 }
 
 	#login a {
-		background-color: #d3dce0;
+		background-color: #d6e8fe;
 		margin-left: 10px;
 		margin-right: 3px;
 		padding: 2px 3px;
@@ -266,6 +265,7 @@ section.feature {
 ol.round {
 	list-style-type: none;
 	padding-left: 0px;
+	margin-left: 100px;
 }
 
 	ol.round li {
@@ -274,26 +274,34 @@ ol.round {
 	}
 
 		ol.round li.zero {
-			background: url("../Images/orderedList0.png") no-repeat;
+			background: url("../Images/orderedList0blue.png") no-repeat;
 		}
 
 		ol.round li.one {
-			background: url("../Images/orderedList1.png") no-repeat;
+			background: url("../Images/orderedList1blue.png") no-repeat;
 			min-height: 30px;
+		}
+		ol.round li.one p {
+			padding-top: 1px;
+			font-size: 1.5em;
 		}
 
 		ol.round li.two {
-			background: url("../Images/orderedList2.png") no-repeat;
+			background: url("../Images/orderedList2blue.png") no-repeat;
 			min-height: 30px;
+		}
+		ol.round li.two p {
+			padding-top: 1px;
+			font-size: 1.5em;
 		}
 
 		ol.round li.three {
-			background: url("../Images/orderedList3.png") no-repeat;
+			background: url("../Images/orderedList3blue.png") no-repeat;
 			min-height: 30px;
 		}
 
 		ol.round li.four {
-			background: url("../Images/orderedList4.png") no-repeat;
+			background: url("../Images/orderedList4blue.png") no-repeat;
 		}
 
 		ol.round li.five {
@@ -339,6 +347,7 @@ aside {
 
 .label {
 	font-weight: 700;
+	margin-left: 30px;
 }
 
 /* login page */
