@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using System.Globalization;
-using System.Web.Security;
 
 namespace rbn.Models
 {
@@ -33,23 +29,6 @@ namespace rbn.Models
 			set;
 		}
 		public string UserName
-		{
-			get;
-			set;
-		}
-	}
-
-	public class RegisterExternalLoginModel
-	{
-		[Required]
-		[Display( Name = "User name" )]
-		public string UserName
-		{
-			get;
-			set;
-		}
-
-		public string ExternalLoginData
 		{
 			get;
 			set;
@@ -138,25 +117,6 @@ namespace rbn.Models
 		[Display( Name = "Confirm password" )]
 		[Compare( "Password", ErrorMessage = "The password and confirmation password do not match." )]
 		public string ConfirmPassword
-		{
-			get;
-			set;
-		}
-	}
-
-	public class ExternalLogin
-	{
-		public string Provider
-		{
-			get;
-			set;
-		}
-		public string ProviderDisplayName
-		{
-			get;
-			set;
-		}
-		public string ProviderUserId
 		{
 			get;
 			set;
