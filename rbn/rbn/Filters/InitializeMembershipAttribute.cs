@@ -26,23 +26,7 @@ namespace rbn.Filters
 			public MembershipInitializer()
 			{
 				Database.SetInitializer<UsersContext>( null );
-
-				//try
-				//{
-				//	using (var context = new UsersContext())
-				//	{
-				//		if (!context.Database.Exists())
-				//		{
-				//			// database must exist for users to register
-				//		}
-				//	}
-
-				//	WebSecurity.InitializeDatabaseConnection( "DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: false );
-				//}
-				//catch (Exception ex)
-				//{
-				//	throw new InvalidOperationException( "The ASP.NET Membership database could not be initialized.", ex );
-				//}
+				WebSecurity.InitializeDatabaseConnection( "DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true );
 			}
 		}
 	}

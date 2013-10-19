@@ -21,4 +21,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="RoleId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="3be04082-93e7-483c-8c71-92d4d08b4336" ChangeDateTime="10/19/2013 21:03:14">
+    <Property Name="ElementName" Value="[dbo].[UserAccount].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserAccount]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a95efdb2-1009-4237-bf73-94b31c6acb60" ChangeDateTime="10/19/2013 21:12:00">
+    <Property Name="ElementName" Value="[dbo].[FK_UserAccount_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[UserAccount]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_UserAccount_UserProfile]" />
+  </Operation>
 </Operations>

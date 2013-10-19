@@ -39,6 +39,13 @@ namespace rbn.Controllers
 			return View( model );
 		}
 
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult ManageAccount( ManageAccount model, string returnUrl)
+		{
+			return View(model);
+		}
+
 		//
 		// POST: /Account/LogOff
 
