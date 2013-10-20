@@ -11,9 +11,9 @@ namespace rbn.Providers.RbnDll
 
     #region IUserAccountProvider Members
 
-    public Models.UserAccount GetUserManagedFieldsFromUserAccount( int userId )
+    public Models.UserAccount GetUserManagedFieldsFromUserAccount( string userName )
     {
-      var userManagedFields = Security.GetUserManagedFieldsFromUserAccount( userId );
+      var userManagedFields = Security.GetUserManagedFieldsFromUserAccount( userName );
       return UserAccountAdapter.TransformToUiModel( userManagedFields );
     }
 

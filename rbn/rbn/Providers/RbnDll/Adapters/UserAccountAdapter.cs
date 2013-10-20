@@ -16,7 +16,14 @@ namespace rbn.Providers.RbnDll.Adapters
         UserId = userFields.UserId,
         FirstName = userFields.FirstName,
         LastName = userFields.LastName,
-        EmailAddress = userFields.EmailAddress
+        EmailAddress = userFields.EmailAddress,
+        Country = userFields.Country,
+        Question1 = userFields.Question1,
+        Answer1 = userFields.Answer1,
+        Question2 = userFields.Question2,
+        Answer2 = userFields.Answer2,
+        AccountUserId = userFields.AccountUserId,
+        AccountLocked = userFields.AccountLocked
       };
     }
   }

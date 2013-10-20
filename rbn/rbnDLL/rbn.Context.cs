@@ -12,6 +12,9 @@ namespace rbnDLL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class rbndbEntities : DbContext
     {
@@ -31,5 +34,14 @@ namespace rbnDLL
         public DbSet<webpages_Membership> webpages_Membership { get; set; }
         public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
         public DbSet<webpages_Roles> webpages_Roles { get; set; }
+    
+        public virtual ObjectResult<GetUserAccountUsingUserName_Result> GetUserAccountUsingUserName(string userName)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccountUsingUserName_Result>("GetUserAccountUsingUserName", userNameParameter);
+        }
     }
 }

@@ -1,43 +1,84 @@
 ﻿@model rbn.Models.UserAccount
 
 @{
-	ViewBag.Title = "Manage User Account";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+  ViewBag.Title = "Manage User Account";
+  Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<hgroup class="title">
-	<h1>@ViewBag.Title.</h1>
-</hgroup>
-
 <section id="manageUserAccount">
-	<h2>Manage User Account</h2>
-	@using (Html.BeginForm( new
-		 {
-			 ReturnUrl = ViewBag.ReturnUrl
-		 } ))
-	{
-		@Html.AntiForgeryToken()
-		@Html.ValidationSummary( true )
+  <h2>@ViewBag.Title.</h2>
+  @using (Html.BeginForm( new
+     {
+       ReturnUrl = ViewBag.ReturnUrl
+     } ))
+  {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary( true )
 
-		<fieldset>
-			<legend>Log in Form</legend>
-			<ol>
-				<li>
-					@Html.LabelFor( m => m.FirstName )
-					@Html.TextBoxFor( m => m.FirstName )
-					@Html.ValidationMessageFor( m => m.FirstName )
-				</li>
-				<li>
-					@Html.LabelFor( m => m.LastName )
-					@Html.TextBoxFor( m => m.LastName )
-				</li>
-				<li>
-					@Html.LabelFor( m => m.EmailAddress )
-					@Html.TextBoxFor( m => m.EmailAddress )
-					@Html.ValidationMessageFor( m => m.EmailAddress )
-				</li>
-			</ol>
-			<input type="submit" value="Save User Account" />
-		</fieldset>
+    <fieldset>
+      @if (Model.AccountLocked)
+      {
+        <p>Your account is currently locked.</p>
+        <p>
+          Please send a message which can be used to help identify you to the following email
+          address.
+        </p>
+        <p>
+          <span class="label">Support:</span>
+          <span><a href="mailto:Support@readerbooknotes.com">Support@readerbooknotes.com</a></span>
+        </p>
+        <p>
+          If your account was accessed by someone else, we will reset the password and unlock
+          the account.
+        </p>
+        <input type="submit" value="Continue" />
+      }
+      else
+      {
+        @Html.HiddenFor( m => m.UserId )
+        @Html.HiddenFor( m => m.AccountUserId )
+        @Html.HiddenFor( m => m.AccountLocked )
+        <ol>
+          <li>
+            @Html.LabelFor( m => m.FirstName, new { style="display:inline-block; width: 125px;"} )
+            @Html.TextBoxFor( m => m.FirstName )
+          </li>
+          <li>
+            @Html.LabelFor( m => m.LastName, new { style="display:inline-block; width: 125px;"} )
+            @Html.TextBoxFor( m => m.LastName )
+          </li>
+          <li>
+            @Html.LabelFor( m => m.EmailAddress, new { style="display:inline-block; width: 125px;"} )
+            @Html.TextBoxFor( m => m.EmailAddress )
+            @Html.ValidationMessageFor( m => m.EmailAddress )
+          </li>
+          <li>
+            @Html.LabelFor( m => m.Country, new { style="display:inline-block; width: 125px;"} )
+            @Html.TextBoxFor( m => m.Country )
+          </li>
+          <li>
+            @Html.LabelFor( m => m.Question1, new { style="display:inline-block; width: 125px;"} )
+            @Html.TextBoxFor( m => m.Question1 )
+          </li>
+          <li>
+            @Html.LabelFor( m => m.Answer1, new { style="display:inline-block; width: 125px;"} )
+            @Html.TextBoxFor( m => m.Answer1 )
+          </li>
+          <li>
+            @Html.LabelFor( m => m.Question2, new { style="display:inline-block; width: 125px;"} )
+            @Html.TextBoxFor( m => m.Question2 )
+          </li>
+          <li>
+            @Html.LabelFor( m => m.Answer2, new { style="display:inline-block; width: 125px;"} )
+            @Html.TextBoxFor( m => m.Answer2 )
+          </li>
+        </ol>
+        <input type="submit" value="Save User Account" />
+      }
+    </fieldset>
   }
 </section>
+
+@section Scripts {
+  @Scripts.Render( "~/bundles/jqueryval" )
+}

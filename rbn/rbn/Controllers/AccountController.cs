@@ -60,7 +60,7 @@ namespace rbn.Controllers
 
     public ActionResult ManageAccount( string returnUrl )
     {
-      var model = TestProvider.GetUserManagedFieldsFromUserAccount( 1 );
+      var model = TestProvider.GetUserManagedFieldsFromUserAccount( User.Identity.Name );
       ViewBag.ReturnUrl = returnUrl;
 
       return View( model );
@@ -68,11 +68,14 @@ namespace rbn.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult ManageAccount( UserAccount model )
+    public ActionResult ManageAccount( UserAccount model, string returnUrl )
     {
       // TODO : wire up access to SQL
-
-      return RedirectToAction( "Index", "Home" );
+      if (ModelState.IsValid)
+      {
+        return RedirectToLocal( returnUrl );
+      }
+      return View( model );
     }
 
     //

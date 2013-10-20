@@ -4,6 +4,6 @@ namespace rbn.Providers
 {
   public interface IUserAccountProvider
   {
-    UserAccount GetUserManagedFieldsFromUserAccount(int userId);
+    UserAccount GetUserManagedFieldsFromUserAccount( string userName );
   }
 }

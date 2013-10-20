@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetUserAccountUsingUserName_Result.cs">
+      <DependentUpon>rbn.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserAccountUserFields.cs" />
     <Compile Include="rbn.Context.cs">
       <AutoGen>True</AutoGen>
@@ -61,6 +64,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rbn.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="rbn1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
     <Compile Include="Security.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,7 +111,7 @@
     <None Include="rbn.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>rbn.edmx</DependentUpon>
-      <LastGenOutput>rbn.cs</LastGenOutput>
+      <LastGenOutput>rbn1.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

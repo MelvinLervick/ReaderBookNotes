@@ -54,3 +54,37 @@ GO
 
 ALTER LOGIN [rylinks3] DISABLE
 GO
+
+USE [RbnDb]
+GO
+
+/****** Object:  View [dbo].[View_UserAccount]    Script Date: 10/20/2013 7:52:33 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+USE [RbnDb]
+GO
+
+/****** Object:  View [dbo].[View_UserAccount]    Script Date: 10/20/2013 7:52:33 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+USE [RbnDb]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetUserAccountUsingUserName]    Script Date: 10/20/2013 8:21:22 AM ******/
+DROP PROCEDURE [dbo].[GetUserAccountUsingUserName]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetUserAccountUsingUserName]    Script Date: 10/20/2013 8:21:22 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO

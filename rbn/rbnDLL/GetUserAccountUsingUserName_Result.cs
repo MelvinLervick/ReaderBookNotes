@@ -10,24 +10,20 @@
 namespace rbnDLL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class UserAccount
+    public partial class GetUserAccountUsingUserName_Result
     {
         public int UserId { get; set; }
+        public string UserName { get; set; }
+        public int AccountUserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
-        public Nullable<int> Rating { get; set; }
-        public Nullable<bool> NeedsApproval { get; set; }
-        public Nullable<bool> AccountLocked { get; set; }
         public string Country { get; set; }
         public string Question1 { get; set; }
         public string Answer1 { get; set; }
         public string Question2 { get; set; }
         public string Answer2 { get; set; }
-        public System.DateTime LastModifiedDate { get; set; }
-    
-        public virtual UserProfile UserProfile { get; set; }
+        public Nullable<bool> AccountLocked { get; set; }
     }
 }

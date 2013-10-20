@@ -18,12 +18,12 @@
         <legend>Log in Form</legend>
         <ol>
             <li>
-                @Html.LabelFor(m => m.UserName)
+                @Html.LabelFor(m => m.UserName, new { style="display:inline-block; width: 125px;"})
                 @Html.TextBoxFor(m => m.UserName)
                 @Html.ValidationMessageFor(m => m.UserName)
             </li>
             <li>
-                @Html.LabelFor(m => m.Password)
+                @Html.LabelFor(m => m.Password, new { style="display:inline-block; width: 125px;"})
                 @Html.PasswordFor(m => m.Password)
                 @Html.ValidationMessageFor(m => m.Password)
             </li>

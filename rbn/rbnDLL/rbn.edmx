@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="rbndbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="rbndbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="rbndbModelStoreContainer">
           <EntitySet Name="UserAccount" EntityType="rbndbModel.Store.UserAccount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserProfile" EntityType="rbndbModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
@@ -34,9 +34,15 @@
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Question1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Answer1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Question2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Answer2" Type="nvarchar" MaxLength="100" />
           <Property Name="Rating" Type="int" />
           <Property Name="NeedsApproval" Type="bit" />
           <Property Name="AccountLocked" Type="bit" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -129,8 +135,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+        <Function Name="GetUserAccountUsingUserName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="rbndbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -149,6 +157,9 @@
             <End Role="webpages_Roles" EntitySet="webpages_Roles" />
             <End Role="UserProfile" EntitySet="UserProfiles" />
           </AssociationSet>
+          <FunctionImport Name="GetUserAccountUsingUserName" ReturnType="Collection(rbndbModel.GetUserAccountUsingUserName_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="UserAccount">
           <Key>
@@ -162,6 +173,12 @@
           <Property Name="NeedsApproval" Type="Boolean" />
           <Property Name="AccountLocked" Type="Boolean" />
           <NavigationProperty Name="UserProfile" Relationship="rbndbModel.FK_UserAccount_UserProfile" FromRole="UserAccount" ToRole="UserProfile" />
+          <Property Type="String" Name="Country" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Question1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Answer1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Question2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Answer2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -229,6 +246,20 @@
           <End Role="webpages_Roles" Type="rbndbModel.webpages_Roles" Multiplicity="*" />
           <End Role="UserProfile" Type="rbndbModel.UserProfile" Multiplicity="*" />
         </Association>
+        <ComplexType Name="GetUserAccountUsingUserName_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="AccountUserId" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Question1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Answer1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Question2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Answer2" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="AccountLocked" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -238,6 +269,12 @@
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="rbndbModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Answer2" ColumnName="Answer2" />
+                <ScalarProperty Name="Question2" ColumnName="Question2" />
+                <ScalarProperty Name="Answer1" ColumnName="Answer1" />
+                <ScalarProperty Name="Question1" ColumnName="Question1" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -307,6 +344,24 @@
               <ScalarProperty Name="UserId" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserAccountUsingUserName" FunctionName="rbndbModel.Store.GetUserAccountUsingUserName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="rbndbModel.GetUserAccountUsingUserName_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccountUserId" ColumnName="AccountUserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Question1" ColumnName="Question1" />
+                <ScalarProperty Name="Answer1" ColumnName="Answer1" />
+                <ScalarProperty Name="Question2" ColumnName="Question2" />
+                <ScalarProperty Name="Answer2" ColumnName="Answer2" />
+                <ScalarProperty Name="AccountLocked" ColumnName="AccountLocked" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
