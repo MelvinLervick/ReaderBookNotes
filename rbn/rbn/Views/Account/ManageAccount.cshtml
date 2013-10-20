@@ -1,8 +1,8 @@
-﻿@model rbn.Models.ManageAccount
+﻿@model rbn.Models.UserAccount
 
 @{
-    ViewBag.Title = "Manage User Account";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Manage User Account";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <hgroup class="title">
@@ -10,30 +10,34 @@
 </hgroup>
 
 <section id="manageUserAccount">
-<h2>Manage User Account</h2>
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+	<h2>Manage User Account</h2>
+	@using (Html.BeginForm( new
+		 {
+			 ReturnUrl = ViewBag.ReturnUrl
+		 } ))
+	{
 		@Html.AntiForgeryToken()
-		@Html.ValidationSummary(true)
+		@Html.ValidationSummary( true )
 
 		<fieldset>
 			<legend>Log in Form</legend>
 			<ol>
 				<li>
-					@Html.LabelFor(m => m.FirstName)
-					@Html.TextBoxFor(m => m.FirstName)
-					@Html.ValidationMessageFor(m => m.FirstName)
+					@Html.LabelFor( m => m.FirstName )
+					@Html.TextBoxFor( m => m.FirstName )
+					@Html.ValidationMessageFor( m => m.FirstName )
 				</li>
 				<li>
-					@Html.LabelFor(m => m.LastName)
-					@Html.TextBoxFor(m => m.LastName)
+					@Html.LabelFor( m => m.LastName )
+					@Html.TextBoxFor( m => m.LastName )
 				</li>
 				<li>
-					@Html.LabelFor(m => m.EmailAddress)
-					@Html.TextBoxFor(m => m.EmailAddress)
-					@Html.ValidationMessageFor(m => m.EmailAddress)
+					@Html.LabelFor( m => m.EmailAddress )
+					@Html.TextBoxFor( m => m.EmailAddress )
+					@Html.ValidationMessageFor( m => m.EmailAddress )
 				</li>
 			</ol>
-			<input type="submit" value="Save User Acc0unt" />
+			<input type="submit" value="Save User Account" />
 		</fieldset>
-}
+  }
 </section>

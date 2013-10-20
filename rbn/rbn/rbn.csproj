@@ -159,7 +159,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\IUserAccountProvider.cs" />
+    <Compile Include="Providers\RbnDll\Adapters\UserAccountAdapter.cs" />
+    <Compile Include="Providers\RbnDll\UserAccountProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -283,6 +287,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\rbnDLL\rbnDLL.csproj">
+      <Project>{313bd267-f4a0-4a3a-812d-c96b910e9ca7}</Project>
+      <Name>rbnDLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

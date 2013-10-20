@@ -122,35 +122,4 @@ namespace rbn.Models
 			set;
 		}
 	}
-
-	[Table("UserAccount")]
-	public class ManageAccount
-	{
-		[Key]
-		public int UserId
-		{
-			get;
-			set;
-		}
-		[Display( Name = "First Name" )]
-		public string FirstName
-		{
-			get;
-			set;
-		}
-
-		[Display( Name = "Last Name" )]
-		public string LastName
-		{
-			get;
-			set;
-		}
-
-		[Display( Name = "Email Address" )]
-		public string EmailAddress
-		{
-			get;
-			set;
-		}
-	}
 }

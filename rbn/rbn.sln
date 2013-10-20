@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rbn.Tests", "rbn.Tests\rbn.
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RbnDb", "RbnDb\RbnDb.sqlproj", "{4C9D5D16-98E5-47E9-9B8F-68E0039BC2C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rbnDLL", "rbnDLL\rbnDLL.csproj", "{313BD267-F4A0-4A3A-812D-C96B910E9CA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4C9D5D16-98E5-47E9-9B8F-68E0039BC2C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C9D5D16-98E5-47E9-9B8F-68E0039BC2C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4C9D5D16-98E5-47E9-9B8F-68E0039BC2C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{313BD267-F4A0-4A3A-812D-C96B910E9CA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{313BD267-F4A0-4A3A-812D-C96B910E9CA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{313BD267-F4A0-4A3A-812D-C96B910E9CA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{313BD267-F4A0-4A3A-812D-C96B910E9CA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
