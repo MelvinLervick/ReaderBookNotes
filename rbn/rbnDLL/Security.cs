@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using rbnDLL.Models;
 
 namespace rbnDLL
@@ -20,6 +18,7 @@ namespace rbnDLL
             FirstName = ua.FirstName,
             LastName = ua.LastName,
             EmailAddress = ua.EmailAddress,
+            Country = ua.Country,
             Question1 = ua.Question1,
             Answer1 = ua.Answer1,
             Question2 = ua.Question2,
@@ -29,6 +28,29 @@ namespace rbnDLL
           }).FirstOrDefault();
 
         return userFieldData;
+      }
+    }
+
+    public static void SaveUserManagedFieldsInUserAccount(UserAccountUserFields fieldValues)
+    {
+      using (var db = new rbndbEntities())
+      {
+        db.UserAccounts.AddOrUpdate(new UserAccount
+        {
+          UserId = fieldValues.UserId,
+          FirstName = fieldValues.FirstName,
+          LastName = fieldValues.LastName,
+          EmailAddress = fieldValues.EmailAddress,
+          Country = fieldValues.Country,
+          Question1 = fieldValues.Question1,
+          Answer1 = fieldValues.Answer1,
+          Question2 = fieldValues.Question2,
+          Answer2 = fieldValues.Answer2,
+          AccountLocked = fieldValues.AccountLocked,
+          LastModifiedDate = DateTime.Now
+        });
+
+        db.SaveChanges();
       }
     }
   }

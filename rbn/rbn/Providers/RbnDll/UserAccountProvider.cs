@@ -17,6 +17,12 @@ namespace rbn.Providers.RbnDll
       return UserAccountAdapter.TransformToUiModel( userManagedFields );
     }
 
+    public void SaveUserManagedFieldsInUserAccount( Models.UserAccount userAccount )
+    {
+      var userManagedFields = UserAccountAdapter.TransformToDllModel( userAccount );
+      Security.SaveUserManagedFieldsInUserAccount( userManagedFields );
+    }
+
     #endregion
   }
 }

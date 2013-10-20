@@ -64,5 +64,11 @@ namespace rbnDLL.Models
       get;
       set;
     }
+
+    public DateTime LastModifiedDate
+    {
+      get;
+      set;
+    }
   }
 }

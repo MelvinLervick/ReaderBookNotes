@@ -73,6 +73,7 @@ namespace rbn.Controllers
       // TODO : wire up access to SQL
       if (ModelState.IsValid)
       {
+        TestProvider.SaveUserManagedFieldsInUserAccount(model);
         return RedirectToLocal( returnUrl );
       }
       return View( model );

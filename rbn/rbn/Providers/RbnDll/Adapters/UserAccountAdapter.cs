@@ -9,21 +9,39 @@ namespace rbn.Providers.RbnDll.Adapters
 {
   public class UserAccountAdapter
   {
-    internal static UserAccount TransformToUiModel( UserAccountUserFields userFields )
+    internal static UserAccount TransformToUiModel( UserAccountUserFields userAccountFields )
     {
       return new UserAccount
       {
-        UserId = userFields.UserId,
-        FirstName = userFields.FirstName,
-        LastName = userFields.LastName,
-        EmailAddress = userFields.EmailAddress,
-        Country = userFields.Country,
-        Question1 = userFields.Question1,
-        Answer1 = userFields.Answer1,
-        Question2 = userFields.Question2,
-        Answer2 = userFields.Answer2,
-        AccountUserId = userFields.AccountUserId,
-        AccountLocked = userFields.AccountLocked
+        UserId = userAccountFields.UserId,
+        FirstName = userAccountFields.FirstName,
+        LastName = userAccountFields.LastName,
+        EmailAddress = userAccountFields.EmailAddress,
+        Country = userAccountFields.Country,
+        Question1 = userAccountFields.Question1,
+        Answer1 = userAccountFields.Answer1,
+        Question2 = userAccountFields.Question2,
+        Answer2 = userAccountFields.Answer2,
+        AccountUserId = userAccountFields.AccountUserId,
+        AccountLocked = userAccountFields.AccountLocked
+      };
+    }
+
+    internal static UserAccountUserFields TransformToDllModel( UserAccount userAccountFields )
+    {
+      return new UserAccountUserFields
+      {
+        UserId = userAccountFields.UserId,
+        FirstName = userAccountFields.FirstName,
+        LastName = userAccountFields.LastName,
+        EmailAddress = userAccountFields.EmailAddress,
+        Country = userAccountFields.Country,
+        Question1 = userAccountFields.Question1,
+        Answer1 = userAccountFields.Answer1,
+        Question2 = userAccountFields.Question2,
+        Answer2 = userAccountFields.Answer2,
+        AccountUserId = userAccountFields.AccountUserId,
+        AccountLocked = userAccountFields.AccountLocked
       };
     }
   }
