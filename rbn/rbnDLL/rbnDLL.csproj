@@ -46,6 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audience.cs">
+      <DependentUpon>rbn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Author.cs">
+      <DependentUpon>rbn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Book.cs">
+      <DependentUpon>rbn.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetUserAccountUsingUserName_Result.cs">
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
@@ -68,6 +77,9 @@
     <Compile Include="rbn1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>rbn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReaderNote.cs">
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
     <Compile Include="Security.cs" />

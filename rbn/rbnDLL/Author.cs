@@ -12,20 +12,20 @@ namespace rbnDLL
     using System;
     using System.Collections.Generic;
     
-    public partial class UserProfile
+    public partial class Author
     {
-        public UserProfile()
+        public Author()
         {
-            this.webpages_Roles = new HashSet<webpages_Roles>();
-            this.ReaderNotes = new HashSet<ReaderNote>();
+            this.Books = new HashSet<Book>();
         }
     
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public int AuthorId { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public int Rating { get; set; }
+        public System.DateTime LastModifiedDate { get; set; }
     
-        public virtual UserAccount UserAccount { get; set; }
-        public virtual ICollection<webpages_Roles> webpages_Roles { get; set; }
-        public virtual ICollection<ReaderNote> ReaderNotes { get; set; }
+        public virtual ICollection<Book> Books { get; set; }
     }
 }

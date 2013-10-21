@@ -6,6 +6,10 @@
     <edmx:StorageModels>
     <Schema Namespace="rbndbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="rbndbModelStoreContainer">
+          <EntitySet Name="Audience" EntityType="rbndbModel.Store.Audience" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Author" EntityType="rbndbModel.Store.Author" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Book" EntityType="rbndbModel.Store.Book" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ReaderNotes" EntityType="rbndbModel.Store.ReaderNotes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserAccount" EntityType="rbndbModel.Store.UserAccount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserProfile" EntityType="rbndbModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserRoles" EntityType="rbndbModel.Store.UserRoles" store:Type="Tables" Schema="dbo" />
@@ -13,6 +17,26 @@
           <EntitySet Name="webpages_OAuthMembership" EntityType="rbndbModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="webpages_Roles" EntityType="rbndbModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="webpages_UsersInRoles" EntityType="rbndbModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Book_Audience" Association="rbndbModel.Store.FK_Book_Audience">
+            <End Role="Audience" EntitySet="Audience" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Author" Association="rbndbModel.Store.FK_Book_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReaderNote_Audience" Association="rbndbModel.Store.FK_ReaderNote_Audience">
+            <End Role="Audience" EntitySet="Audience" />
+            <End Role="ReaderNotes" EntitySet="ReaderNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReaderNote_Book" Association="rbndbModel.Store.FK_ReaderNote_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="ReaderNotes" EntitySet="ReaderNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReaderNote_UserProfile" Association="rbndbModel.Store.FK_ReaderNote_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="ReaderNotes" EntitySet="ReaderNotes" />
+          </AssociationSet>
           <AssociationSet Name="fk_RoleId" Association="rbndbModel.Store.fk_RoleId">
             <End Role="webpages_Roles" EntitySet="webpages_Roles" />
             <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
@@ -26,6 +50,51 @@
             <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Audience">
+          <Key>
+            <PropertyRef Name="AudienceId" />
+          </Key>
+          <Property Name="AudienceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="AuthorId" />
+          </Key>
+          <Property Name="AuthorId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="30" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ISBN" Type="nvarchar" MaxLength="32" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AuthorId" Type="int" />
+          <Property Name="AudienceId" Type="int" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReaderNotes">
+          <Key>
+            <PropertyRef Name="ReaderNoteId" />
+          </Key>
+          <Property Name="ReaderNoteId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="ReaderId" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="AudienceId" Type="int" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Notify" Type="bit" Nullable="false" />
+          <Property Name="DateNotified" Type="datetime" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserAccount">
           <Key>
             <PropertyRef Name="UserId" />
@@ -99,6 +168,66 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Book_Audience">
+          <End Role="Audience" Type="rbndbModel.Store.Audience" Multiplicity="0..1" />
+          <End Role="Book" Type="rbndbModel.Store.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Audience">
+              <PropertyRef Name="AudienceId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="AudienceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Author">
+          <End Role="Author" Type="rbndbModel.Store.Author" Multiplicity="0..1" />
+          <End Role="Book" Type="rbndbModel.Store.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="AuthorId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReaderNote_Audience">
+          <End Role="Audience" Type="rbndbModel.Store.Audience" Multiplicity="1" />
+          <End Role="ReaderNotes" Type="rbndbModel.Store.ReaderNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Audience">
+              <PropertyRef Name="AudienceId" />
+            </Principal>
+            <Dependent Role="ReaderNotes">
+              <PropertyRef Name="AudienceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReaderNote_Book">
+          <End Role="Book" Type="rbndbModel.Store.Book" Multiplicity="1" />
+          <End Role="ReaderNotes" Type="rbndbModel.Store.ReaderNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="ReaderNotes">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReaderNote_UserProfile">
+          <End Role="UserProfile" Type="rbndbModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="ReaderNotes" Type="rbndbModel.Store.ReaderNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ReaderNotes">
+              <PropertyRef Name="ReaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_RoleId">
           <End Role="webpages_Roles" Type="rbndbModel.Store.webpages_Roles" Multiplicity="1" />
           <End Role="webpages_UsersInRoles" Type="rbndbModel.Store.webpages_UsersInRoles" Multiplicity="*" />
@@ -158,8 +287,32 @@
             <End Role="UserProfile" EntitySet="UserProfiles" />
           </AssociationSet>
           <FunctionImport Name="GetUserAccountUsingUserName" ReturnType="Collection(rbndbModel.GetUserAccountUsingUserName_Result)">
-            <Parameter Name="UserName" Mode="In" Type="String" />
+          <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="Audiences" EntityType="rbndbModel.Audience" />
+          <EntitySet Name="Authors" EntityType="rbndbModel.Author" />
+          <EntitySet Name="Books" EntityType="rbndbModel.Book" />
+          <EntitySet Name="ReaderNotes" EntityType="rbndbModel.ReaderNote" />
+          <AssociationSet Name="FK_Book_Audience" Association="rbndbModel.FK_Book_Audience">
+            <End Role="Audience" EntitySet="Audiences" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReaderNote_Audience" Association="rbndbModel.FK_ReaderNote_Audience">
+            <End Role="Audience" EntitySet="Audiences" />
+            <End Role="ReaderNote" EntitySet="ReaderNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Author" Association="rbndbModel.FK_Book_Author">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReaderNote_Book" Association="rbndbModel.FK_ReaderNote_Book">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="ReaderNote" EntitySet="ReaderNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReaderNote_UserProfile" Association="rbndbModel.FK_ReaderNote_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="ReaderNote" EntitySet="ReaderNotes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="UserAccount">
           <Key>
@@ -189,6 +342,7 @@
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="UserAccount" Relationship="rbndbModel.FK_UserAccount_UserProfile" FromRole="UserProfile" ToRole="UserAccount" />
           <NavigationProperty Name="webpages_Roles" Relationship="rbndbModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+          <NavigationProperty Name="ReaderNotes" Relationship="rbndbModel.FK_ReaderNote_UserProfile" FromRole="UserProfile" ToRole="ReaderNote" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
@@ -260,6 +414,120 @@
           <Property Type="String" Name="Answer2" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="AccountLocked" Nullable="true" />
         </ComplexType>
+        <EntityType Name="Audience">
+          <Key>
+            <PropertyRef Name="AudienceId" />
+          </Key>
+          <Property Type="Int32" Name="AudienceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="15" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="rbndbModel.FK_Book_Audience" FromRole="Audience" ToRole="Book" />
+          <NavigationProperty Name="ReaderNotes" Relationship="rbndbModel.FK_ReaderNote_Audience" FromRole="Audience" ToRole="ReaderNote" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="AuthorId" />
+          </Key>
+          <Property Type="Int32" Name="AuthorId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MiddleName" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Rating" Nullable="false" />
+          <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Books" Relationship="rbndbModel.FK_Book_Author" FromRole="Author" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Type="Int32" Name="BookId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ISBN" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="AuthorId" />
+          <Property Type="Int32" Name="AudienceId" />
+          <Property Type="Int32" Name="Rating" Nullable="false" />
+          <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Audience" Relationship="rbndbModel.FK_Book_Audience" FromRole="Book" ToRole="Audience" />
+          <NavigationProperty Name="Author" Relationship="rbndbModel.FK_Book_Author" FromRole="Book" ToRole="Author" />
+          <NavigationProperty Name="ReaderNotes" Relationship="rbndbModel.FK_ReaderNote_Book" FromRole="Book" ToRole="ReaderNote" />
+        </EntityType>
+        <EntityType Name="ReaderNote">
+          <Key>
+            <PropertyRef Name="ReaderNoteId" />
+          </Key>
+          <Property Type="Int32" Name="ReaderNoteId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="BookId" Nullable="false" />
+          <Property Type="Int32" Name="ReaderId" Nullable="false" />
+          <Property Type="Int32" Name="Rating" Nullable="false" />
+          <Property Type="Int32" Name="AudienceId" Nullable="false" />
+          <Property Type="String" Name="Note" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Notify" Nullable="false" />
+          <Property Type="DateTime" Name="DateNotified" Precision="3" />
+          <Property Type="String" Name="EmailAddress" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Audience" Relationship="rbndbModel.FK_ReaderNote_Audience" FromRole="ReaderNote" ToRole="Audience" />
+          <NavigationProperty Name="Book" Relationship="rbndbModel.FK_ReaderNote_Book" FromRole="ReaderNote" ToRole="Book" />
+          <NavigationProperty Name="UserProfile" Relationship="rbndbModel.FK_ReaderNote_UserProfile" FromRole="ReaderNote" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_Book_Audience">
+          <End Type="rbndbModel.Audience" Role="Audience" Multiplicity="0..1" />
+          <End Type="rbndbModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Audience">
+              <PropertyRef Name="AudienceId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="AudienceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReaderNote_Audience">
+          <End Type="rbndbModel.Audience" Role="Audience" Multiplicity="1" />
+          <End Type="rbndbModel.ReaderNote" Role="ReaderNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Audience">
+              <PropertyRef Name="AudienceId" />
+            </Principal>
+            <Dependent Role="ReaderNote">
+              <PropertyRef Name="AudienceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Author">
+          <End Type="rbndbModel.Author" Role="Author" Multiplicity="0..1" />
+          <End Type="rbndbModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="AuthorId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReaderNote_Book">
+          <End Type="rbndbModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="rbndbModel.ReaderNote" Role="ReaderNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="ReaderNote">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReaderNote_UserProfile">
+          <End Type="rbndbModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="rbndbModel.ReaderNote" Role="ReaderNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ReaderNote">
+              <PropertyRef Name="ReaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -362,6 +630,55 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Audiences">
+            <EntityTypeMapping TypeName="rbndbModel.Audience">
+              <MappingFragment StoreEntitySet="Audience">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AudienceId" ColumnName="AudienceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="rbndbModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="rbndbModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="AudienceId" ColumnName="AudienceId" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReaderNotes">
+            <EntityTypeMapping TypeName="rbndbModel.ReaderNote">
+              <MappingFragment StoreEntitySet="ReaderNotes">
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="DateNotified" ColumnName="DateNotified" />
+                <ScalarProperty Name="Notify" ColumnName="Notify" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="AudienceId" ColumnName="AudienceId" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ReaderId" ColumnName="ReaderId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="ReaderNoteId" ColumnName="ReaderNoteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

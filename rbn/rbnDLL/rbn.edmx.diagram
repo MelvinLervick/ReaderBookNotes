@@ -5,14 +5,23 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1e715af8c43a4407aa7d9a1829c5eeed" Name="Diagram1">
-        <EntityTypeShape EntityType="rbndbModel.UserAccount" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="rbndbModel.UserProfile" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="rbndbModel.UserAccount" Width="1.5" PointX="6.625" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="rbndbModel.UserProfile" Width="1.5" PointX="4.125" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="rbndbModel.UserRole" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="rbndbModel.webpages_Membership" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="rbndbModel.webpages_OAuthMembership" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="rbndbModel.webpages_OAuthMembership" Width="1.5" PointX="6.625" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="rbndbModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="rbndbModel.FK_UserAccount_UserProfile" ManuallyRouted="false" />
         <AssociationConnector Association="rbndbModel.webpages_UsersInRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="rbndbModel.Audience" Width="1.5" PointX="10" PointY="11" />
+        <EntityTypeShape EntityType="rbndbModel.Author" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="rbndbModel.Book" Width="1.5" PointX="2.75" PointY="9.875" />
+        <EntityTypeShape EntityType="rbndbModel.ReaderNote" Width="1.5" PointX="6.625" PointY="8.375" />
+        <AssociationConnector Association="rbndbModel.FK_Book_Audience" />
+        <AssociationConnector Association="rbndbModel.FK_ReaderNote_Audience" />
+        <AssociationConnector Association="rbndbModel.FK_Book_Author" />
+        <AssociationConnector Association="rbndbModel.FK_ReaderNote_Book" />
+        <AssociationConnector Association="rbndbModel.FK_ReaderNote_UserProfile" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

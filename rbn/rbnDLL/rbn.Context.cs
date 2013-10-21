@@ -34,6 +34,10 @@ namespace rbnDLL
         public DbSet<webpages_Membership> webpages_Membership { get; set; }
         public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
         public DbSet<webpages_Roles> webpages_Roles { get; set; }
+        public DbSet<Audience> Audiences { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<ReaderNote> ReaderNotes { get; set; }
     
         public virtual ObjectResult<GetUserAccountUsingUserName_Result> GetUserAccountUsingUserName(string userName)
         {
