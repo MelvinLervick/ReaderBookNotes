@@ -25,5 +25,12 @@ namespace rbn.Controllers
 
 			return View();
 		}
-	}
+
+    public ActionResult BookNotes()
+    {
+      ViewBag.Message = "Rreader Book Notes";
+
+      return View();
+    }
+  }
 }
