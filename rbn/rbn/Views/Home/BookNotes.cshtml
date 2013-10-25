@@ -6,7 +6,10 @@
 @section featured {
   <section class="featured">
     <div class="content-wrapper">
-      <h2>@ViewBag.Title</h2>
+      @using (Html.BeginForm("Search", "Home", FormMethod.Post, new {id = "submitSearch"}))
+      {
+        @Html.Partial("SearchBarPartialView")
+      }
     </div>
   </section>
 }

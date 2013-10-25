@@ -159,6 +159,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\SearchBar.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\IUserAccountProvider.cs" />
@@ -282,6 +283,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Account\ManageAccount.cshtml" />
     <Content Include="Views\Home\BookNotes.cshtml" />
+    <Content Include="Views\Shared\SearchBarPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

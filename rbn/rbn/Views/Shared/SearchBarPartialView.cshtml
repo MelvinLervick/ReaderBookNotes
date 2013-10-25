@@ -1,0 +1,17 @@
+﻿@model rbn.Models.SearchBar
+
+<section id="SearchBarSection">
+<div class="searchBar">
+  @Html.LabelFor( m => m.SearchFor, new {@class="searchLabel"} )
+  @Html.TextBoxFor( m => m.SearchFor,new{@class = "searchTextBox"} )
+  <button type="submit" id="btnSearch" name="Command" value="Save">Search</button>
+
+  @Html.RadioButtonFor( m => m.SearchBy, "Title", new {@class="searchRadio", @checked = "checked"} ) Title
+  @Html.RadioButtonFor( m => m.SearchBy, "ISBN", new {@class="searchRadio"} ) ISBN
+  @Html.RadioButtonFor( m => m.SearchBy, "Author", new {@class="searchRadio"} ) Author
+</div>
+</section>
+
+@section Scripts {
+  @Scripts.Render( "~/bundles/jqueryval" )
+}

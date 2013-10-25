@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using rbn.Models;
 
 namespace rbn.Controllers
 {
@@ -28,9 +29,17 @@ namespace rbn.Controllers
 
     public ActionResult BookNotes()
     {
-      ViewBag.Message = "Rreader Book Notes";
+      ViewBag.Message = "Reader Book Notes";
 
       return View();
+    }
+
+    [HttpPost]
+    public ActionResult Search( SearchBar search )
+    {
+      ViewBag.Message = "Search Book Notes";
+
+      return View("BookNotes");
     }
   }
 }

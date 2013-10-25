@@ -779,3 +779,35 @@ tr.pager td {
       margin: 0;
     }
 }
+
+/* Search Bar
+  -----------------------------------------------------------*/
+.searchBar {
+  font-size: .85em;
+  font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+}
+
+.searchBar input[type="radio"] {
+  width: 10px;
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: .85em;
+  margin: 5px 0 6px 0;
+  padding: 5px;
+}
+
+.searchBar .searchLabel {
+  display:inline-block; 
+  width: 50px;
+}
+
+.searchBar .searchTextBox {
+  width: 400px;
+}
+
+.searchBar .searchRadio {
+  font-size: .85em;
+  display:inline-block; 
+  width: 50px;
+}
