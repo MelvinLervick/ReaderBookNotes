@@ -23,8 +23,7 @@ namespace rbnDLL
             Answer1 = ua.Answer1,
             Question2 = ua.Question2,
             Answer2 = ua.Answer2,
-            AccountLocked = ua.AccountLocked ?? false,
-            AccountUserId = ua.AccountUserId
+            AccountLocked = ua.AccountLocked ?? false
           }).FirstOrDefault();
 
         return userFieldData;

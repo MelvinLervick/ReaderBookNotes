@@ -286,9 +286,6 @@
             <End Role="webpages_Roles" EntitySet="webpages_Roles" />
             <End Role="UserProfile" EntitySet="UserProfiles" />
           </AssociationSet>
-          <FunctionImport Name="GetUserAccountUsingUserName" ReturnType="Collection(rbndbModel.GetUserAccountUsingUserName_Result)">
-          <Parameter Name="UserName" Mode="In" Type="String" />
-          </FunctionImport>
           <EntitySet Name="Audiences" EntityType="rbndbModel.Audience" />
           <EntitySet Name="Authors" EntityType="rbndbModel.Author" />
           <EntitySet Name="Books" EntityType="rbndbModel.Book" />
@@ -313,6 +310,9 @@
             <End Role="UserProfile" EntitySet="UserProfiles" />
             <End Role="ReaderNote" EntitySet="ReaderNotes" />
           </AssociationSet>
+          <FunctionImport Name="GetUserAccountUsingUserName" ReturnType="Collection(rbndbModel.GetUserAccountUsingUserName_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="UserAccount">
           <Key>
@@ -400,20 +400,6 @@
           <End Role="webpages_Roles" Type="rbndbModel.webpages_Roles" Multiplicity="*" />
           <End Role="UserProfile" Type="rbndbModel.UserProfile" Multiplicity="*" />
         </Association>
-        <ComplexType Name="GetUserAccountUsingUserName_Result">
-          <Property Type="Int32" Name="UserId" Nullable="false" />
-          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="AccountUserId" Nullable="false" />
-          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Question1" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Answer1" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Question2" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Answer2" Nullable="true" MaxLength="100" />
-          <Property Type="Boolean" Name="AccountLocked" Nullable="true" />
-        </ComplexType>
         <EntityType Name="Audience">
           <Key>
             <PropertyRef Name="AudienceId" />
@@ -528,6 +514,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetUserAccountUsingUserName_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Question1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Answer1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Question2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Answer2" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="AccountLocked" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -612,24 +611,6 @@
               <ScalarProperty Name="UserId" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="GetUserAccountUsingUserName" FunctionName="rbndbModel.Store.GetUserAccountUsingUserName">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="rbndbModel.GetUserAccountUsingUserName_Result">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AccountUserId" ColumnName="AccountUserId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Question1" ColumnName="Question1" />
-                <ScalarProperty Name="Answer1" ColumnName="Answer1" />
-                <ScalarProperty Name="Question2" ColumnName="Question2" />
-                <ScalarProperty Name="Answer2" ColumnName="Answer2" />
-                <ScalarProperty Name="AccountLocked" ColumnName="AccountLocked" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="Audiences">
             <EntityTypeMapping TypeName="rbndbModel.Audience">
               <MappingFragment StoreEntitySet="Audience">
@@ -679,6 +660,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserAccountUsingUserName" FunctionName="rbndbModel.Store.GetUserAccountUsingUserName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="rbndbModel.GetUserAccountUsingUserName_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Question1" ColumnName="Question1" />
+                <ScalarProperty Name="Answer1" ColumnName="Answer1" />
+                <ScalarProperty Name="Question2" ColumnName="Question2" />
+                <ScalarProperty Name="Answer2" ColumnName="Answer2" />
+                <ScalarProperty Name="AccountLocked" ColumnName="AccountLocked" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using rbn.Models;
+﻿using rbn.Models;
 using rbnDLL.Models;
 
 namespace rbn.Providers.RbnDll.Adapters
@@ -22,7 +18,6 @@ namespace rbn.Providers.RbnDll.Adapters
         Answer1 = userAccountFields.Answer1,
         Question2 = userAccountFields.Question2,
         Answer2 = userAccountFields.Answer2,
-        AccountUserId = userAccountFields.AccountUserId,
         AccountLocked = userAccountFields.AccountLocked
       };
     }
@@ -40,7 +35,6 @@ namespace rbn.Providers.RbnDll.Adapters
         Answer1 = userAccountFields.Answer1,
         Question2 = userAccountFields.Question2,
         Answer2 = userAccountFields.Answer2,
-        AccountUserId = userAccountFields.AccountUserId,
         AccountLocked = userAccountFields.AccountLocked
       };
     }

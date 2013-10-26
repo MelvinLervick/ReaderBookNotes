@@ -121,7 +121,7 @@ h5, h6 {
 }
 
 .main-content {
-  background: url("../Images/accent.png") no-repeat;
+  /*background: url("../Images/accent.png") no-repeat;*/
   padding-left: 10px;
   padding-top: 30px;
 }
@@ -846,12 +846,30 @@ tr.pager td {
   width: 10px;
 }
 
+/* Reader Note Panel
+  -----------------------------------------------------*/
 .readerNotes {
   position: absolute;
   border: 3px lightblue solid;
   left: 5px;
   top: 75px;
-  right: 0px;
-  bottom: 40px;
+  right: 5px;
+  bottom: 5px;
   overflow: hidden;
+}
+
+.contributorNotes {
+  position: absolute;
+  border: 3px lightyellow solid;
+  left: 5px;
+  top: 75px;
+  right: 5px;
+  bottom: 5px;
+  overflow: hidden;
+}
+
+/* Change Password
+  -----------------------------------------------------*/
+.ChangePassword {
+  padding-left: 100px;
 }

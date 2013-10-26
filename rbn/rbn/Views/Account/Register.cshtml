@@ -1,35 +1,38 @@
 ﻿@model rbn.Models.RegisterModel
 @{
-    ViewBag.Title = "Register";
+  ViewBag.Title = "Register";
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
+  <h1>@ViewBag.Title.</h1>
+  <h2>Create a new account.</h2>
 </hgroup>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+@using (Html.BeginForm())
+{
+  @Html.AntiForgeryToken()
+  @Html.ValidationSummary()
 
+  <div class="ChangePassword">
     <fieldset>
-        <legend>Registration Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName, new { style="display:inline-block; width: 150px;"})
-                @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password, new { style="display:inline-block; width: 150px;"})
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword, new { style="display:inline-block; width: 150px;"})
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-        </ol>
-        <input type="submit" value="Register" />
+      <legend>Registration Form</legend>
+      <ol>
+        <li>
+          @Html.LabelFor( m => m.UserName, new { style = "display:inline-block; width: 150px;" } )
+          @Html.TextBoxFor( m => m.UserName )
+        </li>
+        <li>
+          @Html.LabelFor( m => m.Password, new { style = "display:inline-block; width: 150px;" } )
+          @Html.PasswordFor( m => m.Password )
+        </li>
+        <li>
+          @Html.LabelFor( m => m.ConfirmPassword, new { style = "display:inline-block; width: 150px;" } )
+          @Html.PasswordFor( m => m.ConfirmPassword )
+        </li>
+      </ol>
+      <input type="submit" value="Register" />
     </fieldset>
+  </div>
 }
 
 @section Scripts {

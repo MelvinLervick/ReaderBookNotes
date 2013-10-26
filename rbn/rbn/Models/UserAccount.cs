@@ -76,11 +76,5 @@ namespace rbn.Models
       get;
       set;
     }
-
-    public int AccountUserId
-    {
-      get;
-      set;
-    }
   }
 }

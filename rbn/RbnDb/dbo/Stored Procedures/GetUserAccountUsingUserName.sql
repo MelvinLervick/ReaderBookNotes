@@ -7,7 +7,6 @@ BEGIN
 	SELECT        
 		dbo.UserProfile.UserId
 		, dbo.UserProfile.UserName
-		, dbo.UserAccount.UserId AS AccountUserId
 		, dbo.UserAccount.FirstName
 		, dbo.UserAccount.LastName
 		, dbo.UserAccount.EmailAddress
@@ -18,7 +17,7 @@ BEGIN
     , dbo.UserAccount.Answer2
     , dbo.UserAccount.AccountLocked
 	FROM dbo.UserProfile 
-	INNER JOIN dbo.UserAccount ON dbo.UserProfile.UserId = dbo.UserAccount.UserId
+	LEFT JOIN dbo.UserAccount ON dbo.UserProfile.UserId = dbo.UserAccount.UserId
   WHERE UserName = @UserName
 
 END

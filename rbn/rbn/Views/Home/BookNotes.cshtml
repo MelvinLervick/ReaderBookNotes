@@ -13,6 +13,15 @@
     </div>
   </section>
 }
-<div class="readerNotes">
-  Body
-</div>
+@if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") || Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
+{
+  <div class="contributorNotes">
+    Body
+  </div>
+}
+else
+{
+  <div class="readerNotes">
+    Body
+  </div>
+}
