@@ -11,6 +11,7 @@ body {
   font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
   margin: 0;
   padding: 0;
+  min-width: 900px;
 }
 
 a {
@@ -102,7 +103,8 @@ h5, h6 {
 ----------------------------------------------------------*/
 .content-wrapper {
   margin: 0 auto;
-  min-width: 900px;
+  height: auto;
+  /*min-width: 900px;*/
 }
 
 #body {
@@ -195,7 +197,7 @@ footer {
 /* menu
 ----------------------------------------------------------*/
 ul#menu {
-  font-size: 1.3em;
+  font-size: 1.0em;
   font-weight: 600;
   margin: 0 0 5px;
   padding: 0;
@@ -210,12 +212,12 @@ ul#menu {
 
     ul#menu li a {
       background: none;
-      color: #999;
+      color: darkblue;
       text-decoration: none;
     }
 
       ul#menu li a:hover {
-        color: #333;
+        color: red;
         text-decoration: none;
       }
 
@@ -456,12 +458,12 @@ input, textarea {
   font-size: 1.2em;
   margin: 5px 0 6px 0;
   padding: 5px;
-  width: 600px;
+  /*width: 600px;*/
 }
 
 textarea {
   font-family: inherit;
-  width: 800px;
+  /*width: 800px;*/
 }
 
   input:focus, textarea:focus {
@@ -802,6 +804,12 @@ tr.pager td {
   width: 50px;
 }
 
+#btnSearch {
+  width: 60px;
+  font-size: 1.0em;
+  margin: 0px;
+  padding: 5px 0px 6px 0px;
+}
 .searchBar .searchTextBox {
   width: 400px;
 }
@@ -810,4 +818,20 @@ tr.pager td {
   font-size: .85em;
   display:inline-block; 
   width: 50px;
+}
+
+.searchBar .searchCheckbox {
+  font-size: .85em;
+  display:inline-block; 
+  width: 10px;
+}
+
+.readerNotes {
+  position: absolute;
+  border: 3px lightblue solid;
+  left: 5px;
+  top: 75px;
+  right: 0px;
+  bottom: 50px;
+  overflow: hidden;
 }

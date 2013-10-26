@@ -18,6 +18,13 @@ namespace rbn.Models
       set;
     }
 
+    [Display( Name = "Display:" )]
+    public string Display
+    {
+      get;
+      set;
+    }
+
     [Display( Name = "Title" )]
     public bool BookTitle
     {
@@ -34,6 +41,13 @@ namespace rbn.Models
 
     [Display( Name = "ISBN" )]
     public bool BookIsbn
+    {
+      get;
+      set;
+    }
+
+    [Display( Name = "Notes" )]
+    public bool ReaderNotes
     {
       get;
       set;

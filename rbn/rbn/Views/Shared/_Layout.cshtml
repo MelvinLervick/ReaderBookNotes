@@ -11,14 +11,14 @@
 <body>
   <header>
     <div class="content-wrapper">
-      <div class="float-left">
+      <div class="float-left" style="width: 35%;">
         <div>
           <a href="@Url.Action( "Index", "Home" )">
             <img src='@Url.Content( "~/images/rylinks.png" )' class="site-title" />
           </a>
         </div>
       </div>
-      <div class="float-right">
+      <div class="float-right" style="width: 63%;">
         <section id="login">
           @Html.Partial( "_LoginPartial" )
         </section>
