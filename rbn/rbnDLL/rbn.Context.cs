@@ -30,7 +30,6 @@ namespace rbnDLL
     
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<webpages_Membership> webpages_Membership { get; set; }
         public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
         public DbSet<webpages_Roles> webpages_Roles { get; set; }

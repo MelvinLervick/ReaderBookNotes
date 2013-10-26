@@ -12,7 +12,6 @@
           <EntitySet Name="ReaderNotes" EntityType="rbndbModel.Store.ReaderNotes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserAccount" EntityType="rbndbModel.Store.UserAccount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserProfile" EntityType="rbndbModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserRoles" EntityType="rbndbModel.Store.UserRoles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="webpages_Membership" EntityType="rbndbModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="webpages_OAuthMembership" EntityType="rbndbModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="webpages_Roles" EntityType="rbndbModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
@@ -55,7 +54,7 @@
             <PropertyRef Name="AudienceId" />
           </Key>
           <Property Name="AudienceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="nchar" MaxLength="15" />
+          <Property Name="Name" Type="nchar" Nullable="false" MaxLength="15" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -120,13 +119,6 @@
           <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserRoles">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="20" />
         </EntityType>
         <EntityType Name="webpages_Membership">
           <Key>
@@ -274,7 +266,6 @@
         <EntityContainer Name="rbndbEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="UserAccounts" EntityType="rbndbModel.UserAccount" />
           <EntitySet Name="UserProfiles" EntityType="rbndbModel.UserProfile" />
-          <EntitySet Name="UserRoles" EntityType="rbndbModel.UserRole" />
           <EntitySet Name="webpages_Membership" EntityType="rbndbModel.webpages_Membership" />
           <EntitySet Name="webpages_OAuthMembership" EntityType="rbndbModel.webpages_OAuthMembership" />
           <EntitySet Name="webpages_Roles" EntityType="rbndbModel.webpages_Roles" />
@@ -311,7 +302,7 @@
             <End Role="ReaderNote" EntitySet="ReaderNotes" />
           </AssociationSet>
           <FunctionImport Name="GetUserAccountUsingUserName" ReturnType="Collection(rbndbModel.GetUserAccountUsingUserName_Result)">
-            <Parameter Name="UserName" Mode="In" Type="String" />
+          <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="UserAccount">
@@ -343,13 +334,6 @@
           <NavigationProperty Name="UserAccount" Relationship="rbndbModel.FK_UserAccount_UserProfile" FromRole="UserProfile" ToRole="UserAccount" />
           <NavigationProperty Name="webpages_Roles" Relationship="rbndbModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
           <NavigationProperty Name="ReaderNotes" Relationship="rbndbModel.FK_ReaderNote_UserProfile" FromRole="UserProfile" ToRole="ReaderNote" />
-        </EntityType>
-        <EntityType Name="UserRole">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="webpages_Membership">
           <Key>
@@ -405,7 +389,7 @@
             <PropertyRef Name="AudienceId" />
           </Key>
           <Property Type="Int32" Name="AudienceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Name" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="rbndbModel.FK_Book_Audience" FromRole="Audience" ToRole="Book" />
           <NavigationProperty Name="ReaderNotes" Relationship="rbndbModel.FK_ReaderNote_Audience" FromRole="Audience" ToRole="ReaderNote" />
         </EntityType>
@@ -558,14 +542,6 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserRoles">
-            <EntityTypeMapping TypeName="rbndbModel.UserRole">
-              <MappingFragment StoreEntitySet="UserRoles">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

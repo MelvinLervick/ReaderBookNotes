@@ -90,9 +90,6 @@
     <Compile Include="UserProfile.cs">
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserRole.cs">
-      <DependentUpon>rbn.tt</DependentUpon>
-    </Compile>
     <Compile Include="webpages_Membership.cs">
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
