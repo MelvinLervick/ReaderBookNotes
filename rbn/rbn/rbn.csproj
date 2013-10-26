@@ -230,6 +230,8 @@
     <Content Include="Images\orderedList3blue.png" />
     <Content Include="Images\orderedList4blue.png" />
     <Content Include="Images\Rylinks.png" />
+    <Content Include="Images\titlebar_pattern.jpg" />
+    <Content Include="Images\titlebar_pattern2.jpg" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

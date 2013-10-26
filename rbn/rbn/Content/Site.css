@@ -1,6 +1,7 @@
 ﻿html {
   margin: 0;
   padding: 0;
+  background-color: #d6e8fe;
 }
 
 body {
@@ -36,7 +37,8 @@ header {
   top: 0px;
   left: 0px;
   right: 0px;
-  height: 70px;
+  height: 59px;
+  background: url("/images/titlebar_pattern.jpg") repeat-x;
 }
 
 header, footer, hgroup,
@@ -109,11 +111,11 @@ h5, h6 {
 
 #body {
   position: absolute;
-  top: 70px;
+  top: 59px;
   left: 0px;
   right: 0px;
-  bottom: 32px;
-  background-color: #efeeef;
+  bottom: 24px;
+  background-color: #d6e8fe;
   clear: both;
   overflow-y: scroll;
 }
@@ -129,7 +131,7 @@ h5, h6 {
 }
 
 header .content-wrapper {
-  padding: 10px;
+  padding: 2px;
 }
 
 footer {
@@ -138,11 +140,17 @@ footer {
   right: 0px;
   bottom: 0px;
   clear: both;
-  background-color: #e2e2e2;
+  height: 24px;
+  background-color: #7ac0da;
   font-size: .8em;
-  padding-left: 10px;
+  padding: 0px 0px 0px 10px;
+  margin: 0px;
 }
 
+footer p {
+  margin: 5px 0px 0px 0px;
+  padding: 0px;
+}
 
 /* site title
 ----------------------------------------------------------*/
@@ -153,12 +161,14 @@ footer {
   border: 0px;
 }
 
-  .site-title a, .site-title a:hover, .site-title a:active {
+  .site-title a, .site-title a:active {
     background: none;
-    outline: none;
     text-decoration: none;
   }
 
+  .site-title a:hover {
+    text-decoration: underline;
+  }
 
 /* login
 ----------------------------------------------------------*/
@@ -170,11 +180,20 @@ footer {
 }
 
   #login a {
-    background-color: #d6e8fe;
     margin-left: 10px;
     margin-right: 3px;
-    padding: 2px 3px;
+    padding: 5px 3px;
     text-decoration: none;
+    color: white;
+  }
+
+  #login a:hover {
+    background-color: lightgray;
+    color: darkblue;
+  }
+
+  #login a textarea {
+    color: white;
   }
 
     #login a.username {
@@ -199,7 +218,7 @@ footer {
 ul#menu {
   font-size: 1.0em;
   font-weight: 600;
-  margin: 0 0 5px;
+  margin: 5px 0px 5px;
   padding: 0;
   text-align: right;
 }
@@ -207,17 +226,18 @@ ul#menu {
   ul#menu li {
     display: inline;
     list-style: none;
-    padding-left: 15px;
+    padding-left: 10px;
   }
 
     ul#menu li a {
       background: none;
-      color: darkblue;
+      color: white;
       text-decoration: none;
     }
 
       ul#menu li a:hover {
-        color: red;
+        color: darkblue;
+        background-color: lightgray;
         text-decoration: none;
       }
 
@@ -684,12 +704,12 @@ tr.pager td {
     ----------------------------------------------------------*/
   .main-content,
   .featured + .main-content {
-    background-position: 10px 0;
+    background-position: 2px 0;
   }
 
   .content-wrapper {
     padding-right: 10px;
-    padding-left: 10px;
+    padding-left: 2px;
   }
 
   .featured .content-wrapper {
@@ -774,7 +794,7 @@ tr.pager td {
   footer {
     text-align: center;
     height: auto;
-    padding: 10px 0;
+    padding: 0px 0;
   }
 
     footer p {
@@ -832,6 +852,6 @@ tr.pager td {
   left: 5px;
   top: 75px;
   right: 0px;
-  bottom: 50px;
+  bottom: 40px;
   overflow: hidden;
 }
