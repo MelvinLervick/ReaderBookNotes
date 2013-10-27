@@ -68,7 +68,7 @@ namespace rbn.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult ManageAccount( UserAccount model, string returnUrl )
+    public ActionResult ManageAccount( UserAccountModel model, string returnUrl )
     {
       // TODO : wire up access to SQL
       if (ModelState.IsValid)

@@ -2,7 +2,7 @@
 
 namespace rbn.Models
 {
-  public class SearchBar
+  public class SearchBarModel
   {
     [Display( Name = "Search" )]
     public string SearchFor

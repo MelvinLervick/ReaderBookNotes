@@ -5,9 +5,9 @@ namespace rbn.Providers.RbnDll.Adapters
 {
   public class UserAccountAdapter
   {
-    internal static UserAccount TransformToUiModel( UserAccountUserFields userAccountFields )
+    internal static UserAccountModel TransformToUiModel( UserAccountUserFields userAccountFields )
     {
-      return new UserAccount
+      return new UserAccountModel
       {
         UserId = userAccountFields.UserId,
         FirstName = userAccountFields.FirstName,
@@ -22,7 +22,7 @@ namespace rbn.Providers.RbnDll.Adapters
       };
     }
 
-    internal static UserAccountUserFields TransformToDllModel( UserAccount userAccountFields )
+    internal static UserAccountUserFields TransformToDllModel( UserAccountModel userAccountFields )
     {
       return new UserAccountUserFields
       {

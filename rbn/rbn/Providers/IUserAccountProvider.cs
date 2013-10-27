@@ -4,7 +4,7 @@ namespace rbn.Providers
 {
   public interface IUserAccountProvider
   {
-    UserAccount GetUserManagedFieldsFromUserAccount( string userName );
-    void SaveUserManagedFieldsInUserAccount(Models.UserAccount userAccount);
+    UserAccountModel GetUserManagedFieldsFromUserAccount( string userName );
+    void SaveUserManagedFieldsInUserAccount(Models.UserAccountModel userAccount);
   }
 }

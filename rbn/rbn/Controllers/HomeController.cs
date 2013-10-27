@@ -35,7 +35,7 @@ namespace rbn.Controllers
     }
 
     [HttpPost]
-    public ActionResult Search( SearchBar search )
+    public ActionResult Search( SearchBarModel search )
     {
       ViewBag.Message = "Search Book Notes";
 

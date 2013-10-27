@@ -11,13 +11,13 @@ namespace rbn.Providers.RbnDll
 
     #region IUserAccountProvider Members
 
-    public Models.UserAccount GetUserManagedFieldsFromUserAccount( string userName )
+    public Models.UserAccountModel GetUserManagedFieldsFromUserAccount( string userName )
     {
       var userManagedFields = Security.GetUserManagedFieldsFromUserAccount( userName );
       return UserAccountAdapter.TransformToUiModel( userManagedFields );
     }
 
-    public void SaveUserManagedFieldsInUserAccount( Models.UserAccount userAccount )
+    public void SaveUserManagedFieldsInUserAccount( Models.UserAccountModel userAccount )
     {
       var userManagedFields = UserAccountAdapter.TransformToDllModel( userAccount );
       Security.SaveUserManagedFieldsInUserAccount( userManagedFields );
