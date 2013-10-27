@@ -59,6 +59,9 @@
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserAccountUserFields.cs" />
+    <Compile Include="Rating.cs">
+      <DependentUpon>rbn.tt</DependentUpon>
+    </Compile>
     <Compile Include="rbn.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -21,6 +21,10 @@
         <AssociationConnector Association="rbndbModel.FK_Book_Author" />
         <AssociationConnector Association="rbndbModel.FK_ReaderNote_Book" />
         <AssociationConnector Association="rbndbModel.FK_ReaderNote_UserProfile" />
+        <EntityTypeShape EntityType="rbndbModel.Rating" Width="1.5" PointX="7.2824271206196531" PointY="15.707761861247832" />
+        <AssociationConnector Association="rbndbModel.FK_Ratings_Audience" />
+        <AssociationConnector Association="rbndbModel.FK_Ratings_ReaderNotes" />
+        <AssociationConnector Association="rbndbModel.FK_Ratings_UserProfile" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -5,6 +5,7 @@
     [LastName] NVARCHAR(50) NULL, 
     [EmailAddress] NVARCHAR(100) NULL, 
     [Country] NVARCHAR(50) NULL, 
+    [DateOfBirth] DATETIME NULL, 
     [Question1] NVARCHAR(100) NULL, 
     [Answer1] NVARCHAR(100) NULL, 
     [Question2] NVARCHAR(100) NULL, 

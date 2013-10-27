@@ -18,6 +18,7 @@ namespace rbnDLL
         {
             this.Books = new HashSet<Book>();
             this.ReaderNotes = new HashSet<ReaderNote>();
+            this.Ratings = new HashSet<Rating>();
         }
     
         public int AudienceId { get; set; }
@@ -25,5 +26,6 @@ namespace rbnDLL
     
         public virtual ICollection<Book> Books { get; set; }
         public virtual ICollection<ReaderNote> ReaderNotes { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }

@@ -14,6 +14,11 @@ namespace rbnDLL
     
     public partial class ReaderNote
     {
+        public ReaderNote()
+        {
+            this.Ratings = new HashSet<Rating>();
+        }
+    
         public int ReaderNoteId { get; set; }
         public int BookId { get; set; }
         public int ReaderId { get; set; }
@@ -28,5 +33,6 @@ namespace rbnDLL
         public virtual Audience Audience { get; set; }
         public virtual Book Book { get; set; }
         public virtual UserProfile UserProfile { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }

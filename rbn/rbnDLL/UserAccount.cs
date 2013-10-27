@@ -27,6 +27,7 @@ namespace rbnDLL
         public string Question2 { get; set; }
         public string Answer2 { get; set; }
         public System.DateTime LastModifiedDate { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
     
         public virtual UserProfile UserProfile { get; set; }
     }

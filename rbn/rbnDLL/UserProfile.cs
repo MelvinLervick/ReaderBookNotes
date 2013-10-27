@@ -18,6 +18,7 @@ namespace rbnDLL
         {
             this.webpages_Roles = new HashSet<webpages_Roles>();
             this.ReaderNotes = new HashSet<ReaderNote>();
+            this.Ratings = new HashSet<Rating>();
         }
     
         public int UserId { get; set; }
@@ -27,5 +28,6 @@ namespace rbnDLL
         public virtual UserAccount UserAccount { get; set; }
         public virtual ICollection<webpages_Roles> webpages_Roles { get; set; }
         public virtual ICollection<ReaderNote> ReaderNotes { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }
