@@ -39,7 +39,7 @@ namespace rbn.Models
       set;
     }
 
-    [Display( Name = "Author Rating" )]
+    [Display( Name = "Rating" )]
     public int Rating
     {
       get;

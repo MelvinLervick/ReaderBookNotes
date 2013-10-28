@@ -153,6 +153,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -175,6 +176,7 @@
     <Compile Include="Providers\IUserAccountProvider.cs" />
     <Compile Include="Providers\RbnDll\Adapters\UserAccountAdapter.cs" />
     <Compile Include="Providers\RbnDll\UserAccountProvider.cs" />
+    <Compile Include="Views\ViewModels\AuthorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -296,6 +298,9 @@
     <Content Include="Views\Account\ManageAccount.cshtml" />
     <Content Include="Views\Home\BookNotes.cshtml" />
     <Content Include="Views\Shared\SearchBarPartialView.cshtml" />
+    <Content Include="Views\Shared\_LayoutBooks.cshtml" />
+    <Content Include="Views\Shared\HeaderMenuPartial.cshtml" />
+    <Content Include="Views\Author\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,18 +1,8 @@
 ﻿@{
   ViewBag.Title = "Reader Book Notes";
-  Layout = "~/Views/Shared/_Layout.cshtml";
+  Layout = "~/Views/Shared/_LayoutBooks.cshtml";
 }
 
-@section featured {
-  <section class="featured">
-    <div class="content-wrapper">
-      @using (Html.BeginForm("Search", "Home", FormMethod.Post, new {id = "submitSearch"}))
-      {
-        @Html.Partial("SearchBarPartialView")
-      }
-    </div>
-  </section>
-}
 @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") || Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
 {
   <div class="contributorNotes">

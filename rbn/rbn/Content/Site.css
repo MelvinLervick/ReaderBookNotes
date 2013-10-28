@@ -846,6 +846,36 @@ tr.pager td {
   width: 10px;
 }
 
+/*
+  -----------------------------------------------------*/
+.AuthorList {
+  border: 0px blue solid;
+}
+
+.AuthorList td {
+  border: 1px blue solid;
+  padding: 1px 3px;
+}
+.AuthorList th {
+  text-align: center;
+}
+
+.AuthorList .FirstName {
+  width: 200px;
+}
+.AuthorList .MiddleName {
+  width: 150px;
+}
+.AuthorList .LastName {
+  width: 200px;
+}
+.AuthorList .Rating {
+  width: 75px;
+}
+.AuthorList .RatingValue {
+  text-align: center;
+}
+
 /* Reader Note Panel
   -----------------------------------------------------*/
 .readerNotes {

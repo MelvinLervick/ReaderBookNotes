@@ -35,11 +35,11 @@ namespace rbn.Controllers
     }
 
     [HttpPost]
-    public ActionResult Search( SearchBarModel search )
+    public PartialViewResult Search( SearchBarModel search )
     {
       ViewBag.Message = "Search Book Notes";
 
-      return View("BookNotes");
+      return PartialView("BookNotes");
     }
   }
 }

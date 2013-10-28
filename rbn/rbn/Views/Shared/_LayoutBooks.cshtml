@@ -11,18 +11,25 @@
 </head>
 <body>
   <header>
-    @Html.Partial("HeaderMenuPartial", new SearchBarModel())
+    @Html.Partial( "HeaderMenuPartial" )
   </header>
   <div id="body">
-    @RenderSection( "featured", required: false )
+    <section class="featured">
+      <div class="content-wrapper">
+        @using (Html.BeginForm( "Search", "Home", FormMethod.Post, new { id = "submitSearch" } ))
+        {
+          @Html.Partial( "SearchBarPartialView", new SearchBarModel() )
+        }
+      </div>
+    </section>
     <section class="content-wrapper main-content clear-fix">
       @RenderBody()
     </section>
   </div>
   <footer>
-      <div class="float-left">
-        <p>Reader Book Notes - &copy;@DateTime.Now.Year - Rylinks</p>
-      </div>
+    <div class="float-left">
+      <p>Reader Book Notes - &copy;@DateTime.Now.Year - Rylinks</p>
+    </div>
   </footer>
 
   @Scripts.Render( "~/bundles/jquery" )
