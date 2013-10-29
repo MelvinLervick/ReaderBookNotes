@@ -12,21 +12,17 @@ namespace rbnDLL
     using System;
     using System.Collections.Generic;
     
-    public partial class Author
+    public partial class Ratings
     {
-        public Author()
-        {
-            this.Books = new HashSet<Book>();
-        }
+        public int RatingId { get; set; }
+        public int UserId { get; set; }
+        public int ReaderNoteId { get; set; }
+        public int Rating1 { get; set; }
+        public Nullable<int> AudienceId { get; set; }
+        public System.DateTime CreatedDate { get; set; }
     
-        public int AuthorId { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public int Rating { get; set; }
-        public System.DateTime LastModifiedDate { get; set; }
-        public bool Enabled { get; set; }
-    
-        public virtual ICollection<Book> Books { get; set; }
+        public virtual Audience Audience { get; set; }
+        public virtual ReaderNotes ReaderNote { get; set; }
+        public virtual UserProfile UserProfile { get; set; }
     }
 }

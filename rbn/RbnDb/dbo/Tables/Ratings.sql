@@ -5,6 +5,7 @@
     [ReaderNoteId] INT NOT NULL, 
     [Rating] INT NOT NULL DEFAULT 0, 
     [AudienceId] INT NULL, 
+    [CreatedDate] DATETIME NOT NULL DEFAULT getdate(), 
     CONSTRAINT [FK_Ratings_UserProfile] FOREIGN KEY ([UserId]) REFERENCES [UserProfile]([UserId]), 
     CONSTRAINT [FK_Ratings_ReaderNotes] FOREIGN KEY ([ReaderNoteId]) REFERENCES [ReaderNotes]([ReaderNoteId]), 
     CONSTRAINT [FK_Ratings_Audience] FOREIGN KEY ([AudienceId]) REFERENCES [Audience]([AudienceId])

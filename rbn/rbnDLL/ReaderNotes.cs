@@ -12,11 +12,11 @@ namespace rbnDLL
     using System;
     using System.Collections.Generic;
     
-    public partial class ReaderNote
+    public partial class ReaderNotes
     {
-        public ReaderNote()
+        public ReaderNotes()
         {
-            this.Ratings = new HashSet<Rating>();
+            this.Ratings = new HashSet<Ratings>();
         }
     
         public int ReaderNoteId { get; set; }
@@ -29,10 +29,11 @@ namespace rbnDLL
         public Nullable<System.DateTime> DateNotified { get; set; }
         public string EmailAddress { get; set; }
         public System.DateTime LastModifiedDate { get; set; }
+        public bool Enabled { get; set; }
     
         public virtual Audience Audience { get; set; }
         public virtual Book Book { get; set; }
         public virtual UserProfile UserProfile { get; set; }
-        public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<Ratings> Ratings { get; set; }
     }
 }

@@ -58,8 +58,18 @@
     <Compile Include="GetUserAccountUsingUserName_Result.cs">
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
+    <Compile Include="IAudience.cs" />
+    <Compile Include="IAuthor.cs" />
+    <Compile Include="IBook.cs" />
+    <Compile Include="IRatings.cs" />
+    <Compile Include="IReaderNotes.cs" />
     <Compile Include="Models\UserAccountUserFields.cs" />
-    <Compile Include="Rating.cs">
+    <Compile Include="Providers\AudienceProvider.cs" />
+    <Compile Include="Providers\AuthorProvider.cs" />
+    <Compile Include="Providers\BookProvider.cs" />
+    <Compile Include="Providers\RatingsProvider.cs" />
+    <Compile Include="Providers\ReaderNotesProvider.cs" />
+    <Compile Include="Ratings.cs">
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
     <Compile Include="rbn.Context.cs">
@@ -82,7 +92,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
-    <Compile Include="ReaderNote.cs">
+    <Compile Include="ReaderNotes.cs">
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
     <Compile Include="Security.cs" />

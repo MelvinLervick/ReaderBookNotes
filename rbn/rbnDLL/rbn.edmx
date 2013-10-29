@@ -68,6 +68,7 @@
           </Key>
           <Property Name="AudienceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nchar" Nullable="false" MaxLength="15" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -79,6 +80,7 @@
           <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Book">
           <Key>
@@ -91,6 +93,7 @@
           <Property Name="AudienceId" Type="int" />
           <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Ratings">
           <Key>
@@ -101,6 +104,7 @@
           <Property Name="ReaderNoteId" Type="int" Nullable="false" />
           <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="AudienceId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="ReaderNotes">
           <Key>
@@ -116,6 +120,7 @@
           <Property Name="DateNotified" Type="datetime" />
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
           <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -340,7 +345,7 @@
           <EntitySet Name="Audiences" EntityType="rbndbModel.Audience" />
           <EntitySet Name="Authors" EntityType="rbndbModel.Author" />
           <EntitySet Name="Books" EntityType="rbndbModel.Book" />
-          <EntitySet Name="ReaderNotes" EntityType="rbndbModel.ReaderNote" />
+          <EntitySet Name="ReaderNotes" EntityType="rbndbModel.ReaderNotes" />
           <AssociationSet Name="FK_Book_Audience" Association="rbndbModel.FK_Book_Audience">
             <End Role="Audience" EntitySet="Audiences" />
             <End Role="Book" EntitySet="Books" />
@@ -364,7 +369,7 @@
           <FunctionImport Name="GetUserAccountUsingUserName" ReturnType="Collection(rbndbModel.GetUserAccountUsingUserName_Result)">
           <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Ratings" EntityType="rbndbModel.Rating" />
+          <EntitySet Name="Ratings" EntityType="rbndbModel.Ratings" />
           <AssociationSet Name="FK_Ratings_Audience" Association="rbndbModel.FK_Ratings_Audience">
             <End Role="Audience" EntitySet="Audiences" />
             <End Role="Rating" EntitySet="Ratings" />
@@ -468,6 +473,7 @@
           <NavigationProperty Name="Books" Relationship="rbndbModel.FK_Book_Audience" FromRole="Audience" ToRole="Book" />
           <NavigationProperty Name="ReaderNotes" Relationship="rbndbModel.FK_ReaderNote_Audience" FromRole="Audience" ToRole="ReaderNote" />
           <NavigationProperty Name="Ratings" Relationship="rbndbModel.FK_Ratings_Audience" FromRole="Audience" ToRole="Rating" />
+          <Property Type="Boolean" Name="Enabled" Nullable="false" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -480,6 +486,7 @@
           <Property Type="Int32" Name="Rating" Nullable="false" />
           <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" Precision="3" />
           <NavigationProperty Name="Books" Relationship="rbndbModel.FK_Book_Author" FromRole="Author" ToRole="Book" />
+          <Property Type="Boolean" Name="Enabled" Nullable="false" />
         </EntityType>
         <EntityType Name="Book">
           <Key>
@@ -495,8 +502,9 @@
           <NavigationProperty Name="Audience" Relationship="rbndbModel.FK_Book_Audience" FromRole="Book" ToRole="Audience" />
           <NavigationProperty Name="Author" Relationship="rbndbModel.FK_Book_Author" FromRole="Book" ToRole="Author" />
           <NavigationProperty Name="ReaderNotes" Relationship="rbndbModel.FK_ReaderNote_Book" FromRole="Book" ToRole="ReaderNote" />
+          <Property Type="Boolean" Name="Enabled" Nullable="false" />
         </EntityType>
-        <EntityType Name="ReaderNote">
+        <EntityType Name="ReaderNotes">
           <Key>
             <PropertyRef Name="ReaderNoteId" />
           </Key>
@@ -514,6 +522,7 @@
           <NavigationProperty Name="Book" Relationship="rbndbModel.FK_ReaderNote_Book" FromRole="ReaderNote" ToRole="Book" />
           <NavigationProperty Name="UserProfile" Relationship="rbndbModel.FK_ReaderNote_UserProfile" FromRole="ReaderNote" ToRole="UserProfile" />
           <NavigationProperty Name="Ratings" Relationship="rbndbModel.FK_Ratings_ReaderNotes" FromRole="ReaderNote" ToRole="Rating" />
+          <Property Type="Boolean" Name="Enabled" Nullable="false" />
         </EntityType>
         <Association Name="FK_Book_Audience">
           <End Type="rbndbModel.Audience" Role="Audience" Multiplicity="0..1" />
@@ -529,7 +538,7 @@
         </Association>
         <Association Name="FK_ReaderNote_Audience">
           <End Type="rbndbModel.Audience" Role="Audience" Multiplicity="1" />
-          <End Type="rbndbModel.ReaderNote" Role="ReaderNote" Multiplicity="*" />
+          <End Type="rbndbModel.ReaderNotes" Role="ReaderNote" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Audience">
               <PropertyRef Name="AudienceId" />
@@ -553,7 +562,7 @@
         </Association>
         <Association Name="FK_ReaderNote_Book">
           <End Type="rbndbModel.Book" Role="Book" Multiplicity="1" />
-          <End Type="rbndbModel.ReaderNote" Role="ReaderNote" Multiplicity="*" />
+          <End Type="rbndbModel.ReaderNotes" Role="ReaderNote" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Book">
               <PropertyRef Name="BookId" />
@@ -565,7 +574,7 @@
         </Association>
         <Association Name="FK_ReaderNote_UserProfile">
           <End Type="rbndbModel.UserProfile" Role="UserProfile" Multiplicity="1" />
-          <End Type="rbndbModel.ReaderNote" Role="ReaderNote" Multiplicity="*" />
+          <End Type="rbndbModel.ReaderNotes" Role="ReaderNote" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfile">
               <PropertyRef Name="UserId" />
@@ -588,7 +597,7 @@
           <Property Type="String" Name="Answer2" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="AccountLocked" Nullable="true" />
         </ComplexType>
-        <EntityType Name="Rating">
+        <EntityType Name="Ratings">
           <Key>
             <PropertyRef Name="RatingId" />
           </Key>
@@ -600,10 +609,11 @@
           <NavigationProperty Name="Audience" Relationship="rbndbModel.FK_Ratings_Audience" FromRole="Rating" ToRole="Audience" />
           <NavigationProperty Name="ReaderNote" Relationship="rbndbModel.FK_Ratings_ReaderNotes" FromRole="Rating" ToRole="ReaderNote" />
           <NavigationProperty Name="UserProfile" Relationship="rbndbModel.FK_Ratings_UserProfile" FromRole="Rating" ToRole="UserProfile" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_Ratings_Audience">
           <End Type="rbndbModel.Audience" Role="Audience" Multiplicity="0..1" />
-          <End Type="rbndbModel.Rating" Role="Rating" Multiplicity="*" />
+          <End Type="rbndbModel.Ratings" Role="Rating" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Audience">
               <PropertyRef Name="AudienceId" />
@@ -614,8 +624,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ratings_ReaderNotes">
-          <End Type="rbndbModel.ReaderNote" Role="ReaderNote" Multiplicity="1" />
-          <End Type="rbndbModel.Rating" Role="Rating" Multiplicity="*" />
+          <End Type="rbndbModel.ReaderNotes" Role="ReaderNote" Multiplicity="1" />
+          <End Type="rbndbModel.Ratings" Role="Rating" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ReaderNote">
               <PropertyRef Name="ReaderNoteId" />
@@ -627,7 +637,7 @@
         </Association>
         <Association Name="FK_Ratings_UserProfile">
           <End Type="rbndbModel.UserProfile" Role="UserProfile" Multiplicity="1" />
-          <End Type="rbndbModel.Rating" Role="Rating" Multiplicity="*" />
+          <End Type="rbndbModel.Ratings" Role="Rating" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfile">
               <PropertyRef Name="UserId" />
@@ -717,6 +727,7 @@
           <EntitySetMapping Name="Audiences">
             <EntityTypeMapping TypeName="rbndbModel.Audience">
               <MappingFragment StoreEntitySet="Audience">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="AudienceId" ColumnName="AudienceId" />
               </MappingFragment>
@@ -725,6 +736,7 @@
           <EntitySetMapping Name="Authors">
             <EntityTypeMapping TypeName="rbndbModel.Author">
               <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
                 <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -737,6 +749,7 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="rbndbModel.Book">
               <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
                 <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="AudienceId" ColumnName="AudienceId" />
@@ -748,8 +761,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ReaderNotes">
-            <EntityTypeMapping TypeName="rbndbModel.ReaderNote">
+            <EntityTypeMapping TypeName="rbndbModel.ReaderNotes">
               <MappingFragment StoreEntitySet="ReaderNotes">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
                 <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
                 <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
                 <ScalarProperty Name="DateNotified" ColumnName="DateNotified" />
@@ -781,8 +795,9 @@
             </ResultMapping>
           </FunctionImportMapping>
           <EntitySetMapping Name="Ratings">
-            <EntityTypeMapping TypeName="rbndbModel.Rating">
+            <EntityTypeMapping TypeName="rbndbModel.Ratings">
               <MappingFragment StoreEntitySet="Ratings">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="AudienceId" ColumnName="AudienceId" />
                 <ScalarProperty Name="Rating1" ColumnName="Rating" />
                 <ScalarProperty Name="ReaderNoteId" ColumnName="ReaderNoteId" />

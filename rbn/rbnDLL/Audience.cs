@@ -17,15 +17,16 @@ namespace rbnDLL
         public Audience()
         {
             this.Books = new HashSet<Book>();
-            this.ReaderNotes = new HashSet<ReaderNote>();
-            this.Ratings = new HashSet<Rating>();
+            this.ReaderNotes = new HashSet<ReaderNotes>();
+            this.Ratings = new HashSet<Ratings>();
         }
     
         public int AudienceId { get; set; }
         public string Name { get; set; }
+        public bool Enabled { get; set; }
     
         public virtual ICollection<Book> Books { get; set; }
-        public virtual ICollection<ReaderNote> ReaderNotes { get; set; }
-        public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<ReaderNotes> ReaderNotes { get; set; }
+        public virtual ICollection<Ratings> Ratings { get; set; }
     }
 }

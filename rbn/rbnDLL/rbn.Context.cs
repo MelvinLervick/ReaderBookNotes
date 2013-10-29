@@ -36,8 +36,8 @@ namespace rbnDLL
         public DbSet<Audience> Audiences { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
-        public DbSet<ReaderNote> ReaderNotes { get; set; }
-        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<ReaderNotes> ReaderNotes { get; set; }
+        public DbSet<Ratings> Ratings { get; set; }
     
         public virtual ObjectResult<GetUserAccountUsingUserName_Result> GetUserAccountUsingUserName(string userName)
         {

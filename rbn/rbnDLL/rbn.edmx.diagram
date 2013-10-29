@@ -15,13 +15,13 @@
         <EntityTypeShape EntityType="rbndbModel.Audience" Width="1.5" PointX="10" PointY="11" />
         <EntityTypeShape EntityType="rbndbModel.Author" Width="1.5" PointX="0.75" PointY="8.75" />
         <EntityTypeShape EntityType="rbndbModel.Book" Width="1.5" PointX="2.75" PointY="9.875" />
-        <EntityTypeShape EntityType="rbndbModel.ReaderNote" Width="1.5" PointX="6.625" PointY="8.375" />
+        <EntityTypeShape EntityType="rbndbModel.ReaderNotes" Width="1.5" PointX="6.625" PointY="8.375" />
         <AssociationConnector Association="rbndbModel.FK_Book_Audience" />
         <AssociationConnector Association="rbndbModel.FK_ReaderNote_Audience" />
         <AssociationConnector Association="rbndbModel.FK_Book_Author" />
         <AssociationConnector Association="rbndbModel.FK_ReaderNote_Book" />
         <AssociationConnector Association="rbndbModel.FK_ReaderNote_UserProfile" />
-        <EntityTypeShape EntityType="rbndbModel.Rating" Width="1.5" PointX="7.2824271206196531" PointY="15.707761861247832" />
+        <EntityTypeShape EntityType="rbndbModel.Ratings" Width="1.5" PointX="7.2824271206196531" PointY="15.707761861247832" />
         <AssociationConnector Association="rbndbModel.FK_Ratings_Audience" />
         <AssociationConnector Association="rbndbModel.FK_Ratings_ReaderNotes" />
         <AssociationConnector Association="rbndbModel.FK_Ratings_UserProfile" />
