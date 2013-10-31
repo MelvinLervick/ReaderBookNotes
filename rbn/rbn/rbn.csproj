@@ -174,8 +174,8 @@
     <Compile Include="Providers\IReaderNotesProvider.cs" />
     <Compile Include="Providers\IBookProvider.cs" />
     <Compile Include="Providers\IUserAccountProvider.cs" />
-    <Compile Include="Providers\RbnDll\Adapters\UserAccountAdapter.cs" />
-    <Compile Include="Providers\RbnDll\UserAccountProvider.cs" />
+    <Compile Include="Providers\RbnBLL\Adapters\UserAccountAdapter.cs" />
+    <Compile Include="Providers\RbnBLL\UserAccountProvider.cs" />
     <Compile Include="Views\ViewModels\AuthorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -309,9 +309,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\rbnDLL\rbnDLL.csproj">
-      <Project>{313bd267-f4a0-4a3a-812d-c96b910e9ca7}</Project>
-      <Name>rbnDLL</Name>
+    <ProjectReference Include="..\rbnBLL\rbnBLL.csproj">
+      <Project>{5b5f6886-4573-4e25-8c5d-e95bcff5603a}</Project>
+      <Name>rbnBLL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

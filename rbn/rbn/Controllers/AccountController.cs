@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Security;
 using rbn.Providers;
-using rbn.Providers.RbnDll;
+using rbn.Providers.RbnBLL;
 using WebMatrix.WebData;
 using rbn.Filters;
 using rbn.Models;

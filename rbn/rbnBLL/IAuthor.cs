@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using rbnBLL.Models;
 
-namespace rbnDLL
+namespace rbnBLL
 {
   public interface IAuthor
   {

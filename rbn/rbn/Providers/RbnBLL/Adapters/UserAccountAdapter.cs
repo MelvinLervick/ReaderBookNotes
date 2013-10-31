@@ -1,11 +1,10 @@
 ﻿using rbn.Models;
-using rbnDLL.Models;
 
-namespace rbn.Providers.RbnDll.Adapters
+namespace rbn.Providers.RbnBLL.Adapters
 {
   public class UserAccountAdapter
   {
-    internal static UserAccountModel TransformToUiModel( UserAccountUserFields userAccountFields )
+    internal static UserAccountModel TransformToUiModel( rbnBLL.Models.UserAccount userAccountFields )
     {
       return new UserAccountModel
       {
@@ -22,9 +21,9 @@ namespace rbn.Providers.RbnDll.Adapters
       };
     }
 
-    internal static UserAccountUserFields TransformToDllModel( UserAccountModel userAccountFields )
+    internal static rbnBLL.Models.UserAccount TransformToBLLModel( UserAccountModel userAccountFields )
     {
-      return new UserAccountUserFields
+      return new rbnBLL.Models.UserAccount
       {
         UserId = userAccountFields.UserId,
         FirstName = userAccountFields.FirstName,
