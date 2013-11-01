@@ -48,6 +48,10 @@
               @Html.TextBoxFor( m => m.LastName )
             </li>
             <li>
+              @Html.LabelFor( m => m.DateOfBirth, new { style = "display:inline-block; width: 125px;" } )
+              @Html.EditorFor( m => m.DateOfBirth )
+            </li>
+            <li>
               @Html.LabelFor( m => m.EmailAddress, new { style = "display:inline-block; width: 125px;" } )
               @Html.TextBoxFor( m => m.EmailAddress )
               @Html.ValidationMessageFor( m => m.EmailAddress )
@@ -79,7 +83,7 @@
     </div>
   }
 </section>
-
+  
 @section Scripts {
   @Scripts.Render( "~/bundles/jqueryval" )
 }

@@ -9,6 +9,7 @@ BEGIN
 		, dbo.UserProfile.UserName
 		, dbo.UserAccount.FirstName
 		, dbo.UserAccount.LastName
+    , dbo.UserAccount.DateOfBirth
 		, dbo.UserAccount.EmailAddress
     , dbo.UserAccount.Country
     , dbo.UserAccount.Question1
