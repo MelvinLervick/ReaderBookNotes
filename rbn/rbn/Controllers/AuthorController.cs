@@ -17,6 +17,16 @@ namespace rbn.Controllers
     }
 
     [HttpPost]
+    public ActionResult Index( AuthorViewModel model, string authorId )
+    {
+      //TODO: Redirect to Booklist for selected Author
+      // RedirectToAction( <book list index>, authorId );
+
+      model.Message = "The Author Book List has not yet been implemented.";
+      return View(model);
+    }
+
+    [HttpPost]
     public PartialViewResult Search( SearchBarModel search )
     {
       ViewBag.Message = "Search Book Notes";

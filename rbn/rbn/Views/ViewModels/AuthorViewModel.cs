@@ -32,5 +32,6 @@ namespace rbn.Views.ViewModels
         Rating = 3
       }
     };
+    public string Message = string.Empty;
   }
 }

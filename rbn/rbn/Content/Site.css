@@ -848,32 +848,82 @@ tr.pager td {
 
 /*
   -----------------------------------------------------*/
-.AuthorList {
-  border: 0px blue solid;
+.Author {
+  position: absolute;
+  border: 3px lightblue solid;
+  left: 5px;
+  top: 75px;
+  right: 5px;
+  bottom: 5px;
 }
 
-.AuthorList td {
-  border: 1px blue solid;
+.Author h2 {
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.List {
+  position: absolute;
+  border: 0px;
+  left: 10px;
+  top: 35px;
+  right: 10px;
+  bottom: 10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.Author .List table {
+  border: 0px blue solid;
+  border-collapse: collapse;
+}
+.Author .List table td {
+  border: 0px blue solid;
   padding: 1px 3px;
 }
-.AuthorList th {
+.Author .List table th {
+  border-bottom: 2px blue solid;
   text-align: center;
 }
 
-.AuthorList .FirstName {
-  width: 200px;
+.Author .List table .Separator {
+  border: 0px;
+  width: 5px;
+  padding: 0px;
+  margin: 0px;
 }
-.AuthorList .MiddleName {
+
+.Author .List table .FirstName {
+  width: 250px;
+}
+.Author .List table .MiddleName {
   width: 150px;
 }
-.AuthorList .LastName {
-  width: 200px;
+.Author .List table .LastName {
+  width: 250px;
 }
-.AuthorList .Rating {
-  width: 75px;
+.Author .List table .Rating {
+  width: 60px;
 }
-.AuthorList .RatingValue {
+.Author .List table .RatingValue {
   text-align: center;
+}
+
+.Author .Message {
+  position: absolute;
+  left: 150px;
+  top: 10px;
+  padding: 0px;
+  margin: 0px;
+  color: red;
+}
+
+.Author .List table .ShowBooks {
+  width: 100px;
+  border: 0px;
 }
 
 /* Reader Note Panel

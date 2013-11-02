@@ -5,40 +5,61 @@
   Layout = "~/Views/Shared/_LayoutBooks.cshtml";
 }
 
-<h2>AuthorList</h2>
+@using (Html.BeginForm())
+{
+  <div class="Author">
+    <h2>AuthorList</h2>
+    @if (Model.Message != string.Empty)
+    {
+      <div class="Message">@Html.ValueFor(model => model.Message)</div>
+    }
+    <div class="List">
+      <table>
+        <tr>
+          <th class="FirstName">
+            @Html.DisplayNameFor(model => model.AuthorsList[0].FirstName)
+          </th>
+          <th class="Separator"></th>
+          <th class="MiddleName">
+            @Html.DisplayNameFor(model => model.AuthorsList[0].MiddleName)
+          </th>
+          <th class="Separator"></th>
+          <th class="LastName">
+            @Html.DisplayNameFor(model => model.AuthorsList[0].LastName)
+          </th>
+          <th class="Separator"></th>
+          <th class="Rating">
+            @Html.DisplayNameFor(model => model.AuthorsList[0].Rating)
+          </th>
+          <th class="Separator"></th>
+          <th class="ShowBooks"></th>
+        </tr>
 
-<table border="1" class="AuthorList">
-  <tr>
-    <th class="FirstName">
-      @Html.DisplayNameFor( model => model.AuthorsList[0].FirstName )
-    </th>
-    <th class="MiddleName">
-      @Html.DisplayNameFor( model => model.AuthorsList[0].MiddleName )
-    </th>
-    <th class="LastName">
-      @Html.DisplayNameFor( model => model.AuthorsList[0].LastName )
-    </th>
-    <th class="Rating">
-      @Html.DisplayNameFor( model => model.AuthorsList[0].Rating )
-    </th>
-    <th></th>
-  </tr>
-
-  @foreach (var item in Model.AuthorsList)
-  {
-    <tr>
-      <td>
-        @Html.DisplayFor( modelItem => item.FirstName )
-      </td>
-      <td>
-        @Html.DisplayFor( modelItem => item.MiddleName )
-      </td>
-      <td>
-        @Html.DisplayFor( modelItem => item.LastName )
-      </td>
-      <td class="RatingValue">
-        @Html.DisplayFor( modelItem => item.Rating )
-      </td>
-    </tr>
-  }
-</table>
+        @foreach (var item in Model.AuthorsList)
+        {
+          <tr>
+            <td>
+              @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td class="Separator"></td>
+            <td>
+              @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td class="Separator"></td>
+            <td>
+              @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td class="Separator"></td>
+            <td class="RatingValue">
+              @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td class="Separator"></td>
+            <td class="ShowBooks">
+              <button type="submit" id="btnShowBooks" name="authorId" value="@Html.ValueFor(modelItem => item.AuthorId)">Show Books</button>
+            </td>
+          </tr>
+        }
+      </table>
+    </div>
+  </div>
+}
