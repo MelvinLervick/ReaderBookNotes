@@ -19,10 +19,14 @@ namespace rbn.Controllers
     [HttpPost]
     public ActionResult Index( AuthorViewModel model, string authorId )
     {
+      string[] actionWithAuthorId = authorId.Split(',');
       //TODO: Redirect to Booklist for selected Author
       // RedirectToAction( <book list index>, authorId );
 
-      model.Message = "The Author Book List has not yet been implemented.";
+      model.Message = actionWithAuthorId[0] == "show"
+        ? "The Author Book List has not yet been implemented."
+        : "The Delete Author option is not yet implemented.";
+      
       return View(model);
     }
 

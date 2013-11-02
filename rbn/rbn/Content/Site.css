@@ -872,7 +872,7 @@ tr.pager td {
   top: 35px;
   right: 10px;
   bottom: 10px;
-  overflow-x: hidden;
+  overflow-x: scroll;
   overflow-y: scroll;
 }
 
@@ -897,13 +897,13 @@ tr.pager td {
 }
 
 .Author .List table .FirstName {
-  width: 250px;
+  width: 225px;
 }
 .Author .List table .MiddleName {
   width: 150px;
 }
 .Author .List table .LastName {
-  width: 250px;
+  width: 225px;
 }
 .Author .List table .Rating {
   width: 60px;
@@ -922,7 +922,7 @@ tr.pager td {
 }
 
 .Author .List table .ShowBooks {
-  width: 100px;
+  width: 250px;
   border: 0px;
 }
 

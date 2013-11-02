@@ -16,16 +16,16 @@
     <div class="List">
       <table>
         <tr>
+          <th class="LastName">
+            @Html.DisplayNameFor(model => model.AuthorsList[0].LastName)
+          </th>
+          <th class="Separator"></th>
           <th class="FirstName">
             @Html.DisplayNameFor(model => model.AuthorsList[0].FirstName)
           </th>
           <th class="Separator"></th>
           <th class="MiddleName">
             @Html.DisplayNameFor(model => model.AuthorsList[0].MiddleName)
-          </th>
-          <th class="Separator"></th>
-          <th class="LastName">
-            @Html.DisplayNameFor(model => model.AuthorsList[0].LastName)
           </th>
           <th class="Separator"></th>
           <th class="Rating">
@@ -39,6 +39,10 @@
         {
           <tr>
             <td>
+              @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td class="Separator"></td>
+            <td>
               @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td class="Separator"></td>
@@ -46,16 +50,16 @@
               @Html.DisplayFor(modelItem => item.MiddleName)
             </td>
             <td class="Separator"></td>
-            <td>
-              @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td class="Separator"></td>
             <td class="RatingValue">
               @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td class="Separator"></td>
             <td class="ShowBooks">
-              <button type="submit" id="btnShowBooks" name="authorId" value="@Html.ValueFor(modelItem => item.AuthorId)">Show Books</button>
+              <button type="submit" id="btnShowBooks" name="authorId" value="show,@Html.ValueFor(modelItem => item.AuthorId)">Show Books</button>
+              @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") || Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
+              {
+                <button type="submit" id="btnDeleteAuthor" name="authorId" value="delete,@Html.ValueFor(modelItem => item.AuthorId)">Delete Author</button>
+              }
             </td>
           </tr>
         }
