@@ -176,6 +176,7 @@
     <Compile Include="Providers\IUserAccountProvider.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\UserAccountAdapter.cs" />
     <Compile Include="Providers\RbnBLL\UserAccountProvider.cs" />
+    <Compile Include="Views\ViewModels\AuthorListViewModel.cs" />
     <Compile Include="Views\ViewModels\AuthorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -301,6 +302,7 @@
     <Content Include="Views\Shared\_LayoutBooks.cshtml" />
     <Content Include="Views\Shared\HeaderMenuPartial.cshtml" />
     <Content Include="Views\Author\Index.cshtml" />
+    <Content Include="Views\Author\AddAuthorView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

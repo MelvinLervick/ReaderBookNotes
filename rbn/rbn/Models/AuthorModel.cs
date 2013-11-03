@@ -39,6 +39,13 @@ namespace rbn.Models
       set;
     }
 
+    [Display( Name = "Enabled" )]
+    public bool Enabled
+    {
+      get;
+      set;
+    }
+
     [Display( Name = "Rating" )]
     public int Rating
     {

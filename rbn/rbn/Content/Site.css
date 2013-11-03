@@ -865,7 +865,23 @@ tr.pager td {
   margin: 0px;
 }
 
-.List {
+.Author .AddButton {
+  position: absolute;
+  right: 30px;
+  top: 5px;
+  padding: 2px 5px;
+  margin: 0px;
+  text-decoration: none;
+  border: 1px solid darkgrey;
+  background-color: lightblue;
+  color: darkblue;
+}
+.Author .AddButton:hover {
+  background-color: yellow;
+  color: darkblue;
+}
+
+.Author .List {
   position: absolute;
   border: 0px;
   left: 10px;

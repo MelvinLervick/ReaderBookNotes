@@ -1,4 +1,4 @@
-﻿@model rbn.Views.ViewModels.AuthorViewModel
+﻿@model rbn.Views.ViewModels.AuthorListViewModel
 
 @{
   ViewBag.Title = "AuthorList";
@@ -12,6 +12,10 @@
     @if (Model.Message != string.Empty)
     {
       <div class="Message">@Html.ValueFor(model => model.Message)</div>
+    }
+    @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") || Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
+    {
+      @Html.ActionLink( "Add New Author", "AddAuthorView", "Author", new { @class="AddButton", type = "button" } )
     }
     <div class="List">
       <table>
@@ -56,7 +60,7 @@
             <td class="Separator"></td>
             <td class="ShowBooks">
               <button type="submit" id="btnShowBooks" name="authorId" value="show,@Html.ValueFor(modelItem => item.AuthorId)">Show Books</button>
-              @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") || Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
+              @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator"))
               {
                 <button type="submit" id="btnDeleteAuthor" name="authorId" value="delete,@Html.ValueFor(modelItem => item.AuthorId)">Delete Author</button>
               }

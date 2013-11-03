@@ -1,0 +1,50 @@
+﻿@model rbn.Views.ViewModels.AuthorViewModel
+
+@{
+    ViewBag.Title = "Add New Author";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+  <div>
+    <h2>Add New Author</h2>
+
+    @if (Model.Message != string.Empty)
+    {
+      <div class="Message">@Html.ValueFor(model => model.Message)</div>
+    }
+
+    <fieldset>
+      @Html.HiddenFor( m => m.Author.AuthorId )
+      @Html.HiddenFor( m => m.Author.Enabled )
+      <ol>
+        <li>
+          @Html.LabelFor( m => m.Author.FirstName, new { style = "display:inline-block; width: 225px;" } )
+          @Html.TextBoxFor( m => m.Author.FirstName )
+        </li>
+        <li>
+          @Html.LabelFor( m => m.Author.MiddleName, new { style = "display:inline-block; width: 175px;" } )
+          @Html.TextBoxFor( m => m.Author.MiddleName )
+        </li>
+        <li>
+          @Html.LabelFor( m => m.Author.LastName, new { style = "display:inline-block; width: 225px;" } )
+          @Html.TextBoxFor( m => m.Author.LastName )
+        </li>
+      </ol>
+
+      <p>
+        <input type="submit" value="Save Author" />
+      </p>
+    </fieldset>
+
+    <div>
+      @Html.ActionLink("Back to List", "Index")
+    </div>
+  </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
