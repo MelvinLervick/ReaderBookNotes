@@ -5,10 +5,9 @@ namespace rbnBLL
 {
   public interface IAuthor
   {
-    IEnumerable<Author> AuthorList();
-    Author AuthorDetails(int authorId);
-    void AuthorCreate(Author newAuthor);
-    void AuthorUpdate(Author author);
-    void AuthorEnable(int authorId, bool enableFlag);
+    IEnumerable<Author> GetAuthorList();
+    Author GetAuthorDetails(int authorId);
+    void SaveAuthor(Author authorDetails);
+    void EnableAuthor( int authorId, bool enableFlag );
   }
 }

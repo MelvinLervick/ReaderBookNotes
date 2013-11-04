@@ -930,7 +930,7 @@ tr.pager td {
 
 .Author .Message {
   position: absolute;
-  left: 150px;
+  left: 250px;
   top: 10px;
   padding: 0px;
   margin: 0px;
@@ -940,6 +940,15 @@ tr.pager td {
 .Author .List table .ShowBooks {
   width: 250px;
   border: 0px;
+}
+
+.Author .Edit {
+  position: absolute;
+  border: 0px;
+  left: 100px;
+  top: 35px;
+  right: 100px;
+  bottom: 10px;
 }
 
 /* Reader Note Panel
@@ -966,6 +975,6 @@ tr.pager td {
 
 /* Change Password
   -----------------------------------------------------*/
-.ChangePassword {
+.Edit {
   padding-left: 100px;
 }

@@ -19,15 +19,15 @@ namespace rbn.Controllers
 
     internal AccountController( IUserAccountProvider userAccountProvider )
     {
-      testProvider = userAccountProvider;
+      accountProvider = userAccountProvider;
     }
 
-    private IUserAccountProvider testProvider;
-    internal IUserAccountProvider TestProvider
+    private IUserAccountProvider accountProvider;
+    internal IUserAccountProvider AccountProvider
     {
       get
       {
-        return testProvider ?? (testProvider = new UserAccountProvider());
+        return accountProvider ?? (accountProvider = new UserAccountProvider());
       }
     }
     //
@@ -60,7 +60,7 @@ namespace rbn.Controllers
 
     public ActionResult ManageAccount( string returnUrl )
     {
-      var model = TestProvider.GetUserManagedFieldsFromUserAccount( User.Identity.Name );
+      var model = AccountProvider.GetUserManagedFieldsFromUserAccount( User.Identity.Name );
       ViewBag.ReturnUrl = returnUrl;
 
       return View( model );
@@ -70,10 +70,9 @@ namespace rbn.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult ManageAccount( UserAccountModel model, string returnUrl )
     {
-      // TODO : wire up access to SQL
       if (ModelState.IsValid)
       {
-        TestProvider.SaveUserManagedFieldsInUserAccount(model);
+        AccountProvider.SaveUserManagedFieldsInUserAccount(model);
         return RedirectToLocal( returnUrl );
       }
       return View( model );

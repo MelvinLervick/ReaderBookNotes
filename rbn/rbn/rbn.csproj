@@ -174,7 +174,9 @@
     <Compile Include="Providers\IReaderNotesProvider.cs" />
     <Compile Include="Providers\IBookProvider.cs" />
     <Compile Include="Providers\IUserAccountProvider.cs" />
+    <Compile Include="Providers\RbnBLL\Adapters\AuthorAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\UserAccountAdapter.cs" />
+    <Compile Include="Providers\RbnBLL\AuthorProvider.cs" />
     <Compile Include="Providers\RbnBLL\UserAccountProvider.cs" />
     <Compile Include="Views\ViewModels\AuthorListViewModel.cs" />
     <Compile Include="Views\ViewModels\AuthorViewModel.cs" />

@@ -1,17 +1,39 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using rbn.Models;
+using rbn.Providers;
+using rbn.Providers.RbnBLL;
 using rbn.Views.ViewModels;
+using rbnBLL.Models;
 
 namespace rbn.Controllers
 {
   public class AuthorController : Controller
   {
+    public AuthorController()
+    {
+    }
+
+    internal AuthorController( IAuthorProvider authorProvider )
+    {
+      this.authorProvider = authorProvider;
+    }
+
+    private IAuthorProvider authorProvider;
+    internal IAuthorProvider AuthorProvider
+    {
+      get
+      {
+        return authorProvider ?? (authorProvider = new AuthorProvider());
+      }
+    }
+
     //
     // GET: /Author/
 
     public ActionResult Index()
     {
-      var model = new AuthorListViewModel();
+      var model = new AuthorListViewModel{AuthorsList = AuthorProvider.GetAuthorList()};
 
       return View(model);
     }
@@ -33,15 +55,35 @@ namespace rbn.Controllers
     public ActionResult AddAuthorView()
     {
       var model = new AuthorViewModel();
+
       return View(model);
     }
 
     [HttpPost]
-    public ActionResult AddAuthorView( AuthorListViewModel model )
+    [ValidateAntiForgeryToken]
+    public ActionResult AddAuthorView( string saveAuthorDetails, AuthorViewModel model, FormCollection collection )
     {
-      // TODO: Add Author to database
+      if (ModelState.IsValid)
+      {
+        try
+        {
+          model.Author.AuthorId = Convert.ToInt32(collection["Author.AuthorId"]);
+          model.Author.Enabled = Convert.ToBoolean(collection["Author.Enabled"]);
+          model.Author.FirstName = collection["Author.FirstName"];
+          model.Author.MiddleName = collection["Author.MiddleName"];
+          model.Author.LastName = collection["Author.LastName"];
+          model.Author.Rating = Convert.ToInt32(collection["Author.Rating"]);
 
-      return View( "Index", new AuthorViewModel() );
+          AuthorProvider.SaveAuthorDetails( model.Author );
+        }
+        catch (Exception ex)
+        {
+          model.Message = ex.Message;
+          return View(model);
+        }
+      }
+
+      return View( "Index", new AuthorListViewModel{AuthorsList = AuthorProvider.GetAuthorList()} );
     }
 
     [HttpPost]

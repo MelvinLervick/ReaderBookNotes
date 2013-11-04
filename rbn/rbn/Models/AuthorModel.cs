@@ -14,6 +14,7 @@ namespace rbn.Models
       set;
     }
 
+    [Required]
     [Display( Name = "First Name" )]
     [StringLength( 50 )]
     public string FirstName

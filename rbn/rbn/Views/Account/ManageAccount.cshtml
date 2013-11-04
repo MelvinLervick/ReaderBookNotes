@@ -15,8 +15,9 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary( true )
 
-    <div class="ChangePassword">
+    <div class="Edit">
       <fieldset>
+        <legend>@ViewBag.Title</legend>
         @if (Model.AccountLocked)
         {
           <p>Your account is currently locked.</p>
