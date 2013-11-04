@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace rbn.Models
 {
@@ -34,8 +29,15 @@ namespace rbn.Models
       set;
     }
 
-    [Display( Name = "Author" )]
+    [Display( Name = "Author Name" )]
     public int AuthorId
+    {
+      get;
+      set;
+    }
+
+    [Display( Name = "Author Name" )]
+    public string AuthorName
     {
       get;
       set;
@@ -49,7 +51,21 @@ namespace rbn.Models
     }
 
     [Display( Name = "Audience" )]
+    public string AudienceName
+    {
+      get;
+      set;
+    }
+
+    [Display( Name = "Rating" )]
     public int Rating
+    {
+      get;
+      set;
+    }
+
+    [Display( Name = "Enabled" )]
+    public bool Enabled
     {
       get;
       set;

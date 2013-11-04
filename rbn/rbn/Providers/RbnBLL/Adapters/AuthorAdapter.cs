@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using rbn.Models;
-using rbnBLL.Models;
 
 namespace rbn.Providers.RbnBLL.Adapters
 {

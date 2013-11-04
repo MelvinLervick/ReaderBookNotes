@@ -6,7 +6,7 @@ using rbnDLL;
 
 namespace rbnBLL.Providers
 {
-  public class AuthorProvider : IAuthor
+  public class AuthorProvider : IAuthorProvider
   {
     #region IAuthor Members
 

@@ -3,7 +3,7 @@ using rbnBLL.Models;
 
 namespace rbnBLL
 {
-  public interface IAuthor
+  public interface IAuthorProvider
   {
     IEnumerable<Author> GetAuthorList();
     Author GetAuthorDetails(int authorId);

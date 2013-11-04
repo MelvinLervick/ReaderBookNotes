@@ -1,0 +1,95 @@
+﻿@model rbn.Models.BookModel
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>BookModel</legend>
+
+        @Html.HiddenFor(model => model.BookId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ISBN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ISBN)
+            @Html.ValidationMessageFor(model => model.ISBN)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AuthorId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AuthorId)
+            @Html.ValidationMessageFor(model => model.AuthorId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AuthorName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AuthorName)
+            @Html.ValidationMessageFor(model => model.AuthorName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AudienceId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AudienceId)
+            @Html.ValidationMessageFor(model => model.AudienceId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AudienceName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AudienceName)
+            @Html.ValidationMessageFor(model => model.AudienceName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Rating)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Rating)
+            @Html.ValidationMessageFor(model => model.Rating)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Enabled)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Enabled)
+            @Html.ValidationMessageFor(model => model.Enabled)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

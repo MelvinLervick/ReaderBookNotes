@@ -4,7 +4,6 @@ using rbn.Models;
 using rbn.Providers;
 using rbn.Providers.RbnBLL;
 using rbn.Views.ViewModels;
-using rbnBLL.Models;
 
 namespace rbn.Controllers
 {

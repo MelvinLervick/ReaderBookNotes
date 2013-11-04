@@ -154,6 +154,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthorController.cs" />
+    <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -175,8 +176,10 @@
     <Compile Include="Providers\IBookProvider.cs" />
     <Compile Include="Providers\IUserAccountProvider.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\AuthorAdapter.cs" />
+    <Compile Include="Providers\RbnBLL\Adapters\BookAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\UserAccountAdapter.cs" />
     <Compile Include="Providers\RbnBLL\AuthorProvider.cs" />
+    <Compile Include="Providers\RbnBLL\BookProvider.cs" />
     <Compile Include="Providers\RbnBLL\UserAccountProvider.cs" />
     <Compile Include="Views\ViewModels\AuthorListViewModel.cs" />
     <Compile Include="Views\ViewModels\AuthorViewModel.cs" />
@@ -305,6 +308,9 @@
     <Content Include="Views\Shared\HeaderMenuPartial.cshtml" />
     <Content Include="Views\Author\Index.cshtml" />
     <Content Include="Views\Author\AddAuthorView.cshtml" />
+    <Content Include="Views\Book\Index.cshtml" />
+    <Content Include="Views\Book\Create.cshtml" />
+    <Content Include="Views\Book\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
