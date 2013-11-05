@@ -1,21 +1,21 @@
 ﻿@model rbn.Views.ViewModels.AuthorListViewModel
 
 @{
-  ViewBag.Title = "AuthorList";
+  ViewBag.Title = "Author List";
   Layout = "~/Views/Shared/_LayoutBooks.cshtml";
 }
 
 @using (Html.BeginForm())
 {
   <div class="Author">
-    <h2>AuthorList</h2>
+    <h2>Author List</h2>
     @if (Model.Message != string.Empty)
     {
       <div class="Message">@Html.ValueFor(model => model.Message)</div>
     }
     @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") || Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
     {
-      @Html.ActionLink( "Add New Author", "AddAuthorView", "Author", new { @class="AddButton", type = "button" } )
+      @Html.ActionLink( "Add New Author", "Create", new { id = 0 }, new { @class="AddButton", type = "button" } )
     }
     <div class="List">
       <table>

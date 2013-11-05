@@ -51,39 +51,52 @@ namespace rbn.Controllers
       return View(model);
     }
 
-    public ActionResult AddAuthorView()
+    public ActionResult Create( int id )
     {
-      var model = new AuthorViewModel();
-
-      return View(model);
+      var model = new AuthorModel();
+      return View( model );
     }
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult AddAuthorView( string saveAuthorDetails, AuthorViewModel model, FormCollection collection )
+
+    public ActionResult Edit( int id )
     {
-      if (ModelState.IsValid)
-      {
-        try
-        {
-          model.Author.AuthorId = Convert.ToInt32(collection["Author.AuthorId"]);
-          model.Author.Enabled = Convert.ToBoolean(collection["Author.Enabled"]);
-          model.Author.FirstName = collection["Author.FirstName"];
-          model.Author.MiddleName = collection["Author.MiddleName"];
-          model.Author.LastName = collection["Author.LastName"];
-          model.Author.Rating = Convert.ToInt32(collection["Author.Rating"]);
-
-          AuthorProvider.SaveAuthorDetails( model.Author );
-        }
-        catch (Exception ex)
-        {
-          model.Message = ex.Message;
-          return View(model);
-        }
-      }
-
-      return View( "Index", new AuthorListViewModel{AuthorsList = AuthorProvider.GetAuthorList()} );
+      var model = AuthorProvider.GetAuthorDetails( id );
+      return View( model );
     }
+
+    //public ActionResult AddAuthorView()
+    //{
+    //  var model = new AuthorViewModel();
+
+    //  return View(model);
+    //}
+
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public ActionResult AddAuthorView( string saveAuthorDetails, AuthorViewModel model, FormCollection collection )
+    //{
+    //  if (ModelState.IsValid)
+    //  {
+    //    try
+    //    {
+    //      model.Author.AuthorId = Convert.ToInt32(collection["Author.AuthorId"]);
+    //      model.Author.Enabled = Convert.ToBoolean(collection["Author.Enabled"]);
+    //      model.Author.FirstName = collection["Author.FirstName"];
+    //      model.Author.MiddleName = collection["Author.MiddleName"];
+    //      model.Author.LastName = collection["Author.LastName"];
+    //      model.Author.Rating = Convert.ToInt32(collection["Author.Rating"]);
+
+    //      AuthorProvider.SaveAuthorDetails( model.Author );
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //      model.Message = ex.Message;
+    //      return View(model);
+    //    }
+    //  }
+
+    //  return View( "Index", new AuthorListViewModel{AuthorsList = AuthorProvider.GetAuthorList()} );
+    //}
 
     [HttpPost]
     public PartialViewResult Search( SearchBarModel search )

@@ -1,76 +1,75 @@
 ﻿@model IEnumerable<rbn.Models.BookModel>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+  ViewBag.Title = "Book List";
+  Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="Book">
+  <h2>Book List</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
+  @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") || Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
+  {
+    @Html.ActionLink( "Add New Book", "Create", new { id = 0 }, new { @class="AddButton", type = "button" } )
+  }
+
+  <div class="List">
+    <table>
+      <tr>
+        <th class="Title">
+          @Html.DisplayNameFor( model => model.Title )
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ISBN)
+        <th class="Separator"></th>
+        <th class="AuthorName">
+          @Html.DisplayNameFor( model => model.AuthorName )
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AuthorId)
+        <th class="Separator"></th>
+        <th class="ISBN">
+          @Html.DisplayNameFor( model => model.ISBN )
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AuthorName)
+        <th class="Separator"></th>
+        <th class="Audience">
+          @Html.DisplayNameFor( model => model.AudienceName )
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AudienceId)
+        <th class="Separator"></th>
+        <th class="Rating">
+          @Html.DisplayNameFor( model => model.Rating )
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AudienceName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Enabled)
-        </th>
+        <th class="Separator"></th>
         <th></th>
-    </tr>
+      </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ISBN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AuthorId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AuthorName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AudienceId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AudienceName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rating)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Enabled)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BookId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BookId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BookId })
-        </td>
-    </tr>
-}
+      @foreach (var item in Model)
+      {
+        <tr>
+          <td>
+            @Html.DisplayFor( modelItem => item.Title )
+          </td>
+          <td class="Separator"></td>
+          <td>
+            @Html.DisplayFor( modelItem => item.AuthorName )
+          </td>
+          <td class="Separator"></td>
+          <td>
+            @Html.DisplayFor( modelItem => item.ISBN )
+          </td>
+          <td class="Separator"></td>
+          <td>
+            @Html.DisplayFor( modelItem => item.AudienceName )
+          </td>
+          <td class="Separator"></td>
+          <td>
+            @Html.DisplayFor( modelItem => item.Rating )
+          </td>
+          <td class="Separator"></td>
+          <td>
+            @Html.ActionLink( "Edit", "Update", new { id = item.BookId } ) |
+            @Html.ActionLink( "Details", "Details", new { id = item.BookId } ) |
+            @Html.ActionLink( "Delete", "Delete", new { id = item.BookId } )
+          </td>
+        </tr>
+      }
 
-</table>
+    </table>
+  </div>
+</div>

@@ -34,7 +34,7 @@ namespace rbn.Controllers
       return View(model);
     }
 
-    public ActionResult Create()
+    public ActionResult Create( int id )
     {
       var model = new BookModel();
       return View(model);

@@ -846,7 +846,7 @@ tr.pager td {
   width: 10px;
 }
 
-/*
+/* AUTHOR
   -----------------------------------------------------*/
 .Author {
   position: absolute;
@@ -949,6 +949,90 @@ tr.pager td {
   top: 35px;
   right: 100px;
   bottom: 10px;
+}
+
+/* BOOKS
+  -----------------------------------------------------*/
+.Book {
+  position: absolute;
+  border: 3px lightblue solid;
+  left: 5px;
+  top: 75px;
+  right: 5px;
+  bottom: 5px;
+}
+
+.Book h2 {
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+.Book .AddButton {
+  position: absolute;
+  right: 30px;
+  top: 5px;
+  padding: 2px 5px;
+  margin: 0px;
+  text-decoration: none;
+  border: 1px solid darkgrey;
+  background-color: lightblue;
+  color: darkblue;
+}
+.Book .AddButton:hover {
+  background-color: yellow;
+  color: darkblue;
+}
+
+.Book .List {
+  position: absolute;
+  border: 0px;
+  left: 10px;
+  top: 35px;
+  right: 10px;
+  bottom: 10px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+.Book .List table {
+  border: 0px blue solid;
+  border-collapse: collapse;
+}
+.Book .List table td {
+  border: 0px blue solid;
+  padding: 1px 3px;
+}
+.Book .List table th {
+  border-bottom: 2px blue solid;
+  text-align: center;
+}
+
+.Book .List table .Separator {
+  border: 0px;
+  width: 5px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.Book .List table .Title {
+  width: 250px;
+}
+.Book .List table .AuthorName {
+  width: 200px;
+}
+.Book .List table .ISBN {
+  width: 150px;
+}
+.Book .List table .Audience {
+  width: 70px;
+}
+.Book .List table .Rating {
+  width: 50px;
+}
+.Book .List table .Rating td {
+  text-align: center;
 }
 
 /* Reader Note Panel
