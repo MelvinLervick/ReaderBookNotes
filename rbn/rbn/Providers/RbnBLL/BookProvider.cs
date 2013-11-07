@@ -23,7 +23,7 @@ namespace rbn.Providers.RbnBLL
       return BookAdapter.TransformToUiModel( bookDetails );
     }
 
-    public void SaveAuthorDetails( Models.BookModel bookDetails )
+    public void SaveBookDetails( Models.BookModel bookDetails )
     {
       if (string.IsNullOrEmpty( bookDetails.Title ) && (bookDetails.AuthorId == 0))
       {

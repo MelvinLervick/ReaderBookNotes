@@ -40,11 +40,24 @@ namespace rbn.Controllers
       return View(model);
     }
 
+    [HttpPost]
+    public ActionResult Create( BookModel model )
+    {
+      BookProvider.SaveBookDetails(model);
+      return View( "Index", BookProvider.GetBookList() );
+    }
 
     public ActionResult Update( int id )
     {
       var model = BookProvider.GetBookDetails(id);
       return View( model );
+    }
+
+    [HttpPost]
+    public ActionResult Update( BookModel model )
+    {
+      BookProvider.SaveBookDetails( model );
+      return View( "Index", BookProvider.GetBookList() );
     }
   }
 }

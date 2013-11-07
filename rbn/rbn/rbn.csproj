@@ -163,6 +163,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AudienceModel.cs" />
     <Compile Include="Models\AuthorModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\RatingsModel.cs" />
     <Compile Include="Models\ReaderNotesModel.cs" />

@@ -1026,7 +1026,7 @@ tr.pager td {
   width: 150px;
 }
 .Book .List table .Audience {
-  width: 70px;
+  width: 100px;
 }
 .Book .List table .Rating {
   width: 50px;
@@ -1035,6 +1035,30 @@ tr.pager td {
   text-align: center;
 }
 
+.Book .Edit {
+  position: absolute;
+  border: 0px;
+  left: 10px;
+  top: 35px;
+  right: 10px;
+  bottom: 10px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+  .Book .Edit ol li .Label {
+    display:inline-block; 
+    width: 125px;
+  }
+  .Book .Edit ol li .Title {
+    width: 400px;
+    margin: 0px;
+    padding: 5px;
+  }
+  .Book .Edit ol li .ISBN {
+    width: 200px;
+    margin: 0px;
+    padding: 5px;
+  }
 /* Reader Note Panel
   -----------------------------------------------------*/
 .readerNotes {

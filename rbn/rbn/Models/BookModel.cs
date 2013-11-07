@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace rbn.Models
 {
   [Table( "Book" )]
-  public class BookModel
+  public class BookModel : BaseModel
   {
     [Key]
     public int BookId
@@ -59,13 +59,6 @@ namespace rbn.Models
 
     [Display( Name = "Rating" )]
     public int Rating
-    {
-      get;
-      set;
-    }
-
-    [Display( Name = "Enabled" )]
-    public bool Enabled
     {
       get;
       set;

@@ -39,6 +39,7 @@ namespace rbnBLL.Providers
                              AudienceId = ua.Audience.AudienceId,
                              Name = ua.Audience.Name
                            },
+                           Rating = ua.Rating,
                            Enabled = ua.Enabled
                          }).ToList();
 
@@ -71,6 +72,7 @@ namespace rbnBLL.Providers
                              AudienceId = ua.Audience.AudienceId,
                              Name = ua.Audience.Name
                            },
+                           Rating = ua.Rating,
                            Enabled = ua.Enabled
                          }).FirstOrDefault();
 

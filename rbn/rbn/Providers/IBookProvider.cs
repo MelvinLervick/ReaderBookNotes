@@ -7,6 +7,6 @@ namespace rbn.Providers
   {
     List<BookModel> GetBookList();
     BookModel GetBookDetails( int bookId );
-    void SaveAuthorDetails( BookModel bookDetails );
+    void SaveBookDetails( BookModel bookDetails );
   }
 }

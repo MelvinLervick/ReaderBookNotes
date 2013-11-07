@@ -5,7 +5,7 @@ using System.Data.Entity;
 namespace rbn.Models
 {
   [Table( "Author" )]
-  public class AuthorModel
+  public class AuthorModel : BaseModel
   {
     [Key]
     public int AuthorId
@@ -35,13 +35,6 @@ namespace rbn.Models
     [Display( Name = "Last Name" )]
     [StringLength( 50 )]
     public string LastName
-    {
-      get;
-      set;
-    }
-
-    [Display( Name = "Enabled" )]
-    public bool Enabled
     {
       get;
       set;
