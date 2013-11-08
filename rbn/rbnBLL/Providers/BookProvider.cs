@@ -14,11 +14,12 @@ namespace rbnBLL.Providers
   {
     #region IBook Members
 
-    public IEnumerable<Models.Book> GetBookList()
+    public IEnumerable<Models.Book> GetBookList(bool adminUser = false)
     {
       using (var db = new rbndbEntities())
       {
         var fieldData = (from ua in db.Books
+                         where ua.Enabled == !adminUser || ua.Enabled
                          orderby ua.Title
                          select new Models.Book()
                          {
@@ -102,17 +103,12 @@ namespace rbnBLL.Providers
 
     public void EnableBook( int bookId, bool enableFlag )
     {
-      using (var db = new rbndbEntities())
-      {
-        db.Books.AddOrUpdate( new Book
-        {
-          BookId = bookId,
-          Enabled = enableFlag,
-          LastModifiedDate = DateTime.Now
-        } );
+      var book = GetBookDetails(bookId);
 
-        db.SaveChanges();
-      }
+      book.Enabled = enableFlag;
+      book.LastModifiedDate = DateTime.UtcNow;
+
+      SaveBook(book);
     }
 
     #endregion

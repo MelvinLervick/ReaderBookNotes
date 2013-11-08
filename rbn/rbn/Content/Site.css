@@ -1055,10 +1055,44 @@ tr.pager td {
     padding: 5px;
   }
   .Book .Edit ol li .ISBN {
-    width: 200px;
+    width: 250px;
     margin: 0px;
     padding: 5px;
   }
+  .Book .Edit ol li .Author {
+    width: 250px;
+    margin: 0px;
+    padding: 5px;
+  }
+  .Book .Edit ol li .Audience {
+    width: 125px;
+    margin: 0px;
+    padding: 5px;
+  }
+  .Book .Edit ol li .Rating {
+    width: 100px;
+    margin: 0px;
+    padding: 5px;
+  }
+  .Book .Edit ol li .Enabled {
+    width: 50px;
+    margin: 0px;
+    padding: 5px;
+  }
+
+  .Book .BackToList {
+  padding: 2px 5px;
+  margin: 10px 0px 0px;
+  text-decoration: none;
+  border: 1px solid darkgrey;
+  background-color: lightblue;
+  color: darkblue;
+}
+.Book .BackToList:hover {
+  background-color: yellow;
+  color: darkblue;
+}
+
 /* Reader Note Panel
   -----------------------------------------------------*/
 .readerNotes {

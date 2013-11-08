@@ -5,8 +5,9 @@ namespace rbn.Providers
 {
   public interface IBookProvider
   {
-    List<BookModel> GetBookList();
+    List<BookModel> GetBookList( bool adminUser );
     BookModel GetBookDetails( int bookId );
     void SaveBookDetails( BookModel bookDetails );
+    void EnableBook( int bookId, bool enabled );
   }
 }

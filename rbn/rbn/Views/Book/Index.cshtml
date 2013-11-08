@@ -65,7 +65,14 @@
           <td>
             @Html.ActionLink( "Edit", "Update", new { id = item.BookId } ) |
             @Html.ActionLink( "Details", "Details", new { id = item.BookId } ) |
-            @Html.ActionLink( "Delete", "Delete", new { id = item.BookId } )
+            @if (item.Enabled)
+            {
+              @Html.ActionLink( "Disable", "Delete", new { id = item.BookId, enabled = 0 } )
+            }
+            else
+            {
+              @Html.ActionLink( "Enable", "Delete", new { id = item.BookId, enabled = 1 } )
+            }
           </td>
         </tr>
       }

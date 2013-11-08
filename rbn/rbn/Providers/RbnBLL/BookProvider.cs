@@ -12,9 +12,9 @@ namespace rbn.Providers.RbnBLL
 
     #region IBookProvider Members
 
-    public List<Models.BookModel> GetBookList()
+    public List<Models.BookModel> GetBookList( bool adminUser )
     {
-      return BookAdapter.TransformToUiModel( Provider.GetBookList() );
+      return BookAdapter.TransformToUiModel( Provider.GetBookList( adminUser ) );
     }
 
     public Models.BookModel GetBookDetails( int bookId )
@@ -31,6 +31,11 @@ namespace rbn.Providers.RbnBLL
       }
       var bookBLL = BookAdapter.TransformToBLLModel( bookDetails );
       Provider.SaveBook( bookBLL );
+    }
+
+    public void EnableBook( int bookId, bool enabled )
+    {
+      Provider.EnableBook( bookId, enabled );
     }
 
     #endregion
