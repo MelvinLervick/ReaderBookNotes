@@ -50,6 +50,8 @@ namespace rbnBLL.Providers
 
     public Models.Book GetBookDetails( int bookId )
     {
+      if (bookId < 1) { return new Models.Book();}
+
       using (var db = new rbndbEntities())
       {
         var fieldData = (from ua in db.Books
@@ -94,7 +96,7 @@ namespace rbnBLL.Providers
           AudienceId = book.AudienceId,
           Rating = book.Rating,
           Enabled = book.Enabled,
-          LastModifiedDate = DateTime.Now
+          LastModifiedDate = DateTime.UtcNow
         } );
 
         db.SaveChanges();
@@ -103,10 +105,15 @@ namespace rbnBLL.Providers
 
     public void EnableBook( int bookId, bool enableFlag )
     {
-      var book = GetBookDetails(bookId);
+      if (bookId < 1) { return; }
 
+      var book = GetBookDetails( bookId );
+
+      if (book == null)
+      {
+        throw new Exception(string.Format("The requested book ({0}) was not found", bookId));
+      }
       book.Enabled = enableFlag;
-      book.LastModifiedDate = DateTime.UtcNow;
 
       SaveBook(book);
     }

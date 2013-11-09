@@ -1,4 +1,4 @@
-﻿@model rbn.Models.BookModel
+﻿@model rbn.Models.BookDetailsModel
 
 @{
   ViewBag.Title = "Update Book";
@@ -27,7 +27,7 @@
           </li>
           <li>
             @Html.LabelFor( model => model.ISBN, new { @class = "Label" } )
-            @Html.EditorFor( model => model.ISBN, new { @class = "ISBN" } )
+            @Html.TextBoxFor( model => model.ISBN, new { @class = "ISBN" } )
             @Html.ValidationMessageFor( model => model.ISBN )
           </li>
           <li>
@@ -37,17 +37,17 @@
           </li>
           <li>
             @Html.LabelFor( model => model.AudienceId, new { @class = "Label" } )
-            @Html.EditorFor( model => model.AudienceId, new { @class = "Audience" } )
+            @Html.TextBoxFor( model => model.AudienceId, new { @class = "Audience" } )
             @Html.ValidationMessageFor( model => model.AudienceId )
           </li>
           <li>
             @Html.LabelFor( model => model.Rating, new { @class = "Label" } )
-            @Html.EditorFor( model => model.Rating, new { @class = "Rating" } )
+            @Html.TextBoxFor( model => model.Rating, new { @class = "Rating" } )
             @Html.ValidationMessageFor( model => model.Rating )
           </li>
           <li>
             @Html.LabelFor( model => model.Enabled, new { @class = "Label" } )
-            @Html.EditorFor( model => model.Enabled, new { @class = "Enabled" } )
+            @Html.CheckBoxFor( model => model.Enabled, new { @class = "Enabled" } )
             @Html.ValidationMessageFor( model => model.Enabled )
           </li>
         </ol>
@@ -56,7 +56,7 @@
           <input type="submit" value="Save the Book Changes" />
         </p>
         <div>
-          @Html.ActionLink( "Back to List", "Index", new { id = 0 }, new { @class = "BackToList", type = "button" } )
+          @Html.ActionLink( "Back to List", "Index", new { @class = "BackToList", type = "button" } )
         </div>
       </fieldset>
     }

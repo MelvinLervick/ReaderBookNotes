@@ -14,6 +14,18 @@ namespace rbn
 			routes.IgnoreRoute( "{resource}.axd/{*pathInfo}" );
 
       routes.MapRoute(
+        name: "Author",
+        url: "{controller}/{action}/{id}/{enabled}",
+        defaults: new
+        {
+          controller = "Book",
+          action = "Delete",
+          id = UrlParameter.Optional,
+          enabled = UrlParameter.Optional
+        }
+      );
+
+      routes.MapRoute(
         name: "Book",
         url: "{controller}/{action}/{id}/{enabled}",
         defaults: new

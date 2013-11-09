@@ -13,9 +13,9 @@ namespace rbn.Providers.RbnBLL
 
     #region IAuthorProvider Members
 
-    public List<AuthorModel> GetAuthorList()
+    public List<AuthorModel> GetAuthorList( bool adminUser )
     {
-      return AuthorAdapter.TransformToUiModel(Provider.GetAuthorList());
+      return AuthorAdapter.TransformToUiModel(Provider.GetAuthorList( adminUser ));
     }
 
     public AuthorModel GetAuthorDetails( int authorId )
@@ -32,6 +32,11 @@ namespace rbn.Providers.RbnBLL
       }
       var authorBLL = AuthorAdapter.TransformToBLLModel(authorDetails);
       Provider.SaveAuthor(authorBLL);
+    }
+
+    public void EnableAuthor( int authorId, bool enabled )
+    {
+      Provider.EnableAuthor( authorId, enabled );
     }
 
     #endregion

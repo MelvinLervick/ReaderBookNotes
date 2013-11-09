@@ -2,7 +2,7 @@
 
 @{
   ViewBag.Title = "Book List";
-  Layout = "~/Views/Shared/_Layout.cshtml";
+  Layout = "~/Views/Shared/_LayoutBooks.cshtml";
 }
 
 <div class="Book">
@@ -36,7 +36,7 @@
           @Html.DisplayNameFor( model => model.Rating )
         </th>
         <th class="Separator"></th>
-        <th></th>
+        <th class="Buttons"></th>
       </tr>
 
       @foreach (var item in Model)
@@ -58,20 +58,26 @@
             @Html.DisplayFor( modelItem => item.AudienceName )
           </td>
           <td class="Separator"></td>
-          <td>
+          <td class="RatingValue">
             @Html.DisplayFor( modelItem => item.Rating )
           </td>
           <td class="Separator"></td>
-          <td>
-            @Html.ActionLink( "Edit", "Update", new { id = item.BookId } ) |
-            @Html.ActionLink( "Details", "Details", new { id = item.BookId } ) |
-            @if (item.Enabled)
+          <td class="Buttons">
+            @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator"))
             {
-              @Html.ActionLink( "Disable", "Delete", new { id = item.BookId, enabled = 0 } )
+              @Html.ActionLink("Edit", "Update", new {id = item.BookId}, new {@class = "Button", type = "button"})
             }
-            else
+            @Html.ActionLink( "Details", "Details", new { id = item.BookId }, new { @class="Button", type = "button" } )
+            @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator"))
             {
-              @Html.ActionLink( "Enable", "Delete", new { id = item.BookId, enabled = 1 } )
+              if (item.Enabled)
+               {
+                 @Html.ActionLink("Disable", "Delete", new {id = item.BookId, enabled = 0}, new {@class = "Button", type = "button"})
+               }
+               else
+               {
+                 @Html.ActionLink("Enable", "Delete", new {id = item.BookId, enabled = 1}, new {@class = "Button", type = "button"})
+               }
             }
           </td>
         </tr>

@@ -14,6 +14,7 @@ namespace rbn.Providers.RbnBLL.Adapters
         FirstName = fields.FirstName,
         MiddleName = fields.MiddleName,
         LastName = fields.LastName,
+        Rating = fields.Rating,
         Enabled = fields.Enabled
       };
     }
@@ -26,6 +27,7 @@ namespace rbn.Providers.RbnBLL.Adapters
         FirstName = author.FirstName,
         MiddleName = author.MiddleName,
         LastName = author.LastName,
+        Rating = author.Rating,
         Enabled = author.Enabled
       }).ToList();
     }
@@ -38,6 +40,7 @@ namespace rbn.Providers.RbnBLL.Adapters
         FirstName = fields.FirstName,
         MiddleName = fields.MiddleName,
         LastName = fields.LastName,
+        Rating = fields.Rating,
         Enabled = fields.Enabled
       };
     }

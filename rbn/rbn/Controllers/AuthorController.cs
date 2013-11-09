@@ -1,9 +1,9 @@
-﻿using System;
+﻿using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
 using rbn.Models;
 using rbn.Providers;
 using rbn.Providers.RbnBLL;
-using rbn.Views.ViewModels;
 
 namespace rbn.Controllers
 {
@@ -32,71 +32,52 @@ namespace rbn.Controllers
 
     public ActionResult Index()
     {
-      var model = new AuthorListViewModel{AuthorsList = AuthorProvider.GetAuthorList()};
+      var model = AuthorProvider.GetAuthorList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
 
       return View(model);
     }
 
-    [HttpPost]
-    public ActionResult Index( AuthorListViewModel model, string authorId )
-    {
-      string[] actionWithAuthorId = authorId.Split(',');
-      //TODO: Redirect to Booklist for selected Author
-      // RedirectToAction( <book list index>, authorId );
+    //[HttpPost]
+    //public ActionResult Index( AuthorModel model, string authorId )
+    //{
+    //  string[] actionWithAuthorId = authorId.Split(',');
+    //  //TODO: Redirect to Booklist for selected Author
+    //  // RedirectToAction( <book list index>, authorId );
 
-      model.Message = actionWithAuthorId[0] == "show"
-        ? "The Author Book List has not yet been implemented."
-        : "The Delete Author option is not yet implemented.";
+    //  model.Message = actionWithAuthorId[0] == "show"
+    //    ? "The Author Book List has not yet been implemented."
+    //    : "The Delete Author option is not yet implemented.";
       
-      return View(model);
-    }
+    //  return View(model);
+    //}
 
     public ActionResult Create( int id )
     {
       var model = new AuthorModel();
+      model.Enabled = true;
       return View( model );
     }
 
+    [HttpPost]
+    public ActionResult Create( AuthorModel model )
+    {
+      AuthorProvider.SaveAuthorDetails( model );
+      return View( "Index", AuthorProvider.GetAuthorList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
+    }
 
-    public ActionResult Edit( int id )
+    public ActionResult Update( int id )
     {
       var model = AuthorProvider.GetAuthorDetails( id );
       return View( model );
     }
 
-    //public ActionResult AddAuthorView()
-    //{
-    //  var model = new AuthorViewModel();
+    [HttpPost]
+    public ActionResult Update( AuthorModel model )
+    {
+      AuthorProvider.SaveAuthorDetails( model );
+      return View( "Index", AuthorProvider.GetAuthorList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
+    }
 
-    //  return View(model);
-    //}
-
-    //[HttpPost]
-    //[ValidateAntiForgeryToken]
-    //public ActionResult AddAuthorView( string saveAuthorDetails, AuthorViewModel model, FormCollection collection )
-    //{
-    //  if (ModelState.IsValid)
-    //  {
-    //    try
-    //    {
-    //      model.Author.AuthorId = Convert.ToInt32(collection["Author.AuthorId"]);
-    //      model.Author.Enabled = Convert.ToBoolean(collection["Author.Enabled"]);
-    //      model.Author.FirstName = collection["Author.FirstName"];
-    //      model.Author.MiddleName = collection["Author.MiddleName"];
-    //      model.Author.LastName = collection["Author.LastName"];
-    //      model.Author.Rating = Convert.ToInt32(collection["Author.Rating"]);
-
-    //      AuthorProvider.SaveAuthorDetails( model.Author );
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //      model.Message = ex.Message;
-    //      return View(model);
-    //    }
-    //  }
-
-    //  return View( "Index", new AuthorListViewModel{AuthorsList = AuthorProvider.GetAuthorList()} );
-    //}
 
     [HttpPost]
     public PartialViewResult Search( SearchBarModel search )
@@ -106,9 +87,14 @@ namespace rbn.Controllers
       return PartialView( "Index" );
     }
 
-    protected internal void DeleteAuthor(string authorId)
+    public ActionResult Delete( int id = 0, int enabled = 0 )
     {
-      
+      if (id > 0)
+      {
+        AuthorProvider.EnableAuthor( id, (enabled == 1) );
+      }
+
+      return View( "Index", AuthorProvider.GetAuthorList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
     }
   }
 }

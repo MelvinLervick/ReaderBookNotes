@@ -38,12 +38,12 @@ namespace rbn.Controllers
 
     public ActionResult Create( int id )
     {
-      var model = new BookModel();
+      var model = new BookDetailsModel {Enabled = true};
       return View( model );
     }
 
     [HttpPost]
-    public ActionResult Create( BookModel model )
+    public ActionResult Create( BookDetailsModel model )
     {
       BookProvider.SaveBookDetails( model );
       return View( "Index", BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
@@ -56,15 +56,19 @@ namespace rbn.Controllers
     }
 
     [HttpPost]
-    public ActionResult Update( BookModel model )
+    public ActionResult Update( BookDetailsModel model )
     {
       BookProvider.SaveBookDetails( model );
       return View( "Index", BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
     }
 
-    public ActionResult Delete( int id, int enabled )
+    public ActionResult Delete( int id = 0, int enabled = 0 )
     {
-      BookProvider.EnableBook( id, (enabled == 1) );
+      if (id > 0)
+      {
+        BookProvider.EnableBook( id, (enabled == 1) );
+      }
+
       return View( "Index", BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
     }
   }

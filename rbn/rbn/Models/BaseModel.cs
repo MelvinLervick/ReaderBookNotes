@@ -11,7 +11,7 @@ namespace rbn.Models
       set;
     }
 
-    [Display( Name = "Erroe Message" )]
+    [Display( Name = "Error Message" )]
     public string Message { get; set; }
   }
 }

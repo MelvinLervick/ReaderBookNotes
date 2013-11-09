@@ -1,4 +1,4 @@
-﻿@model rbn.Views.ViewModels.AuthorListViewModel
+﻿@model IEnumerable<rbn.Models.AuthorModel>
 
 @{
   ViewBag.Title = "Author List";
@@ -8,11 +8,7 @@
 @using (Html.BeginForm())
 {
   <div class="Author">
-    <h2>Author List</h2>
-    @if (Model.Message != string.Empty)
-    {
-      <div class="Message">@Html.ValueFor(model => model.Message)</div>
-    }
+    <h2>@ViewBag.Title</h2>
     @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") || Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
     {
       @Html.ActionLink( "Add New Author", "Create", new { id = 0 }, new { @class="AddButton", type = "button" } )
@@ -21,25 +17,25 @@
       <table>
         <tr>
           <th class="LastName">
-            @Html.DisplayNameFor(model => model.AuthorsList[0].LastName)
+            @Html.DisplayNameFor(model => model.LastName)
           </th>
           <th class="Separator"></th>
           <th class="FirstName">
-            @Html.DisplayNameFor(model => model.AuthorsList[0].FirstName)
+            @Html.DisplayNameFor(model => model.FirstName)
           </th>
           <th class="Separator"></th>
           <th class="MiddleName">
-            @Html.DisplayNameFor(model => model.AuthorsList[0].MiddleName)
+            @Html.DisplayNameFor(model => model.MiddleName)
           </th>
           <th class="Separator"></th>
           <th class="Rating">
-            @Html.DisplayNameFor(model => model.AuthorsList[0].Rating)
+            @Html.DisplayNameFor(model => model.Rating)
           </th>
           <th class="Separator"></th>
-          <th class="ShowBooks"></th>
+          <th class="Buttons"></th>
         </tr>
 
-        @foreach (var item in Model.AuthorsList)
+        @foreach (var item in Model)
         {
           <tr>
             <td>
@@ -58,11 +54,22 @@
               @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td class="Separator"></td>
-            <td class="ShowBooks">
-              <button type="submit" id="btnShowBooks" name="authorId" value="show,@Html.ValueFor(modelItem => item.AuthorId)">Show Books</button>
+            <td class="Buttons">
               @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator"))
               {
-                <button type="submit" id="btnDeleteAuthor" name="authorId" value="delete,@Html.ValueFor(modelItem => item.AuthorId)">Delete Author</button>
+                  @Html.ActionLink("Edit", "Update", new {id = item.AuthorId}, new {@class = "Button", type = "button"})
+              }
+              @Html.ActionLink( "Show Books", "ShowBooks", new { id = item.AuthorId }, new { @class="Button", type = "button" } )
+              @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator"))
+              {
+                if (item.Enabled)
+                 {
+                   @Html.ActionLink("Disable", "Delete", new {id = item.AuthorId, enabled = 0}, new {@class = "Button", type = "button"})
+                 }
+                 else
+                 {
+                   @Html.ActionLink("Enable", "Delete", new {id = item.AuthorId, enabled = 1}, new {@class = "Button", type = "button"})
+                 }
               }
             </td>
           </tr>

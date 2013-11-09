@@ -10,11 +10,12 @@ namespace rbnBLL.Providers
   {
     #region IAuthor Members
 
-    public IEnumerable<Models.Author> GetAuthorList()
+    public IEnumerable<Models.Author> GetAuthorList( bool adminUser = false )
     {
       using (var db = new rbndbEntities())
       {
         var fieldData = (from ua in db.Authors
+                         where ua.Enabled == !adminUser || ua.Enabled
                          orderby ua.LastName
                          select new Models.Author
                          {
@@ -22,6 +23,7 @@ namespace rbnBLL.Providers
                            FirstName = ua.FirstName,
                            MiddleName = ua.MiddleName,
                            LastName = ua.LastName,
+                           Rating = ua.Rating,
                            Enabled = ua.Enabled
                          }).ToList();
 
@@ -41,6 +43,7 @@ namespace rbnBLL.Providers
                            FirstName = ua.FirstName,
                            MiddleName = ua.MiddleName,
                            LastName = ua.LastName,
+                           Rating = ua.Rating,
                            Enabled = ua.Enabled
                          }).FirstOrDefault();
 
@@ -58,7 +61,9 @@ namespace rbnBLL.Providers
           FirstName = authorDetails.FirstName,
           MiddleName = authorDetails.MiddleName,
           LastName = authorDetails.LastName,
-          LastModifiedDate = DateTime.Now
+          Rating = authorDetails.Rating,
+          Enabled = authorDetails.Enabled,
+          LastModifiedDate = DateTime.UtcNow
         } );
 
         db.SaveChanges();
@@ -67,17 +72,17 @@ namespace rbnBLL.Providers
 
     public void EnableAuthor( int authorId, bool enableFlag )
     {
-      using (var db = new rbndbEntities())
-      {
-        db.Authors.AddOrUpdate( new Author
-        {
-          AuthorId = authorId,
-          Enabled = enableFlag,
-          LastModifiedDate = DateTime.Now
-        } );
+      if (authorId < 1) { return; }
 
-        db.SaveChanges();
+      var author = GetAuthorDetails( authorId );
+
+      if (author == null)
+      {
+        throw new Exception( string.Format( "The requested author ({0}) was not found", authorId ) );
       }
+      author.Enabled = enableFlag;
+
+      SaveAuthor( author );
     }
 
     #endregion

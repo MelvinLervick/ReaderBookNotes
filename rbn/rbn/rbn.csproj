@@ -163,8 +163,11 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AudienceModel.cs" />
     <Compile Include="Models\AuthorModel.cs" />
+    <Compile Include="Models\AuthorSelectorModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\BookDetailsModel.cs" />
     <Compile Include="Models\BookModel.cs" />
+    <Compile Include="Models\BookSelectorModel.cs" />
     <Compile Include="Models\RatingsModel.cs" />
     <Compile Include="Models\ReaderNotesModel.cs" />
     <Compile Include="Models\SearchBarModel.cs" />
@@ -313,7 +316,7 @@
     <Content Include="Views\Book\Create.cshtml" />
     <Content Include="Views\Book\Update.cshtml" />
     <Content Include="Views\Author\Create.cshtml" />
-    <Content Include="Views\Author\Edit.cshtml" />
+    <Content Include="Views\Author\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,10 +17,10 @@ namespace rbn.Providers.RbnBLL
       return BookAdapter.TransformToUiModel( Provider.GetBookList( adminUser ) );
     }
 
-    public Models.BookModel GetBookDetails( int bookId )
+    public Models.BookDetailsModel GetBookDetails( int bookId )
     {
       var bookDetails = Provider.GetBookDetails( bookId );
-      return BookAdapter.TransformToUiModel( bookDetails );
+      return BookAdapter.TransformToUiDetailsModel( bookDetails );
     }
 
     public void SaveBookDetails( Models.BookModel bookDetails )
@@ -32,6 +32,16 @@ namespace rbn.Providers.RbnBLL
       var bookBLL = BookAdapter.TransformToBLLModel( bookDetails );
       Provider.SaveBook( bookBLL );
     }
+    public void SaveBookDetails( Models.BookDetailsModel bookDetails )
+    {
+      if (string.IsNullOrEmpty( bookDetails.Title ) && (bookDetails.AuthorId == 0))
+      {
+        throw new Exception( "Unable to save the Book Details because both Title and Author are required." );
+      }
+      var bookBLL = BookAdapter.TransformToBLLModel( bookDetails );
+      Provider.SaveBook( bookBLL );
+    }
+
 
     public void EnableBook( int bookId, bool enabled )
     {

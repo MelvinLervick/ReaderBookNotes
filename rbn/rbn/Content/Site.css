@@ -864,7 +864,6 @@ tr.pager td {
   padding: 0px;
   margin: 0px;
 }
-
 .Author .AddButton {
   position: absolute;
   right: 30px;
@@ -891,27 +890,24 @@ tr.pager td {
   overflow-x: scroll;
   overflow-y: scroll;
 }
-
 .Author .List table {
   border: 0px blue solid;
   border-collapse: collapse;
 }
 .Author .List table td {
   border: 0px blue solid;
-  padding: 1px 3px;
+  padding: 2px 3px;
 }
 .Author .List table th {
   border-bottom: 2px blue solid;
   text-align: center;
 }
-
 .Author .List table .Separator {
   border: 0px;
   width: 5px;
   padding: 0px;
   margin: 0px;
 }
-
 .Author .List table .FirstName {
   width: 225px;
 }
@@ -937,19 +933,75 @@ tr.pager td {
   color: red;
 }
 
-.Author .List table .ShowBooks {
+.Author .List table .Buttons {
   width: 250px;
   border: 0px;
+}
+.Author .List table .Button {
+  padding: 0px 5px;
+  margin: 0px;
+  text-decoration: none;
+  border: 1px solid darkgrey;
+  background-color: lightblue;
+  color: darkblue;
+}
+.Author .List table .Button:hover {
+  background-color: yellow;
+  color: darkblue;
 }
 
 .Author .Edit {
   position: absolute;
   border: 0px;
-  left: 100px;
+  left: 10px;
   top: 35px;
   right: 100px;
   bottom: 10px;
 }
+  .Author .Edit ol li {
+    padding-bottom: 5px;
+  }
+  .Author .Edit ol li .Label {
+    display:inline-block; 
+    width: 125px;
+  }
+  .Author .Edit ol li .FirstName {
+    width: 400px;
+    margin: 0px;
+    padding: 5px;
+  }
+  .Author .Edit ol li .MiddleName {
+    width: 300px;
+    margin: 0px;
+    padding: 5px;
+  }
+  .Author .Edit ol li .LastName {
+    width: 400px;
+    margin: 0px;
+    padding: 5px;
+  }
+  .Author .Edit ol li .Rating {
+    width: 100px;
+    margin: 0px;
+    padding: 5px;
+  }
+  .Author .Edit ol li .Enabled {
+    margin: 0px;
+    padding: 5px;
+  }
+
+  .Author .BackToList {
+  padding: 2px 5px;
+  margin: 10px 0px 0px;
+  text-decoration: none;
+  border: 1px solid darkgrey;
+  background-color: lightblue;
+  color: darkblue;
+  }
+  .Author .BackToList:hover {
+  background-color: yellow;
+  color: darkblue;
+  }
 
 /* BOOKS
   -----------------------------------------------------*/
@@ -1002,20 +1054,18 @@ tr.pager td {
 }
 .Book .List table td {
   border: 0px blue solid;
-  padding: 1px 3px;
+  padding: 2px 3px;
 }
 .Book .List table th {
   border-bottom: 2px blue solid;
   text-align: center;
 }
-
 .Book .List table .Separator {
   border: 0px;
   width: 5px;
   padding: 0px;
   margin: 0px;
 }
-
 .Book .List table .Title {
   width: 250px;
 }
@@ -1031,8 +1081,24 @@ tr.pager td {
 .Book .List table .Rating {
   width: 50px;
 }
-.Book .List table .Rating td {
+.Book .List table .RatingValue {
   text-align: center;
+}
+.Book .List table .Buttons {
+  width: 250px;
+  border: 0px;
+}
+.Book .List table .Button {
+  padding: 0px 5px;
+  margin: 0px;
+  text-decoration: none;
+  border: 1px solid darkgrey;
+  background-color: lightblue;
+  color: darkblue;
+}
+.Book .List table .Button:hover {
+  background-color: yellow;
+  color: darkblue;
 }
 
 .Book .Edit {
@@ -1045,6 +1111,9 @@ tr.pager td {
   overflow-x: scroll;
   overflow-y: scroll;
 }
+  .Book .Edit ol li {
+    padding-bottom: 5px;
+  }
   .Book .Edit ol li .Label {
     display:inline-block; 
     width: 125px;
@@ -1075,23 +1144,22 @@ tr.pager td {
     padding: 5px;
   }
   .Book .Edit ol li .Enabled {
-    width: 50px;
     margin: 0px;
     padding: 5px;
   }
 
   .Book .BackToList {
-  padding: 2px 5px;
-  margin: 10px 0px 0px;
-  text-decoration: none;
-  border: 1px solid darkgrey;
-  background-color: lightblue;
-  color: darkblue;
-}
-.Book .BackToList:hover {
-  background-color: yellow;
-  color: darkblue;
-}
+    padding: 2px 5px;
+    margin: 10px 0px 0px;
+    text-decoration: none;
+    border: 1px solid darkgrey;
+    background-color: lightblue;
+    color: darkblue;
+  }
+  .Book .BackToList:hover {
+    background-color: yellow;
+    color: darkblue;
+  }
 
 /* Reader Note Panel
   -----------------------------------------------------*/
