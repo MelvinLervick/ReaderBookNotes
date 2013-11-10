@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using rbn.Models;
@@ -61,8 +62,16 @@ namespace rbn.Controllers
     [HttpPost]
     public ActionResult Create( AuthorModel model )
     {
-      AuthorProvider.SaveAuthorDetails( model );
-      return View( "Index", AuthorProvider.GetAuthorList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
+      try
+      {
+        AuthorProvider.SaveAuthorDetails( model );
+        return View( "Index", AuthorProvider.GetAuthorList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
+      }
+      catch (Exception ex)
+      {
+        ModelState.AddModelError( "error", ex.Message );
+        return View( model );
+      }
     }
 
     public ActionResult Update( int id )
@@ -74,8 +83,16 @@ namespace rbn.Controllers
     [HttpPost]
     public ActionResult Update( AuthorModel model )
     {
-      AuthorProvider.SaveAuthorDetails( model );
-      return View( "Index", AuthorProvider.GetAuthorList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
+      try
+      {
+        AuthorProvider.SaveAuthorDetails( model );
+        return View( "Index", AuthorProvider.GetAuthorList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
+      }
+      catch (Exception ex)
+      {
+        ModelState.AddModelError( "error", ex.Message );
+        return View(model);
+      }
     }
 
 

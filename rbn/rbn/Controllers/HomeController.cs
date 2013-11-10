@@ -8,7 +8,7 @@ namespace rbn.Controllers
 		public ActionResult Index()
 		{
 			ViewBag.Message = "Read what other readers have to say about your favorite book.";
-			ViewBag.Message1 = "If you want to add notes for others to read, please register or login.";
+			ViewBag.Message1 = "If you want to add notes for others to read, please register or Sign In.";
 
 			return View();
 		}

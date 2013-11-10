@@ -187,8 +187,6 @@
     <Compile Include="Providers\RbnBLL\AuthorProvider.cs" />
     <Compile Include="Providers\RbnBLL\BookProvider.cs" />
     <Compile Include="Providers\RbnBLL\UserAccountProvider.cs" />
-    <Compile Include="Views\ViewModels\AuthorListViewModel.cs" />
-    <Compile Include="Views\ViewModels\AuthorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -322,6 +320,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

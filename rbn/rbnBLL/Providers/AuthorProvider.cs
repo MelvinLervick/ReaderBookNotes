@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using Extensions;
 using rbnDLL;
 
 namespace rbnBLL.Providers
@@ -55,6 +56,33 @@ namespace rbnBLL.Providers
     {
       using (var db = new rbndbEntities())
       {
+        var fieldData = (from ua in db.Authors
+                         orderby ua.LastName
+                         select new 
+                         {
+                           ua.AuthorId,
+                           ua.FirstName,
+                           ua.MiddleName,
+                           ua.LastName
+                         }).ToList();
+        var authorName = string.Format("{0}, {1} {2}", authorDetails.LastName, authorDetails.FirstName, authorDetails.MiddleName);
+        foreach (var name in fieldData)
+        {
+          var authorNameFromList = string.Format( "{0}, {1} {2}", name.LastName, name.FirstName, name.MiddleName );
+          if (authorName.IsSimilarTo(authorNameFromList) && (name.AuthorId != authorDetails.AuthorId))
+          {
+            if (authorDetails.AuthorId == 0)
+            {
+              throw new Exception(string.Format("You may be trying to add an existing Author {0}.", authorNameFromList));
+            }
+            else
+            {
+              throw new Exception(string.Format("Your changes cause this Author {0} to be similar to Author {1}.",
+                authorName, authorNameFromList));
+            }
+          }
+        }
+
         db.Authors.AddOrUpdate( new Author
         {
           AuthorId = authorDetails.AuthorId,

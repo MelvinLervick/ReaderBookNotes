@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rbnDLL", "rbnDLL\rbnDLL.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rbnBLL", "rbnBLL\rbnBLL.csproj", "{5B5F6886-4573-4E25-8C5D-E95BCFF5603A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Extensions.csproj", "{80B8EB31-A73E-47D7-9439-C0076CE5C7BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestExtensions", "TestExtensions\TestExtensions.csproj", "{6367B152-A017-46E1-89EC-2D16FF049A60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{5B5F6886-4573-4E25-8C5D-E95BCFF5603A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B5F6886-4573-4E25-8C5D-E95BCFF5603A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B5F6886-4573-4E25-8C5D-E95BCFF5603A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80B8EB31-A73E-47D7-9439-C0076CE5C7BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B8EB31-A73E-47D7-9439-C0076CE5C7BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80B8EB31-A73E-47D7-9439-C0076CE5C7BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80B8EB31-A73E-47D7-9439-C0076CE5C7BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6367B152-A017-46E1-89EC-2D16FF049A60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6367B152-A017-46E1-89EC-2D16FF049A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6367B152-A017-46E1-89EC-2D16FF049A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6367B152-A017-46E1-89EC-2D16FF049A60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,7 +16,7 @@
     } ))
     {
       @Html.AntiForgeryToken()
-      <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+      <a href="javascript:document.getElementById('logoutForm').submit()">Sign Off</a>
     }
   </text>
 }
@@ -27,7 +27,7 @@ else
        {
          id = "registerLink"
        } )</li>
-        <li>@Html.ActionLink( "Log in", "Login", "Account", routeValues: null, htmlAttributes: new
+        <li>@Html.ActionLink( "Sign In", "Login", "Account", routeValues: null, htmlAttributes: new
        {
          id = "loginLink"
        } )</li>
