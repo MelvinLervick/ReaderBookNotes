@@ -12,6 +12,6 @@ namespace rbnBLL.Models
     public System.DateTime LastModifiedDate { get; set; }
     public bool Enabled { get; set; }
 
-    public virtual ICollection<Book> Books { get; set; }
+    //public virtual ICollection<Book> Books { get; set; }
   }
 }

@@ -15,8 +15,8 @@ namespace rbnBLL.Models
     public int? AudienceId { get; set; }
     public System.DateTime CreatedDate { get; set; }
 
-    public virtual Audience Audience { get; set; }
-    public virtual ReaderNotes ReaderNote { get; set; }
-    public virtual UserProfile UserProfile { get; set; }
+    //public virtual Audience Audience { get; set; }
+    //public virtual ReaderNotes ReaderNote { get; set; }
+    //public virtual UserProfile UserProfile { get; set; }
   }
 }

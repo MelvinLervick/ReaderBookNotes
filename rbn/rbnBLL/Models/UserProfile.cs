@@ -8,9 +8,9 @@ namespace rbnBLL.Models
     public string UserName { get; set; }
     public System.DateTime DateCreated { get; set; }
 
-    public virtual UserAccount UserAccount { get; set; }
-    public virtual ICollection<UserRoles> webpages_Roles { get; set; }
-    public virtual ICollection<ReaderNotes> ReaderNotes { get; set; }
-    public virtual ICollection<Ratings> Ratings { get; set; }
+    //public virtual UserAccount UserAccount { get; set; }
+    //public virtual ICollection<UserRoles> webpages_Roles { get; set; }
+    //public virtual ICollection<ReaderNotes> ReaderNotes { get; set; }
+    //public virtual ICollection<Ratings> Ratings { get; set; }
   }
 }

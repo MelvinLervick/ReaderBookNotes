@@ -20,9 +20,9 @@ namespace rbnBLL.Models
     public System.DateTime LastModifiedDate { get; set; }
     public bool Enabled { get; set; }
 
-    public virtual Audience Audience { get; set; }
-    public virtual Book Book { get; set; }
-    public virtual UserProfile UserProfile { get; set; }
-    public virtual ICollection<Ratings> Ratings { get; set; }
+    //public virtual Audience Audience { get; set; }
+    //public virtual Book Book { get; set; }
+    //public virtual UserProfile UserProfile { get; set; }
+    //public virtual ICollection<Ratings> Ratings { get; set; }
   }
 }

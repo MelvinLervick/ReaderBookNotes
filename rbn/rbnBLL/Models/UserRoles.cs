@@ -11,6 +11,6 @@ namespace rbnBLL.Models
     public int RoleId { get; set; }
     public string RoleName { get; set; }
 
-    public virtual ICollection<UserProfile> UserProfiles { get; set; }
+    //public virtual ICollection<UserProfile> UserProfiles { get; set; }
   }
 }

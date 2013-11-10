@@ -1,0 +1,62 @@
+﻿@model rbn.Models.AuthorModel
+
+@{
+    ViewBag.Title = "Update Author";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="Author">
+  <h2>@ViewBag.Title</h2>
+
+  <div class="Edit">
+    @using (Html.BeginForm())
+    {
+      @Html.AntiForgeryToken()
+      @Html.ValidationSummary( true )
+
+      @Html.HiddenFor(model => model.AuthorId)
+
+      <fieldset>
+        <legend>@ViewBag.Title</legend>
+        <ol>
+          <li>
+            @Html.LabelFor( model => model.FirstName, new { @class = "Label" } )
+            @Html.TextBoxFor( model => model.FirstName, new { @class = "FirstName" } )
+            @Html.ValidationMessageFor( model => model.FirstName )
+          </li>
+          <li>
+            @Html.LabelFor( model => model.MiddleName, new { @class = "Label" } )
+            @Html.TextBoxFor( model => model.MiddleName, new { @class = "MiddleName" } )
+            @Html.ValidationMessageFor( model => model.MiddleName )
+          </li>
+          <li>
+            @Html.LabelFor( model => model.LastName, new { @class = "Label" } )
+            @Html.TextBoxFor( model => model.LastName, new { @class = "LastName" } )
+            @Html.ValidationMessageFor( model => model.LastName )
+          </li>
+          <li>
+            @Html.LabelFor( model => model.Rating, new { @class = "Label" } )
+            @Html.TextBoxFor( model => model.Rating, new { @class = "Rating" } )
+            @Html.ValidationMessageFor( model => model.Rating )
+          </li>
+          <li>
+            @Html.LabelFor( model => model.Enabled, new { @class = "Label" } )
+            @Html.CheckBoxFor( model => model.Enabled, new { @class = "Enabled" } )
+            @Html.ValidationMessageFor( model => model.Enabled )
+          </li>
+        </ol>
+
+        <p>
+          <input type="submit" value="Save the Changes" />
+        </p>
+        <div>
+          @Html.ActionLink( "Back to List", "Index", new { @class = "BackToList", type = "button" } )
+        </div>
+      </fieldset>
+    }
+  </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

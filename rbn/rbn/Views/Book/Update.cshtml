@@ -32,13 +32,13 @@
           </li>
           <li>
             @Html.LabelFor( model => model.AuthorId, new { @class = "Label" } )
-            @Html.EditorFor( model => model.AuthorId, new { @class = "Author" } )
-            @Html.ValidationMessageFor( model => model.AuthorId )
+            @Html.DropDownList("AuthorId", string.Empty)
+            @Html.ValidationMessage( "AuthorId", "An Author must be selected." )
           </li>
           <li>
             @Html.LabelFor( model => model.AudienceId, new { @class = "Label" } )
-            @Html.TextBoxFor( model => model.AudienceId, new { @class = "Audience" } )
-            @Html.ValidationMessageFor( model => model.AudienceId )
+            @Html.DropDownList("AudienceId", string.Empty)
+            @Html.ValidationMessage( "AudienceId", "An Audience must be selected." )
           </li>
           <li>
             @Html.LabelFor( model => model.Rating, new { @class = "Label" } )

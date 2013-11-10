@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using rbn.Models;
 
@@ -21,15 +22,21 @@ namespace rbn.Providers.RbnBLL.Adapters
 
     internal static List<AuthorModel> TransformToUiModel( IEnumerable<rbnBLL.Models.Author> authorList )
     {
-      return authorList.Select(author => new AuthorModel
+      return authorList.Select(TransformToUiModel).ToList();
+    }
+
+    internal static AuthorSelectorModel TransformToUiSelectorModel( rbnBLL.Models.Author fields )
+    {
+      return new AuthorSelectorModel
       {
-        AuthorId = author.AuthorId,
-        FirstName = author.FirstName,
-        MiddleName = author.MiddleName,
-        LastName = author.LastName,
-        Rating = author.Rating,
-        Enabled = author.Enabled
-      }).ToList();
+        AuthorId = fields.AuthorId,
+        AuthorName = String.Format( "{0}, {1} {2}", fields.LastName, fields.FirstName, fields.MiddleName )
+      };
+    }
+
+    internal static List<AuthorSelectorModel> TransformToUiSelectorModel( IEnumerable<rbnBLL.Models.Author> authorList )
+    {
+      return authorList.Select( TransformToUiSelectorModel ).ToList();
     }
 
     internal static rbnBLL.Models.Author TransformToBLLModel( AuthorModel fields )

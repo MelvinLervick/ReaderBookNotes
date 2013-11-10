@@ -179,9 +179,11 @@
     <Compile Include="Providers\IReaderNotesProvider.cs" />
     <Compile Include="Providers\IBookProvider.cs" />
     <Compile Include="Providers\IUserAccountProvider.cs" />
+    <Compile Include="Providers\RbnBLL\Adapters\AudienceAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\AuthorAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\BookAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\UserAccountAdapter.cs" />
+    <Compile Include="Providers\RbnBLL\AudienceProvider.cs" />
     <Compile Include="Providers\RbnBLL\AuthorProvider.cs" />
     <Compile Include="Providers\RbnBLL\BookProvider.cs" />
     <Compile Include="Providers\RbnBLL\UserAccountProvider.cs" />

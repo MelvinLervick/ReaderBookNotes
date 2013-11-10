@@ -23,6 +23,6 @@ namespace rbnBLL.Models
     public System.DateTime LastModifiedDate { get; set; }
     public DateTime DateOfBirth { get; set; }
 
-    public virtual UserProfile UserProfile { get; set; }
+    //public virtual UserProfile UserProfile { get; set; }
   }
 }

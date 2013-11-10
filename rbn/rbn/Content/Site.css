@@ -1128,8 +1128,8 @@ tr.pager td {
     margin: 0px;
     padding: 5px;
   }
-  .Book .Edit ol li .Author {
-    width: 250px;
+  .Book .Edit ol li select {
+    width: 260px;
     margin: 0px;
     padding: 5px;
   }

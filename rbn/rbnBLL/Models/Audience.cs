@@ -12,8 +12,8 @@ namespace rbnBLL.Models
     public string Name { get; set; }
     public bool Enabled { get; set; }
 
-    public virtual ICollection<Book> Books { get; set; }
-    public virtual ICollection<ReaderNotes> ReaderNotes { get; set; }
-    public virtual ICollection<Ratings> Ratings { get; set; }
+    //public virtual ICollection<Book> Books { get; set; }
+    //public virtual ICollection<ReaderNotes> ReaderNotes { get; set; }
+    //public virtual ICollection<Ratings> Ratings { get; set; }
   }
 }
