@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using Microsoft.Ajax.Utilities;
@@ -72,8 +73,21 @@ namespace rbn.Controllers
         ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
         return View( model );
       }
-      BookProvider.SaveBookDetails( model );
-      return View( "Index", BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
+
+      try
+      {
+        BookProvider.SaveBookDetails( model );
+        ViewBag.AuthorId = new SelectList( AuthorProvider.GetAuthorSelectorList(), "AuthorId", "AuthorName", model.AuthorId );
+        ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
+        return View( "Index", BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
+      }
+      catch (Exception ex)
+      {
+        ModelState.AddModelError( "error", ex.Message );
+        ViewBag.AuthorId = new SelectList( AuthorProvider.GetAuthorSelectorList(), "AuthorId", "AuthorName", model.AuthorId );
+        ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
+        return View( model );
+      }
     }
 
     public ActionResult Update( int id )
@@ -93,15 +107,32 @@ namespace rbn.Controllers
         ViewBag.AudienceId = new SelectList(AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId);
         return View( model );
       }
-      BookProvider.SaveBookDetails( model );
-      return View( "Index", BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
+      try
+      {
+        BookProvider.SaveBookDetails( model );
+        return View( "Index", BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
+      }
+      catch (Exception ex)
+      {
+        ModelState.AddModelError( "error", ex.Message );
+        ViewBag.AuthorId = new SelectList( AuthorProvider.GetAuthorSelectorList(), "AuthorId", "AuthorName", model.AuthorId );
+        ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
+        return View( model );
+      }
     }
 
     public ActionResult Delete( int id = 0, int enabled = 0 )
     {
       if (id > 0)
       {
-        BookProvider.EnableBook( id, (enabled == 1) );
+        try
+        {
+          BookProvider.EnableBook( id, (enabled == 1) );
+        }
+        catch (Exception ex)
+        {
+          ModelState.AddModelError( "error", ex.Message );
+        }
       }
 
       return View( "Index", BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );

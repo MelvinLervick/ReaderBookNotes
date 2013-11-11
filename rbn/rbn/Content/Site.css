@@ -927,7 +927,7 @@ tr.pager td {
 .Author .Message {
   position: absolute;
   left: 250px;
-  top: 10px;
+  top: 5px;
   padding: 0px;
   margin: 0px;
   color: red;
@@ -1035,6 +1035,15 @@ tr.pager td {
 .Book .AddButton:hover {
   background-color: yellow;
   color: darkblue;
+}
+
+.Book .Message {
+  position: absolute;
+  left: 250px;
+  top: 5px;
+  padding: 0px;
+  margin: 0px;
+  color: red;
 }
 
 .Book .List {

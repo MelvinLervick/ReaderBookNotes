@@ -4,6 +4,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Extensions;
 using rbnBLL.Models;
 using rbnDLL;
 using Book = rbnDLL.Book;
@@ -14,7 +15,7 @@ namespace rbnBLL.Providers
   {
     #region IBook Members
 
-    public IEnumerable<Models.Book> GetBookList(bool adminUser = false)
+    public IEnumerable<Models.Book> GetBookList( bool adminUser = false )
     {
       using (var db = new rbndbEntities())
       {
@@ -50,7 +51,7 @@ namespace rbnBLL.Providers
 
     public Models.Book GetBookDetails( int bookId )
     {
-      if (bookId < 1) { return new Models.Book();}
+      if (bookId < 1) { return new Models.Book(); }
 
       using (var db = new rbndbEntities())
       {
@@ -87,6 +88,45 @@ namespace rbnBLL.Providers
     {
       using (var db = new rbndbEntities())
       {
+        var bookList = (from ua in db.Books
+                        orderby ua.Title
+                        select new
+                        {
+                          ua.BookId,
+                          ua.Title,
+                          ua.ISBN
+                        }).ToList();
+        foreach (var existingBook in bookList)
+        {
+          if ((book.ISBN == existingBook.ISBN) && (book.BookId != existingBook.BookId) && !string.IsNullOrWhiteSpace( book.ISBN ))
+          {
+            if (book.BookId == 0)
+            {
+              throw new Exception( string.Format( "You are trying to add a book with an ISBN that already exists [{0}].",
+                existingBook.Title ) );
+            }
+            else
+            {
+              throw new Exception( string.Format( "A book with the specified ISBN already exists [{0}].",
+                existingBook.Title ) );
+            }
+          }
+
+          if (book.Title.IsSimilarTo( existingBook.Title ) && (book.BookId != existingBook.BookId) && (book.ISBN == existingBook.ISBN))
+          {
+            if (book.BookId == 0)
+            {
+              throw new Exception( string.Format( "You are trying to add a book that already exists [{0}].",
+                existingBook.Title ) );
+            }
+            else
+            {
+              throw new Exception( string.Format( "A book with the modified Title already exists [{0}].",
+                existingBook.Title ) );
+            }
+          }
+        }
+
         db.Books.AddOrUpdate( new Book
         {
           BookId = book.BookId,
@@ -111,11 +151,11 @@ namespace rbnBLL.Providers
 
       if (book == null)
       {
-        throw new Exception(string.Format("The requested book ({0}) was not found", bookId));
+        throw new Exception( string.Format( "The requested book ({0}) was not found", bookId ) );
       }
       book.Enabled = enableFlag;
 
-      SaveBook(book);
+      SaveBook( book );
     }
 
     #endregion

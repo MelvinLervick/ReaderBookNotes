@@ -12,6 +12,7 @@
   {
     @Html.ActionLink( "Add New Book", "Create", new { id = 0 }, new { @class="AddButton", type = "button" } )
   }
+  @Html.ValidationSummary( "", new { @class="Message" } )
 
   <div class="List">
     <table>

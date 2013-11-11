@@ -106,7 +106,7 @@ namespace rbnBLL.Providers
 
       if (author == null)
       {
-        throw new Exception( string.Format( "The requested author ({0}) was not found", authorId ) );
+        throw new Exception( string.Format( "The requested author's record ({0}) was not found", authorId ) );
       }
       author.Enabled = enableFlag;
 

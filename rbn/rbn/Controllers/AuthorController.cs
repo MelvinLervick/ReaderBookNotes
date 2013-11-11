@@ -38,20 +38,6 @@ namespace rbn.Controllers
       return View(model);
     }
 
-    //[HttpPost]
-    //public ActionResult Index( AuthorModel model, string authorId )
-    //{
-    //  string[] actionWithAuthorId = authorId.Split(',');
-    //  //TODO: Redirect to Booklist for selected Author
-    //  // RedirectToAction( <book list index>, authorId );
-
-    //  model.Message = actionWithAuthorId[0] == "show"
-    //    ? "The Author Book List has not yet been implemented."
-    //    : "The Delete Author option is not yet implemented.";
-      
-    //  return View(model);
-    //}
-
     public ActionResult Create( int id )
     {
       var model = new AuthorModel();
@@ -108,7 +94,14 @@ namespace rbn.Controllers
     {
       if (id > 0)
       {
-        AuthorProvider.EnableAuthor( id, (enabled == 1) );
+        try
+        {
+          AuthorProvider.EnableAuthor( id, (enabled == 1) );
+        }
+        catch (Exception ex)
+        {
+          ModelState.AddModelError( "error", ex.Message );
+        }
       }
 
       return View( "Index", AuthorProvider.GetAuthorList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) ) );
