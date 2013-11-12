@@ -3,18 +3,18 @@
 <section id="SearchBarSection">
 <div class="searchBar">
   @Html.TextBoxFor( m => m.SearchFor,new{@class = "searchTextBox"} )
-  <button type="submit" id="btnSearch" name="Command" value="Save">@Html.LabelFor( m => m.SearchFor, new {@class="searchLabel"} )</button>
+  <button type="submit" id="btnSearch" name="Command" value="Search">@Html.LabelFor( m => m.SearchFor, new {@class="searchLabel"} )</button>
 
   @Html.RadioButtonFor( m => m.SearchBy, "Title", new {@class="searchRadio", @checked = "checked"} ) Title
   @Html.RadioButtonFor( m => m.SearchBy, "ISBN", new {@class="searchRadio"} ) ISBN
   @Html.RadioButtonFor( m => m.SearchBy, "Author", new {@class="searchRadio"} ) Author
   
-  <span style="padding-left: 20px;">
+@*  <span style="padding-left: 20px;">
     <b>Display:</b>&nbsp;
     @Html.RadioButtonFor( m => m.Display, "Books", new {@class="searchRadio", @checked = "checked"} ) Books
     @Html.RadioButtonFor( m => m.Display, "Authors", new {@class="searchRadio"} ) Authors
     @Html.RadioButtonFor( m => m.Display, "Notes", new {@class="searchRadio"} ) Notes
-  </span>
+  </span>*@
 </div>
 </section>
 

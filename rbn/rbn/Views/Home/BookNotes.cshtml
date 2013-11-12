@@ -1,17 +1,35 @@
-﻿@{
+﻿@model rbn.Models.ReaderNotesModel
+
+@{
   ViewBag.Title = "Reader Book Notes";
   Layout = "~/Views/Shared/_LayoutBooks.cshtml";
 }
 
-@if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") || Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
-{
-  <div class="contributorNotes">
-    Body
-  </div>
-}
-else
-{
-  <div class="readerNotes">
-    Body
-  </div>
+<div class="Notes">
+  <h2>@ViewBag.Title</h2>
+  <h3>&nbsp;for&nbsp;</h3>
+  <p class="Reader">Reader's Name</p>
+
+  @using (Html.BeginForm())
+  {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary( "" )
+    @Html.ValidationSummary( true )
+    if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ))
+    {
+    <div class="contributorNotes">
+      Contributor Body
+    </div>
+    }
+    else
+    {
+    <div class="readerNotes">
+      Reader Body
+    </div>
+    }
+  }
+</div>
+
+@section Scripts {
+  @Scripts.Render( "~/bundles/jqueryval" )
 }

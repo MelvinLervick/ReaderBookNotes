@@ -831,7 +831,7 @@ tr.pager td {
   padding: 5px 0px 6px 0px;
 }
 .searchBar .searchTextBox {
-  width: 400px;
+  width: 500px;
 }
 
 .searchBar .searchRadio {
@@ -851,6 +851,7 @@ tr.pager td {
 .Author {
   position: absolute;
   border: 3px lightblue solid;
+  background-color: lightyellow;
   left: 5px;
   top: 75px;
   right: 5px;
@@ -1007,7 +1008,8 @@ tr.pager td {
   -----------------------------------------------------*/
 .Book {
   position: absolute;
-  border: 3px lightblue solid;
+  border: 3px green solid;
+  background-color: #90eec0;
   left: 5px;
   top: 75px;
   right: 5px;
@@ -1172,24 +1174,65 @@ tr.pager td {
 
 /* Reader Note Panel
   -----------------------------------------------------*/
-.readerNotes {
+.Notes {
   position: absolute;
-  border: 3px lightblue solid;
+  border: 3px green solid;
+  background-color: #90eec0;
   left: 5px;
   top: 75px;
   right: 5px;
   bottom: 5px;
-  overflow: hidden;
 }
 
-.contributorNotes {
+.Notes h2 {
   position: absolute;
-  border: 3px lightyellow solid;
+  left: 10px;
+  top: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.Notes h3 {
+  position: absolute;
+  color: red;
+  left: 230px;
+  top: 8px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.Notes .Reader {
+  position: absolute;
+  color: darkblue;
+  left: 265px;
+  top: 8px;
+  padding: 0px;
+  margin: 0px;
+  font-size: 1.2em;
+}
+
+.Notes .readerNotes {
+  position: absolute;
+  border: 3px blue solid;
   left: 5px;
-  top: 75px;
+  top: 70px;
   right: 5px;
-  bottom: 5px;
-  overflow: hidden;
+  bottom: 65px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  padding: 5px;
+}
+
+.Notes .contributorNotes {
+  position: absolute;
+  border: 3px red solid;
+  left: 5px;
+  top: 70px;
+  right: 5px;
+  bottom: 65px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  padding: 5px;
 }
 
 /* Change Password

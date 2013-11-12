@@ -311,7 +311,6 @@
     <Content Include="Views\Shared\_LayoutBooks.cshtml" />
     <Content Include="Views\Shared\HeaderMenuPartial.cshtml" />
     <Content Include="Views\Author\Index.cshtml" />
-    <Content Include="Views\Author\AddAuthorView.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Book\Create.cshtml" />
     <Content Include="Views\Book\Update.cshtml" />
