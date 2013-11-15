@@ -1235,6 +1235,17 @@ tr.pager td {
   padding: 5px;
 }
 
+/* Reader Alias Selector
+  -----------------------------------------------------*/
+.Notes .ReaderAlias {
+  position: absolute;
+  color: darkblue;
+  left: 265px;
+  top: 8px;
+  padding: 0px;
+  margin: 0px;
+  font-size: 1.2em;
+}
 /* Change Password
   -----------------------------------------------------*/
 .Edit {

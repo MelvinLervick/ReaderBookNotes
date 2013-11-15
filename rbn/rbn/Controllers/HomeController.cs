@@ -41,5 +41,11 @@ namespace rbn.Controllers
 
       return PartialView("BookNotes");
     }
+
+    public PartialViewResult GetReader( ReaderAliasModel readerAlias )
+    {
+
+      return PartialView( "BookNotes" );
+    }
   }
 }

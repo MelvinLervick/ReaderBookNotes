@@ -8,7 +8,7 @@
 <div class="Notes">
   <h2>@ViewBag.Title</h2>
   <h3>&nbsp;for&nbsp;</h3>
-  <p class="Reader">Reader's Name</p>
+  @Html.Partial( "ReaderAliasPartial" )
 
   @using (Html.BeginForm())
   {

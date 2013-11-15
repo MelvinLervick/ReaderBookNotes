@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using rbn.Providers.RbnBLL.Adapters;
+
+namespace rbn.Providers.RbnBLL
+{
+  public class ReaderAliasProvider : IReaderAliases
+  {
+    public ReaderAliasProvider()
+    {
+    }
+
+    #region IReaderAliases Members
+
+    public List<Models.ReaderAliasModel> GetReaderAliases()
+    {
+      return ReaderAliasAdapter.TransformToUiModel( Provider.GetReaderAliases() );
+    }
+
+    #endregion
+
+    private rbnBLL.Providers.UserProfileProvider provider;
+    internal rbnBLL.Providers.UserProfileProvider Provider
+    {
+      get { return provider ?? (provider = new rbnBLL.Providers.UserProfileProvider()); }
+    }
+  }
+}

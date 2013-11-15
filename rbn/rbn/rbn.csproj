@@ -172,6 +172,7 @@
     <Compile Include="Models\ReaderNotesModel.cs" />
     <Compile Include="Models\SearchBarModel.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
+    <Compile Include="Models\ReaderAliasModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\IAudienceProvider.cs" />
     <Compile Include="Providers\IAuthorProvider.cs" />
@@ -182,10 +183,13 @@
     <Compile Include="Providers\RbnBLL\Adapters\AudienceAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\AuthorAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\BookAdapter.cs" />
+    <Compile Include="Providers\RbnBLL\Adapters\ReaderAliasAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\UserAccountAdapter.cs" />
     <Compile Include="Providers\RbnBLL\AudienceProvider.cs" />
     <Compile Include="Providers\RbnBLL\AuthorProvider.cs" />
     <Compile Include="Providers\RbnBLL\BookProvider.cs" />
+    <Compile Include="Providers\IUserProfile.cs" />
+    <Compile Include="Providers\RbnBLL\ReaderAliasProvider.cs" />
     <Compile Include="Providers\RbnBLL\UserAccountProvider.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +320,7 @@
     <Content Include="Views\Book\Update.cshtml" />
     <Content Include="Views\Author\Create.cshtml" />
     <Content Include="Views\Author\Update.cshtml" />
+    <Content Include="Views\Shared\ReaderAliasPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

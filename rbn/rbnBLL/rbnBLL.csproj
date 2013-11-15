@@ -65,6 +65,7 @@
     <Compile Include="Providers\AuthorProvider.cs" />
     <Compile Include="Providers\BookProvider.cs" />
     <Compile Include="Providers\UserAccountProvider.cs" />
+    <Compile Include="Providers\UserProfileProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
