@@ -10,8 +10,8 @@ namespace rbn.Providers.RbnBLL.Adapters
     {
       return new ReaderAliasModel
       {
-        UserId = fields.UserId,
-        UserName = fields.UserName
+        ReaderId = fields.UserId,
+        Alias = fields.UserName
       };
     }
 

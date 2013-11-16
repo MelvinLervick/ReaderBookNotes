@@ -1,6 +1,6 @@
 ﻿namespace rbn.Providers
 {
-  public interface IRatings
+  public interface IRatingsProvider
   {
      
   }

@@ -1246,6 +1246,12 @@ tr.pager td {
   margin: 0px;
   font-size: 1.2em;
 }
+  .Notes .ReaderAlias select {
+    width: 260px;
+    margin: 0px;
+    padding: 5px;
+  }
+
 /* Change Password
   -----------------------------------------------------*/
 .Edit {

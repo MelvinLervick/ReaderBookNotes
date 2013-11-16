@@ -3,19 +3,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace rbn.Models
 {
-  [Table( "UserProfile" )]
   public class ReaderAliasModel
   {
     [Key]
-    public int UserId
+    public int ReaderId
     {
       get;
       set;
     }
 
-    [Display( Name = "Reader Alias" )]
-    [StringLength( 50 )]
-    public string UserName
+    public string Alias
     {
       get;
       set;

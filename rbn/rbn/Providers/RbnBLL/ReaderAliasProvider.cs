@@ -6,7 +6,7 @@ using rbn.Providers.RbnBLL.Adapters;
 
 namespace rbn.Providers.RbnBLL
 {
-  public class ReaderAliasProvider : IReaderAliases
+  public class ReaderAliasProvider : IReaderAliasProvider
   {
     public ReaderAliasProvider()
     {

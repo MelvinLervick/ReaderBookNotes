@@ -4,7 +4,7 @@ using rbn.Models;
 
 namespace rbn.Providers
 {
-  public interface IReaderAliases
+  public interface IReaderAliasProvider
   {
     List<ReaderAliasModel> GetReaderAliases();
   }

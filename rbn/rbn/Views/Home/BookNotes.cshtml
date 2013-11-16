@@ -6,15 +6,16 @@
 }
 
 <div class="Notes">
-  <h2>@ViewBag.Title</h2>
-  <h3>&nbsp;for&nbsp;</h3>
-  @Html.Partial( "ReaderAliasPartial" )
-
-  @using (Html.BeginForm())
+  @using (Html.BeginForm( "BookNotes", "Home", FormMethod.Post, new { id = "BookNotes" } ))
   {
+    <h2>@ViewBag.Title</h2>
+    <h3>&nbsp;for&nbsp;</h3>
+    @Html.Partial( "ReaderAliasPartial", Model )
+
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary( "" )
-    @Html.ValidationSummary( true )
+
+    @Html.HiddenFor( model => model.ReaderId )
+
     if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ))
     {
     <div class="contributorNotes">

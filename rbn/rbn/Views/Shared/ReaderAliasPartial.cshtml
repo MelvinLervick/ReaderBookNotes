@@ -1,9 +1,10 @@
-﻿@model rbn.Models.ReaderAliasModel
+﻿@model rbn.Models.ReaderNotesModel
 
 <section id="AliasSelectorSection">
-    <div class="ReaderAlias">
-      @*@Html.DropDownList("UserId", string.Empty)*@ <<  < Reader >  >>
-    </div>
+  <div class="ReaderAlias">
+    @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList, " --Select Reader Alias-- ", 
+        htmlAttributes: new { @Id = "ddlReaderAlias", onchange = "document.getElementById('BookNotes').submit();" } )
+  </div>
 </section>
 @*<p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.UserId }) |
