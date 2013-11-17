@@ -1241,15 +1241,18 @@ tr.pager td {
   position: absolute;
   color: darkblue;
   left: 265px;
-  top: 8px;
+  top: 3px;
   padding: 0px;
   margin: 0px;
   font-size: 1.2em;
 }
   .Notes .ReaderAlias select {
-    width: 260px;
+    width: 360px;
     margin: 0px;
-    padding: 5px;
+    padding: 5px 5px 0px 5px;
+    font-size: 1.2em;
+    color: darkblue;
+    background-color: #c3f2db;
   }
 
 /* Change Password

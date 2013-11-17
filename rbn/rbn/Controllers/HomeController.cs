@@ -57,7 +57,7 @@ namespace rbn.Controllers
       {
         selectUserId = AccountProvider.GetUserManagedFieldsFromUserAccount(User.Identity.Name).UserId;
       }
-      ViewBag.ReaderId = new SelectList(ReaderAliasProvider.GetReaderAliases(), "UserId", "UserName",
+      ViewBag.ReaderId = new SelectList(ReaderAliasProvider.GetReaderAliases(), "ReaderId", "Alias",
         selectUserId);
 
       return View();
