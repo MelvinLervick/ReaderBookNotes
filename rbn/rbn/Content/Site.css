@@ -1177,7 +1177,7 @@ tr.pager td {
 .Notes {
   position: absolute;
   border: 3px green solid;
-  background-color: #90eec0;
+  background-color: #e6daf4;
   left: 5px;
   top: 75px;
   right: 5px;
@@ -1249,10 +1249,10 @@ tr.pager td {
   .Notes .ReaderAlias select {
     width: 360px;
     margin: 0px;
-    padding: 5px 5px 0px 5px;
+    padding: 5px 5px 3px 5px;
     font-size: 1.2em;
     color: darkblue;
-    background-color: #c3f2db;
+    background-color: #cacceb;
   }
 
 /* Change Password

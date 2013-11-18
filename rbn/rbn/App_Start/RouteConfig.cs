@@ -18,7 +18,7 @@ namespace rbn
         url: "{controller}/{action}/{id}/{enabled}",
         defaults: new
         {
-          controller = "Book",
+          controller = "Author",
           action = "Delete",
           id = UrlParameter.Optional,
           enabled = UrlParameter.Optional

@@ -26,7 +26,7 @@ namespace rbn.Filters
 			public MembershipInitializer()
 			{
 				Database.SetInitializer<UsersContext>( null );
-				WebSecurity.InitializeDatabaseConnection( "DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true );
+				WebSecurity.InitializeDatabaseConnection( "DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: false );
 			}
 		}
 	}

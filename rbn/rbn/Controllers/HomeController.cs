@@ -9,6 +9,8 @@ namespace rbn.Controllers
 {
 	public class HomeController : Controller
 	{
+	  private const string READER_BOOK_NOTES = "Reader Book Notes";
+
     private IReaderAliasProvider readerAliasProvider;
     internal IReaderAliasProvider ReaderAliasProvider
     {
@@ -36,7 +38,7 @@ namespace rbn.Controllers
 
 		public ActionResult About()
 		{
-			ViewBag.Message = "Reader Book Notes";
+      ViewBag.Message = READER_BOOK_NOTES;
 
 			return View();
 		}
@@ -48,28 +50,46 @@ namespace rbn.Controllers
 			return View();
 		}
 
-    public ActionResult BookNotes()
+    public ActionResult BookNotes( int? id )
     {
-      var selectUserId = 0;
-      ViewBag.Message = "Reader Book Notes";
-      if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") ||
-          Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
+      ViewBag.Message = READER_BOOK_NOTES;
+      ViewBag.ReaderId = FillReaderAliasList();
+      var model = new ReaderNotesModel
       {
-        selectUserId = AccountProvider.GetUserManagedFieldsFromUserAccount(User.Identity.Name).UserId;
-      }
-      ViewBag.ReaderId = new SelectList(ReaderAliasProvider.GetReaderAliases(), "ReaderId", "Alias",
-        selectUserId);
+        AudienceId = 1,
+        AuthorId = 1,
+        AuthorName = "Doe, John",
+        BookId = 1,
+        BookName = "Test Title",
+        Rating = 1,
+        ReaderId = 4,
+        ReaderNoteId = 1
+      };
 
-      return View();
+      return View( model );
     }
+
+	  private SelectList FillReaderAliasList()
+	  {
+      //var selectUserId = 0;
+
+      //if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") ||
+      //    Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
+      //{
+      //  selectUserId = AccountProvider.GetUserManagedFieldsFromUserAccount(User.Identity.Name).UserId;
+      //}
+
+	    return new SelectList(ReaderAliasProvider.GetReaderAliases(), "ReaderId", "Alias");
+	  }
 
     [HttpPost]
     public ActionResult BookNotes( ReaderNotesModel model )
 	  {
+      ViewBag.Message = READER_BOOK_NOTES;
       ViewBag.ReaderId = new SelectList( ReaderAliasProvider.GetReaderAliases(), "ReaderId", "Alias",
         model.ReaderId );
 
-      return View();
+      return View( model );
     }
 
 	  [HttpPost]

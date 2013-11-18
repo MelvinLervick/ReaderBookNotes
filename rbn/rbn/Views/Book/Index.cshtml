@@ -68,7 +68,7 @@
             {
               @Html.ActionLink("Edit", "Update", new {id = item.BookId}, new {@class = "Button", type = "button"})
             }
-            @Html.ActionLink( "Details", "Details", new { id = item.BookId }, new { @class="Button", type = "button" } )
+            @Html.ActionLink( "Book Notes", "BookNotes", "Home", new { id = item.BookId }, new { @class="Button", type = "button" } )
             @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator"))
             {
               if (item.Enabled)

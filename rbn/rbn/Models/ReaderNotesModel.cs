@@ -7,11 +7,17 @@ using System.Web;
 
 namespace rbn.Models
 {
-  [Table( "RatingNotes" )]
+  [Table( "ReaderNotes" )]
   public class ReaderNotesModel
   {
     [Key]
-    public int RatingNoteId
+    public int ReaderNoteId
+    {
+      get;
+      set;
+    }
+
+    public int ReaderId
     {
       get;
       set;
@@ -23,11 +29,11 @@ namespace rbn.Models
       set;
     }
 
-    public int ReaderId
-    {
-      get;
-      set;
-    }
+    public string BookName { get; set; }
+
+    public int AuthorId { get; set; }
+
+    public string AuthorName { get; set; }
 
     [Display( Name = "Rating" )]
     [Range( 1, 9 )]
