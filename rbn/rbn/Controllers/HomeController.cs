@@ -53,41 +53,32 @@ namespace rbn.Controllers
     public ActionResult BookNotes( int? id )
     {
       ViewBag.Message = READER_BOOK_NOTES;
-      ViewBag.ReaderId = FillReaderAliasList();
       var model = new ReaderNotesModel
       {
         AudienceId = 1,
         AuthorId = 1,
         AuthorName = "Doe, John",
-        BookId = 1,
-        BookName = "Test Title",
+        BookId = id ?? 0,
+        Title = "Test Title",
         Rating = 1,
         ReaderId = 4,
         ReaderNoteId = 1
       };
+      ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
 
       return View( model );
     }
 
-	  private SelectList FillReaderAliasList()
+	  private SelectList FillReaderAliasList( int id )
 	  {
-      //var selectUserId = 0;
-
-      //if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator") ||
-      //    Roles.GetRolesForUser(User.Identity.Name).Contains("Contributor"))
-      //{
-      //  selectUserId = AccountProvider.GetUserManagedFieldsFromUserAccount(User.Identity.Name).UserId;
-      //}
-
-	    return new SelectList(ReaderAliasProvider.GetReaderAliases(), "ReaderId", "Alias");
+	    return new SelectList(ReaderAliasProvider.GetReaderAliases(), "ReaderId", "Alias", id);
 	  }
 
     [HttpPost]
     public ActionResult BookNotes( ReaderNotesModel model )
 	  {
       ViewBag.Message = READER_BOOK_NOTES;
-      ViewBag.ReaderId = new SelectList( ReaderAliasProvider.GetReaderAliases(), "ReaderId", "Alias",
-        model.ReaderId );
+      ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
 
       return View( model );
     }

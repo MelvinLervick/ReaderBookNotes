@@ -15,6 +15,17 @@
     @Html.AntiForgeryToken()
 
     @Html.HiddenFor( model => model.ReaderId )
+    @Html.HiddenFor( model => model.BookId )
+    @Html.HiddenFor( model => model.AuthorId )
+
+    <div class="AuthorTitleRating">
+      @Html.LabelFor( model => model.Title, new { @class = "LabelTitle" } )
+      @Html.Label( Model.Title, new { @class = "Title" } )
+      @Html.LabelFor( model => model.AuthorName, new { @class = "LabelAuthor" } )
+      @Html.Label( Model.AuthorName, new { @class = "AuthorName" } )
+      @Html.LabelFor( model => model.Rating, new { @class = "LabelRating" } )
+      @Html.Label( Model.Rating.ToString(), new { @class = "Rating" } )
+    </div>
 
     if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ))
     {

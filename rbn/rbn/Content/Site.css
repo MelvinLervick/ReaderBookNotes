@@ -1211,6 +1211,55 @@ tr.pager td {
   font-size: 1.2em;
 }
 
+.Notes .AuthorTitleRating {
+  position: absolute;
+  left: 10px;
+  top: 40px;
+  right: 10px;
+  padding: 0px;
+  margin: 0px;
+  height: 25px;
+}
+.Notes .AuthorTitleRating .LabelTitle {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.Notes .AuthorTitleRating .Title {
+  position: absolute;
+  bottom: 0px;
+  left: 50px;
+  font-size: 1.2em;
+}
+.Notes .AuthorTitleRating .LabelAuthor {
+  position: absolute;
+  bottom: 0px;
+  left: 375px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.Notes .AuthorTitleRating .AuthorName {
+  position: absolute;
+  bottom: 0px;
+  left: 450px;
+  font-size: 1.2em;
+}
+.Notes .AuthorTitleRating .LabelRating {
+  position: absolute;
+  bottom: 0px;
+  left: 800px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.Notes .AuthorTitleRating .Rating {
+  position: absolute;
+  bottom: 0px;
+  left: 875px;
+  font-size: 1.2em;
+}
+
 .Notes .readerNotes {
   position: absolute;
   border: 3px blue solid;

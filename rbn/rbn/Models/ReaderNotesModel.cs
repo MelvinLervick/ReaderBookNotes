@@ -17,6 +17,7 @@ namespace rbn.Models
       set;
     }
 
+    [Required]
     public int ReaderId
     {
       get;
@@ -29,13 +30,15 @@ namespace rbn.Models
       set;
     }
 
-    public string BookName { get; set; }
+    [Display(Name = "Title:")]
+    public string Title { get; set; }
 
     public int AuthorId { get; set; }
 
+    [Display( Name = "Author:" )]
     public string AuthorName { get; set; }
 
-    [Display( Name = "Rating" )]
+    [Display( Name = "Rating:" )]
     [Range( 1, 9 )]
     public int Rating
     {

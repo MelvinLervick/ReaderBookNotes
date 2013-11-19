@@ -3,8 +3,8 @@
 
 <section id="AliasSelectorSection">
   <div class="ReaderAlias">
-    @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList, " --Select Reader Alias-- ", 
-      htmlAttributes: new { @Id = "ddlReaderAlias", onchange = "document.getElementById('BookNotes').submit();" } )
+    @Html.DropDownListFor( reader => reader.ReaderId, ViewBag.ReaderId as SelectList, " --Select Reader Alias-- ", 
+      htmlAttributes: new { @Id = "ReaderId", onchange = "document.getElementById('BookNotes').submit();" } )
   </div>
 </section>
 @*<p>
