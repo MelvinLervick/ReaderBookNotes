@@ -10,13 +10,18 @@
   {
     <h2>@ViewBag.Title</h2>
     <h3>&nbsp;for&nbsp;</h3>
-    @Html.Partial( "ReaderAliasPartial", Model )
+    <div class="ReaderAlias">
+      @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList, " --Select Reader Alias-- ", 
+          htmlAttributes: new { onchange = "document.getElementById('BookNotes').submit();" } )
+    </div>
 
     @Html.AntiForgeryToken()
 
-    @Html.HiddenFor( model => model.ReaderId )
     @Html.HiddenFor( model => model.BookId )
+    @Html.HiddenFor( model => model.Title )
     @Html.HiddenFor( model => model.AuthorId )
+    @Html.HiddenFor( model => model.AuthorName )
+    @Html.HiddenFor( model => model.Rating )
 
     <div class="AuthorTitleRating">
       @Html.LabelFor( model => model.Title, new { @class = "LabelTitle" } )
@@ -29,16 +34,20 @@
 
     if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ))
     {
-    <div class="contributorNotes">
-      Contributor Body
-    </div>
+      <div class="contributorNotes">
+        Contributor Body
+      </div>
     }
     else
     {
-    <div class="readerNotes">
-      Reader Body
-    </div>
+      <div class="readerNotes">
+        Reader Body
+      </div>
     }
+    <div class="Audience">
+      @Html.LabelFor( model => model.AudienceId, new { @class = "Label" } )
+      @Html.DropDownList( "AudienceId", "--Select Audience--" )
+    </div>
   }
 </div>
 

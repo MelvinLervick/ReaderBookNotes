@@ -46,6 +46,7 @@ namespace rbn.Models
       set;
     }
 
+    [Display( Name = "Audience:" )]
     public int AudienceId
     {
       get;

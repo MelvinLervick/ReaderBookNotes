@@ -147,10 +147,10 @@ footer {
   margin: 0px;
 }
 
-footer p {
-  margin: 5px 0px 0px 0px;
-  padding: 0px;
-}
+  footer p {
+    margin: 5px 0px 0px 0px;
+    padding: 0px;
+  }
 
 /* site title
 ----------------------------------------------------------*/
@@ -166,9 +166,9 @@ footer p {
     text-decoration: none;
   }
 
-  .site-title a:hover {
-    text-decoration: underline;
-  }
+    .site-title a:hover {
+      text-decoration: underline;
+    }
 
 /* login
 ----------------------------------------------------------*/
@@ -187,14 +187,14 @@ footer p {
     color: white;
   }
 
-  #login a:hover {
-    background-color: lightgray;
-    color: darkblue;
-  }
+    #login a:hover {
+      background-color: lightgray;
+      color: darkblue;
+    }
 
-  #login a textarea {
-    color: white;
-  }
+    #login a textarea {
+      color: white;
+    }
 
     #login a.username {
       background: none;
@@ -457,7 +457,7 @@ fieldset {
     list-style: none;
   }
 
-    /*fieldset ol li {
+/*fieldset ol li {
       padding-bottom: 5px;
     }*/
 
@@ -809,20 +809,20 @@ tr.pager td {
   font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
 }
 
-.searchBar input[type="radio"] {
-  width: 10px;
-  background: none;
-  border: none;
-  font-weight: bold;
-  font-size: .85em;
-  margin: 5px 0 6px 0;
-  padding: 5px;
-}
+  .searchBar input[type="radio"] {
+    width: 10px;
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: .85em;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+  }
 
-.searchBar .searchLabel {
-  display:inline-block; 
-  width: 50px;
-}
+  .searchBar .searchLabel {
+    display: inline-block;
+    width: 50px;
+  }
 
 #btnSearch {
   width: 60px;
@@ -830,19 +830,20 @@ tr.pager td {
   margin: 0px;
   padding: 5px 0px 6px 0px;
 }
+
 .searchBar .searchTextBox {
   width: 500px;
 }
 
 .searchBar .searchRadio {
   font-size: .85em;
-  display:inline-block; 
+  display: inline-block;
   width: 50px;
 }
 
 .searchBar .searchCheckbox {
   font-size: .85em;
-  display:inline-block; 
+  display: inline-block;
   width: 10px;
 }
 
@@ -858,151 +859,172 @@ tr.pager td {
   bottom: 5px;
 }
 
-.Author h2 {
-  position: absolute;
-  left: 10px;
-  top: 0px;
-  padding: 0px;
-  margin: 0px;
-}
-.Author .AddButton {
-  position: absolute;
-  right: 30px;
-  top: 5px;
-  padding: 2px 5px;
-  margin: 0px;
-  text-decoration: none;
-  border: 1px solid darkgrey;
-  background-color: lightblue;
-  color: darkblue;
-}
-.Author .AddButton:hover {
-  background-color: yellow;
-  color: darkblue;
-}
+  .Author h2 {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    padding: 0px;
+    margin: 0px;
+  }
 
-.Author .List {
-  position: absolute;
-  border: 0px;
-  left: 10px;
-  top: 35px;
-  right: 10px;
-  bottom: 10px;
-  overflow-x: scroll;
-  overflow-y: scroll;
-}
-.Author .List table {
-  border: 0px blue solid;
-  border-collapse: collapse;
-}
-.Author .List table td {
-  border: 0px blue solid;
-  padding: 2px 3px;
-}
-.Author .List table th {
-  border-bottom: 2px blue solid;
-  text-align: center;
-}
-.Author .List table .Separator {
-  border: 0px;
-  width: 5px;
-  padding: 0px;
-  margin: 0px;
-}
-.Author .List table .FirstName {
-  width: 225px;
-}
-.Author .List table .MiddleName {
-  width: 150px;
-}
-.Author .List table .LastName {
-  width: 225px;
-}
-.Author .List table .Rating {
-  width: 60px;
-}
-.Author .List table .RatingValue {
-  text-align: center;
-}
+  .Author .AddButton {
+    position: absolute;
+    right: 30px;
+    top: 5px;
+    padding: 2px 5px;
+    margin: 0px;
+    text-decoration: none;
+    border: 1px solid darkgrey;
+    background-color: lightblue;
+    color: darkblue;
+  }
 
-.Author .Message {
-  position: absolute;
-  left: 250px;
-  top: 5px;
-  padding: 0px;
-  margin: 0px;
-  color: red;
-}
+    .Author .AddButton:hover {
+      background-color: yellow;
+      color: darkblue;
+    }
 
-.Author .List table .Buttons {
-  width: 250px;
-  border: 0px;
-}
-.Author .List table .Button {
-  padding: 0px 5px;
-  margin: 0px;
-  text-decoration: none;
-  border: 1px solid darkgrey;
-  background-color: lightblue;
-  color: darkblue;
-}
-.Author .List table .Button:hover {
-  background-color: yellow;
-  color: darkblue;
-}
+  .Author .List {
+    position: absolute;
+    border: 0px;
+    left: 10px;
+    top: 35px;
+    right: 10px;
+    bottom: 10px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
 
-.Author .Edit {
-  position: absolute;
-  border: 0px;
-  left: 10px;
-  top: 35px;
-  right: 100px;
-  bottom: 10px;
-}
-  .Author .Edit ol li {
-    padding-bottom: 5px;
-  }
-  .Author .Edit ol li .Label {
-    display:inline-block; 
-    width: 125px;
-  }
-  .Author .Edit ol li .FirstName {
-    width: 400px;
+    .Author .List table {
+      border: 0px blue solid;
+      border-collapse: collapse;
+    }
+
+      .Author .List table td {
+        border: 0px blue solid;
+        padding: 2px 3px;
+      }
+
+      .Author .List table th {
+        border-bottom: 2px blue solid;
+        text-align: center;
+      }
+
+      .Author .List table .Separator {
+        border: 0px;
+        width: 5px;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .Author .List table .FirstName {
+        width: 225px;
+      }
+
+      .Author .List table .MiddleName {
+        width: 150px;
+      }
+
+      .Author .List table .LastName {
+        width: 225px;
+      }
+
+      .Author .List table .Rating {
+        width: 60px;
+      }
+
+      .Author .List table .RatingValue {
+        text-align: center;
+      }
+
+  .Author .Message {
+    position: absolute;
+    left: 250px;
+    top: 5px;
+    padding: 0px;
     margin: 0px;
-    padding: 5px;
+    color: red;
   }
-  .Author .Edit ol li .MiddleName {
-    width: 300px;
+
+  .Author .List table .Buttons {
+    width: 250px;
+    border: 0px;
+  }
+
+  .Author .List table .Button {
+    padding: 0px 5px;
     margin: 0px;
-    padding: 5px;
+    text-decoration: none;
+    border: 1px solid darkgrey;
+    background-color: lightblue;
+    color: darkblue;
   }
-  .Author .Edit ol li .LastName {
-    width: 400px;
-    margin: 0px;
-    padding: 5px;
+
+    .Author .List table .Button:hover {
+      background-color: yellow;
+      color: darkblue;
+    }
+
+  .Author .Edit {
+    position: absolute;
+    border: 0px;
+    left: 10px;
+    top: 35px;
+    right: 100px;
+    bottom: 10px;
   }
-  .Author .Edit ol li .Rating {
-    width: 100px;
-    margin: 0px;
-    padding: 5px;
-  }
-  .Author .Edit ol li .Enabled {
-    margin: 0px;
-    padding: 5px;
-  }
+
+    .Author .Edit ol li {
+      padding-bottom: 5px;
+    }
+
+      .Author .Edit ol li .Label {
+        display: inline-block;
+        width: 125px;
+      }
+
+      .Author .Edit ol li .FirstName {
+        width: 400px;
+        margin: 0px;
+        padding: 5px;
+      }
+
+      .Author .Edit ol li .MiddleName {
+        width: 300px;
+        margin: 0px;
+        padding: 5px;
+      }
+
+      .Author .Edit ol li .LastName {
+        width: 400px;
+        margin: 0px;
+        padding: 5px;
+      }
+
+      .Author .Edit ol li .Rating {
+        width: 100px;
+        margin: 0px;
+        padding: 5px;
+      }
+
+      .Author .Edit ol li .Enabled {
+        margin: 0px;
+        padding: 5px;
+      }
 
   .Author .BackToList {
-  padding: 2px 5px;
-  margin: 10px 0px 0px;
-  text-decoration: none;
-  border: 1px solid darkgrey;
-  background-color: lightblue;
-  color: darkblue;
+    padding: 2px 5px;
+    margin: 10px 0px 0px;
+    text-decoration: none;
+    border: 1px solid darkgrey;
+    background-color: lightblue;
+    color: darkblue;
   }
-  .Author .BackToList:hover {
-  background-color: yellow;
-  color: darkblue;
-  }
+
+    .Author .BackToList:hover {
+      background-color: yellow;
+      color: darkblue;
+    }
 
 /* BOOKS
   -----------------------------------------------------*/
@@ -1016,148 +1038,170 @@ tr.pager td {
   bottom: 5px;
 }
 
-.Book h2 {
-  position: absolute;
-  left: 10px;
-  top: 0px;
-  padding: 0px;
-  margin: 0px;
-}
-.Book .AddButton {
-  position: absolute;
-  right: 30px;
-  top: 5px;
-  padding: 2px 5px;
-  margin: 0px;
-  text-decoration: none;
-  border: 1px solid darkgrey;
-  background-color: lightblue;
-  color: darkblue;
-}
-.Book .AddButton:hover {
-  background-color: yellow;
-  color: darkblue;
-}
+  .Book h2 {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    padding: 0px;
+    margin: 0px;
+  }
 
-.Book .Message {
-  position: absolute;
-  left: 250px;
-  top: 5px;
-  padding: 0px;
-  margin: 0px;
-  color: red;
-}
+  .Book .AddButton {
+    position: absolute;
+    right: 30px;
+    top: 5px;
+    padding: 2px 5px;
+    margin: 0px;
+    text-decoration: none;
+    border: 1px solid darkgrey;
+    background-color: lightblue;
+    color: darkblue;
+  }
 
-.Book .List {
-  position: absolute;
-  border: 0px;
-  left: 10px;
-  top: 35px;
-  right: 10px;
-  bottom: 10px;
-  overflow-x: scroll;
-  overflow-y: scroll;
-}
+    .Book .AddButton:hover {
+      background-color: yellow;
+      color: darkblue;
+    }
 
-.Book .List table {
-  border: 0px blue solid;
-  border-collapse: collapse;
-}
-.Book .List table td {
-  border: 0px blue solid;
-  padding: 2px 3px;
-}
-.Book .List table th {
-  border-bottom: 2px blue solid;
-  text-align: center;
-}
-.Book .List table .Separator {
-  border: 0px;
-  width: 5px;
-  padding: 0px;
-  margin: 0px;
-}
-.Book .List table .Title {
-  width: 250px;
-}
-.Book .List table .AuthorName {
-  width: 200px;
-}
-.Book .List table .ISBN {
-  width: 150px;
-}
-.Book .List table .Audience {
-  width: 100px;
-}
-.Book .List table .Rating {
-  width: 50px;
-}
-.Book .List table .RatingValue {
-  text-align: center;
-}
-.Book .List table .Buttons {
-  width: 250px;
-  border: 0px;
-}
-.Book .List table .Button {
-  padding: 0px 5px;
-  margin: 0px;
-  text-decoration: none;
-  border: 1px solid darkgrey;
-  background-color: lightblue;
-  color: darkblue;
-}
-.Book .List table .Button:hover {
-  background-color: yellow;
-  color: darkblue;
-}
+  .Book .Message {
+    position: absolute;
+    left: 250px;
+    top: 5px;
+    padding: 0px;
+    margin: 0px;
+    color: red;
+  }
 
-.Book .Edit {
-  position: absolute;
-  border: 0px;
-  left: 10px;
-  top: 35px;
-  right: 10px;
-  bottom: 10px;
-  overflow-x: scroll;
-  overflow-y: scroll;
-}
-  .Book .Edit ol li {
-    padding-bottom: 5px;
+  .Book .List {
+    position: absolute;
+    border: 0px;
+    left: 10px;
+    top: 35px;
+    right: 10px;
+    bottom: 10px;
+    overflow-x: scroll;
+    overflow-y: scroll;
   }
-  .Book .Edit ol li .Label {
-    display:inline-block; 
-    width: 125px;
+
+    .Book .List table {
+      border: 0px blue solid;
+      border-collapse: collapse;
+    }
+
+      .Book .List table td {
+        border: 0px blue solid;
+        padding: 2px 3px;
+      }
+
+      .Book .List table th {
+        border-bottom: 2px blue solid;
+        text-align: center;
+      }
+
+      .Book .List table .Separator {
+        border: 0px;
+        width: 5px;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .Book .List table .Title {
+        width: 250px;
+      }
+
+      .Book .List table .AuthorName {
+        width: 200px;
+      }
+
+      .Book .List table .ISBN {
+        width: 150px;
+      }
+
+      .Book .List table .Audience {
+        width: 100px;
+      }
+
+      .Book .List table .Rating {
+        width: 50px;
+      }
+
+      .Book .List table .RatingValue {
+        text-align: center;
+      }
+
+      .Book .List table .Buttons {
+        width: 250px;
+        border: 0px;
+      }
+
+      .Book .List table .Button {
+        padding: 0px 5px;
+        margin: 0px;
+        text-decoration: none;
+        border: 1px solid darkgrey;
+        background-color: lightblue;
+        color: darkblue;
+      }
+
+        .Book .List table .Button:hover {
+          background-color: yellow;
+          color: darkblue;
+        }
+
+  .Book .Edit {
+    position: absolute;
+    border: 0px;
+    left: 10px;
+    top: 35px;
+    right: 10px;
+    bottom: 10px;
+    overflow-x: scroll;
+    overflow-y: scroll;
   }
-  .Book .Edit ol li .Title {
-    width: 400px;
-    margin: 0px;
-    padding: 5px;
-  }
-  .Book .Edit ol li .ISBN {
-    width: 250px;
-    margin: 0px;
-    padding: 5px;
-  }
-  .Book .Edit ol li select {
-    width: 260px;
-    margin: 0px;
-    padding: 5px;
-  }
-  .Book .Edit ol li .Audience {
-    width: 125px;
-    margin: 0px;
-    padding: 5px;
-  }
-  .Book .Edit ol li .Rating {
-    width: 100px;
-    margin: 0px;
-    padding: 5px;
-  }
-  .Book .Edit ol li .Enabled {
-    margin: 0px;
-    padding: 5px;
-  }
+
+    .Book .Edit ol li {
+      padding-bottom: 5px;
+    }
+
+      .Book .Edit ol li .Label {
+        display: inline-block;
+        width: 125px;
+      }
+
+      .Book .Edit ol li .Title {
+        width: 400px;
+        margin: 0px;
+        padding: 5px;
+      }
+
+      .Book .Edit ol li .ISBN {
+        width: 250px;
+        margin: 0px;
+        padding: 5px;
+      }
+
+      .Book .Edit ol li select {
+        width: 260px;
+        margin: 0px;
+        padding: 5px;
+      }
+
+      .Book .Edit ol li .Audience {
+        width: 125px;
+        margin: 0px;
+        padding: 5px;
+      }
+
+      .Book .Edit ol li .Rating {
+        width: 100px;
+        margin: 0px;
+        padding: 5px;
+      }
+
+      .Book .Edit ol li .Enabled {
+        margin: 0px;
+        padding: 5px;
+      }
 
   .Book .BackToList {
     padding: 2px 5px;
@@ -1167,10 +1211,11 @@ tr.pager td {
     background-color: lightblue;
     color: darkblue;
   }
-  .Book .BackToList:hover {
-    background-color: yellow;
-    color: darkblue;
-  }
+
+    .Book .BackToList:hover {
+      background-color: yellow;
+      color: darkblue;
+    }
 
 /* Reader Note Panel
   -----------------------------------------------------*/
@@ -1184,125 +1229,158 @@ tr.pager td {
   bottom: 5px;
 }
 
-.Notes h2 {
-  position: absolute;
-  left: 10px;
-  top: 0px;
-  padding: 0px;
-  margin: 0px;
-}
-
-.Notes h3 {
-  position: absolute;
-  color: red;
-  left: 230px;
-  top: 8px;
-  padding: 0px;
-  margin: 0px;
-}
-
-.Notes .Reader {
-  position: absolute;
-  color: darkblue;
-  left: 265px;
-  top: 8px;
-  padding: 0px;
-  margin: 0px;
-  font-size: 1.2em;
-}
-
-.Notes .AuthorTitleRating {
-  position: absolute;
-  left: 10px;
-  top: 40px;
-  right: 10px;
-  padding: 0px;
-  margin: 0px;
-  height: 25px;
-}
-.Notes .AuthorTitleRating .LabelTitle {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  font-size: 1.2em;
-  font-weight: bold;
-}
-.Notes .AuthorTitleRating .Title {
-  position: absolute;
-  bottom: 0px;
-  left: 50px;
-  font-size: 1.2em;
-}
-.Notes .AuthorTitleRating .LabelAuthor {
-  position: absolute;
-  bottom: 0px;
-  left: 375px;
-  font-size: 1.2em;
-  font-weight: bold;
-}
-.Notes .AuthorTitleRating .AuthorName {
-  position: absolute;
-  bottom: 0px;
-  left: 450px;
-  font-size: 1.2em;
-}
-.Notes .AuthorTitleRating .LabelRating {
-  position: absolute;
-  bottom: 0px;
-  left: 800px;
-  font-size: 1.2em;
-  font-weight: bold;
-}
-.Notes .AuthorTitleRating .Rating {
-  position: absolute;
-  bottom: 0px;
-  left: 875px;
-  font-size: 1.2em;
-}
-
-.Notes .readerNotes {
-  position: absolute;
-  border: 3px blue solid;
-  left: 5px;
-  top: 70px;
-  right: 5px;
-  bottom: 65px;
-  overflow-x: scroll;
-  overflow-y: scroll;
-  padding: 5px;
-}
-
-.Notes .contributorNotes {
-  position: absolute;
-  border: 3px red solid;
-  left: 5px;
-  top: 70px;
-  right: 5px;
-  bottom: 65px;
-  overflow-x: scroll;
-  overflow-y: scroll;
-  padding: 5px;
-}
-
-/* Reader Alias Selector
-  -----------------------------------------------------*/
-.Notes .ReaderAlias {
-  position: absolute;
-  color: darkblue;
-  left: 265px;
-  top: 3px;
-  padding: 0px;
-  margin: 0px;
-  font-size: 1.2em;
-}
-  .Notes .ReaderAlias select {
-    width: 360px;
+  .Notes h2 {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    padding: 0px;
     margin: 0px;
-    padding: 5px 5px 3px 5px;
-    font-size: 1.2em;
-    color: darkblue;
-    background-color: #cacceb;
   }
+
+  .Notes h3 {
+    position: absolute;
+    color: red;
+    left: 230px;
+    top: 8px;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .Notes .Reader {
+    position: absolute;
+    color: darkblue;
+    left: 265px;
+    top: 8px;
+    padding: 0px;
+    margin: 0px;
+    font-size: 1.2em;
+  }
+
+  .Notes .AuthorTitleRating {
+    position: absolute;
+    left: 10px;
+    top: 40px;
+    right: 10px;
+    padding: 0px;
+    margin: 0px;
+    height: 25px;
+  }
+
+    .Notes .AuthorTitleRating .LabelTitle {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .Notes .AuthorTitleRating .Title {
+      position: absolute;
+      bottom: 0px;
+      left: 50px;
+      font-size: 1.2em;
+    }
+
+    .Notes .AuthorTitleRating .LabelAuthor {
+      position: absolute;
+      bottom: 0px;
+      left: 375px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .Notes .AuthorTitleRating .AuthorName {
+      position: absolute;
+      bottom: 0px;
+      left: 450px;
+      font-size: 1.2em;
+    }
+
+    .Notes .AuthorTitleRating .LabelRating {
+      position: absolute;
+      bottom: 0px;
+      left: 800px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .Notes .AuthorTitleRating .Rating {
+      position: absolute;
+      bottom: 0px;
+      left: 875px;
+      font-size: 1.2em;
+    }
+
+  .Notes .readerNotes {
+    position: absolute;
+    border: 3px blue solid;
+    left: 5px;
+    top: 70px;
+    right: 5px;
+    bottom: 80px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    padding: 5px;
+  }
+
+  .Notes .contributorNotes {
+    position: absolute;
+    border: 3px red solid;
+    left: 5px;
+    top: 70px;
+    right: 5px;
+    bottom: 80px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    padding: 5px;
+  }
+
+  .Notes .Audience {
+    position: absolute;
+    border: none;
+    left: 5px;
+    right: 5px;
+    bottom: 40px;
+    padding: 5px;
+  }
+
+    .Notes .Audience .Label {
+      /*position: relative;
+  border: none;*/
+      display: inline-block;
+      width: 100px;
+      font-size: 1.1em;
+    }
+
+    .Notes .Audience select {
+      left: 5px;
+      display: inline-block;
+      width: 200px;
+      font-size: 1.2em;
+      margin: 0px;
+      padding: 5px 5px 3px 5px;
+    }
+
+  /* Reader Alias Selector
+  -----------------------------------------------------*/
+  .Notes .ReaderAlias {
+    position: absolute;
+    color: darkblue;
+    left: 265px;
+    top: 3px;
+    padding: 0px;
+    margin: 0px;
+    font-size: 1.2em;
+  }
+
+    .Notes .ReaderAlias select {
+      width: 360px;
+      margin: 0px;
+      padding: 5px 5px 3px 5px;
+      font-size: 1.2em;
+      color: darkblue;
+      background-color: #cacceb;
+    }
 
 /* Change Password
   -----------------------------------------------------*/
