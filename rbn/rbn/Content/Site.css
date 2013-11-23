@@ -1299,7 +1299,7 @@ tr.pager td {
     .Notes .AuthorTitleRating .LabelRating {
       position: absolute;
       bottom: 0px;
-      left: 800px;
+      right: 50px;
       font-size: 1.2em;
       font-weight: bold;
     }
@@ -1307,7 +1307,7 @@ tr.pager td {
     .Notes .AuthorTitleRating .Rating {
       position: absolute;
       bottom: 0px;
-      left: 875px;
+      right: 25px;
       font-size: 1.2em;
     }
 
@@ -1344,22 +1344,76 @@ tr.pager td {
     padding: 5px;
   }
 
+  .Notes .Audience input.Previous {
+    position: absolute;
+    bottom: -4px;
+    left: 25px;
+    padding: 3px 5px 3px 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 1px solid darkgrey;
+    background-color: lightblue;
+    color: darkblue;
+  }
+
+  .Notes .Audience input.Next {
+    position: absolute;
+    bottom: -4px;
+    left: 110px;
+    padding: 3px 5px 3px 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 1px solid darkgrey;
+    background-color: lightblue;
+    color: darkblue;
+  }
+
     .Notes .Audience .Label {
-      /*position: relative;
-  border: none;*/
-      display: inline-block;
-      width: 100px;
+      position: absolute;
+      bottom: 5px;
+      left: 175px;
       font-size: 1.1em;
     }
 
     .Notes .Audience select {
-      left: 5px;
-      display: inline-block;
+      position: absolute;
+      bottom: 0px;
+      left: 250px;
       width: 200px;
       font-size: 1.2em;
       margin: 0px;
       padding: 5px 5px 3px 5px;
     }
+
+  .Notes .Audience .NotifyLabel {
+    position: absolute;
+    bottom: 5px;
+    right: 300px;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  .Notes .Audience .Notify {
+    position: absolute;
+    bottom: -3px;
+    right: 275px;
+    font-size: 1.2em;
+  }
+
+  .Notes .Audience input.SaveChanges {
+    position: absolute;
+    bottom: -4px;
+    right: 25px;
+    padding: 3px 25px 3px 25px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 1px solid darkgrey;
+    background-color: lightblue;
+    color: darkblue;
+  }
 
   /* Reader Alias Selector
   -----------------------------------------------------*/

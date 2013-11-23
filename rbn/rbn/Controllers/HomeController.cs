@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Security;
 using rbn.Models;
@@ -72,7 +74,8 @@ namespace rbn.Controllers
         Title = "Test Title",
         Rating = 1,
         ReaderId = 4,
-        ReaderNoteId = 1
+        ReaderNoteId = 1,
+        Notify = true
       };
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
       ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
@@ -94,13 +97,13 @@ namespace rbn.Controllers
     }
 
     [HttpPost]
-    public ActionResult BookNotes( ReaderNotesModel model )
+    public ActionResult BookNotes( ReaderNotesModel model, string buttons )
     {
       ViewBag.Message = READER_BOOK_NOTES;
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
       ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
 
-      return View( model );
+      return View( "BookNotes", model );
     }
 
     [HttpPost]

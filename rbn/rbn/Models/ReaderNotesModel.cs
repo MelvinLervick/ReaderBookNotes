@@ -52,5 +52,12 @@ namespace rbn.Models
       get;
       set;
     }
+
+    [Display( Name = "Notify:" )]
+    public bool Notify
+    {
+      get;
+      set;
+    }
   }
 }

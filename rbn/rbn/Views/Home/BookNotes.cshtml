@@ -45,8 +45,13 @@
       </div>
     }
     <div class="Audience">
+      <input type="submit" class="Previous" name="buttons" value="Previous" />
+      <input type="submit" class="Next" name="buttons" value="Next" />
       @Html.LabelFor( model => model.AudienceId, new { @class = "Label" } )
       @Html.DropDownList( "AudienceId", "--Select Audience--" )
+      @Html.LabelFor( model => model.Notify, new { @class = "NotifyLabel" } )
+      @Html.CheckBoxFor(model => model.Notify, new {@class = "Notify"} )
+      <input type="submit" class="SaveChanges" name="buttons" value="Save Changes" />
     </div>
   }
 </div>
