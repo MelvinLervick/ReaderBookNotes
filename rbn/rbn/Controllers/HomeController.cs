@@ -73,7 +73,7 @@ namespace rbn.Controllers
         BookId = id ?? 0,
         Title = "Test Title",
         ReaderRating = 1,
-        Rating = 2,
+        BookRating = 2,
         ReaderId = 4,
         ReaderNoteId = 1,
         Notify = true
@@ -108,9 +108,10 @@ namespace rbn.Controllers
     /// Add Note: if reader is registered, allow reader to add a new note.
     /// Save Changes: if reader is registered, allow the reader to save notes.
     /// </param>
+    /// <param name="bookButtons"></param>
     /// <returns></returns>
     [HttpPost]
-    public ActionResult BookNotes( ReaderNotesModel model, string buttons )
+    public ActionResult BookNotes( ReaderNotesModel model, string buttons, string bookButtons )
     {
       ViewBag.Message = READER_BOOK_NOTES;
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
@@ -123,14 +124,23 @@ namespace rbn.Controllers
     public PartialViewResult Search( SearchBarModel search )
     {
       ViewBag.Message = "Search Book Notes";
+      var model = new ReaderNotesModel
+      {
+        AudienceId = 2,
+        AuthorId = 2,
+        AuthorName = "Doe, Jack",
+        BookId = 1,
+        Title = "Test Title",
+        ReaderRating = 2,
+        BookRating = 2,
+        ReaderId = 4,
+        ReaderNoteId = 1,
+        Notify = true
+      };
+      ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
+      ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
 
-      return PartialView( "BookNotes" );
-    }
-
-    public PartialViewResult GetReader( ReaderNotesModel readerNotes )
-    {
-
-      return PartialView( "BookNotes" );
+      return PartialView( "BookNotes", model );
     }
   }
 }

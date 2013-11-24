@@ -1276,6 +1276,22 @@ tr.pager td {
       color: darkblue;
       background-color: #cacceb;
     }
+
+    .Notes .LabelReaderRating {
+      position: absolute;
+      top: 10px;
+      right: 60px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .Notes .ReaderRating {
+      position: absolute;
+      top: 10px;
+      right: 35px;
+      font-size: 1.2em;
+    }
+
   /*---------------------------------------------------
     Reader Alias Selector */
 
@@ -1287,6 +1303,7 @@ tr.pager td {
     padding: 0px;
     margin: 0px;
     height: 25px;
+    color: darkblue;
   }
 
     .Notes .AuthorTitleRating .LabelTitle {
@@ -1319,7 +1336,7 @@ tr.pager td {
       font-size: 1.2em;
     }
 
-    .Notes .AuthorTitleRating .LabelReaderRating {
+    .Notes .AuthorTitleRating .LabelBookRating {
       position: absolute;
       bottom: 0px;
       right: 50px;
@@ -1327,7 +1344,7 @@ tr.pager td {
       font-weight: bold;
     }
 
-    .Notes .AuthorTitleRating .ReaderRating {
+    .Notes .AuthorTitleRating .BookRating {
       position: absolute;
       bottom: 0px;
       right: 25px;
@@ -1370,7 +1387,7 @@ tr.pager td {
   .Notes .Audience input.Previous {
     position: absolute;
     bottom: -4px;
-    left: 25px;
+    left: 5px;
     padding: 3px 5px 3px 5px;
     text-decoration: none;
     font-size: 1.2em;
@@ -1383,7 +1400,7 @@ tr.pager td {
   .Notes .Audience input.Next {
     position: absolute;
     bottom: -4px;
-    left: 110px;
+    left: 175px;
     padding: 3px 5px 3px 5px;
     text-decoration: none;
     font-size: 1.2em;
@@ -1396,18 +1413,20 @@ tr.pager td {
     .Notes .Audience .Label {
       position: absolute;
       bottom: 5px;
-      left: 175px;
+      left: 275px;
       font-size: 1.1em;
     }
 
     .Notes .Audience select {
       position: absolute;
       bottom: 0px;
-      left: 250px;
+      left: 350px;
       width: 200px;
       font-size: 1.2em;
       margin: 0px;
       padding: 5px 5px 3px 5px;
+      color: darkblue;
+      background-color: #cacceb;
     }
 
   .Notes .Audience .NotifyLabel {
@@ -1428,7 +1447,7 @@ tr.pager td {
   .Notes .Audience input.SaveChanges {
     position: absolute;
     bottom: -4px;
-    right: 25px;
+    right: 0px;
     padding: 3px 25px 3px 25px;
     text-decoration: none;
     font-size: 1.2em;
@@ -1448,29 +1467,47 @@ tr.pager td {
     height: 20px;
   }
 
-    .Notes .ReviewerRatingBlock .LabelRating {
+    .Notes .ReviewerRatingBlock .LabelRatingFixed {
       position: absolute;
-      bottom: 0px;
-      left: 25px;
-      font-size: 1.2em;
+      bottom: 3px;
+      left: 0px;
+      font-size: 1.0em;
       font-weight: bold;
     }
 
     .Notes .ReviewerRatingBlock .ReviewerRating {
       position: absolute;
-      bottom: -10px;
-      left: 505px;
-      font-size: 1.2em;
+      bottom: 0px;
+      left: 200px;
+      font-size: 1.0em;
       background-color: #e6daf4;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .Notes .ReviewerRatingBlock .ReviewerRating .LabelRating {
+      display: inline-block;
+      font-size: 1.0em;
+      font-weight: bold;
+      margin: 0px;
     }
 
     .Notes .ReviewerRatingBlock .ReviewerRating input {
+      display: inline-block;
       font-size: .9em;
       background-color: #cfb1f1;
       border: 1px solid darkgrey;
-      width: 20px;
+      width: 25px;
       text-align: center;
-      padding: 2px;
+      padding: 4px 0px 1px 0px;
+      margin: 0px 3px 0px 0px;
+    }
+
+    .Notes .ReviewerRatingBlock .ReviewerRating .LabelBookRating {
+      display: inline-block;
+      padding-left: 10px;
+      font-size: 1.0em;
+      font-weight: bold;
     }
 
 /* Change Password
@@ -1478,3 +1515,5 @@ tr.pager td {
 .Edit {
   padding-left: 100px;
 }
+
+.inline { display: inline-block; }

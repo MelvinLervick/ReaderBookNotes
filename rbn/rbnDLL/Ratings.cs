@@ -17,7 +17,7 @@ namespace rbnDLL
         public int RatingId { get; set; }
         public int UserId { get; set; }
         public int ReaderNoteId { get; set; }
-        public int Rating1 { get; set; }
+        public int Rating { get; set; }
         public Nullable<int> AudienceId { get; set; }
         public System.DateTime CreatedDate { get; set; }
     

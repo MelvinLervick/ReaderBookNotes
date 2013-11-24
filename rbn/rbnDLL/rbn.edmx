@@ -591,7 +591,7 @@
           <Property Type="Int32" Name="RatingId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="UserId" Nullable="false" />
           <Property Type="Int32" Name="ReaderNoteId" Nullable="false" />
-          <Property Type="Int32" Name="Rating1" Nullable="false" />
+          <Property Type="Int32" Name="Rating" Nullable="false" />
           <Property Type="Int32" Name="AudienceId" />
           <NavigationProperty Name="Audience" Relationship="rbndbModel.FK_Ratings_Audience" FromRole="Rating" ToRole="Audience" />
           <NavigationProperty Name="ReaderNote" Relationship="rbndbModel.FK_Ratings_ReaderNotes" FromRole="Rating" ToRole="ReaderNote" />
@@ -783,7 +783,7 @@
               <MappingFragment StoreEntitySet="Ratings">
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="AudienceId" ColumnName="AudienceId" />
-                <ScalarProperty Name="Rating1" ColumnName="Rating" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="ReaderNoteId" ColumnName="ReaderNoteId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="RatingId" ColumnName="RatingId" />
