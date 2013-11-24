@@ -321,6 +321,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetReaderAliasesForBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bookId" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetUserAccountUsingUserName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="nvarchar" Mode="In" />
         </Function>
@@ -380,7 +383,10 @@
             <End Role="Rating" EntitySet="Ratings" />
           </AssociationSet>
           <FunctionImport Name="GetUserAccountUsingUserName" ReturnType="Collection(rbndbModel.GetUserAccountUsingUserName_Result)">
-            <Parameter Name="UserName" Mode="In" Type="String" />
+          <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetReaderAliasesForBook" ReturnType="Collection(rbndbModel.GetReaderAliasesForBook_Result)">
+            <Parameter Name="bookId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="UserAccount">
@@ -648,6 +654,10 @@
           <Property Type="String" Name="Answer2" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="AccountLocked" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="GetReaderAliasesForBook_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -805,6 +815,14 @@
                 <ScalarProperty Name="Question2" ColumnName="Question2" />
                 <ScalarProperty Name="Answer2" ColumnName="Answer2" />
                 <ScalarProperty Name="AccountLocked" ColumnName="AccountLocked" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetReaderAliasesForBook" FunctionName="rbndbModel.Store.GetReaderAliasesForBook">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="rbndbModel.GetReaderAliasesForBook_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

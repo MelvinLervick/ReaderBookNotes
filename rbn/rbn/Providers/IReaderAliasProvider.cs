@@ -7,5 +7,6 @@ namespace rbn.Providers
   public interface IReaderAliasProvider
   {
     List<ReaderAliasModel> GetReaderAliases();
+    List<ReaderAliasModel> GetReaderAliases( int bookId );
   }
 }

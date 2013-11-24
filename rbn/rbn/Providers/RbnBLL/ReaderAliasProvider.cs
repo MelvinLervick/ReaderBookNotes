@@ -19,6 +19,11 @@ namespace rbn.Providers.RbnBLL
       return ReaderAliasAdapter.TransformToUiModel( Provider.GetReaderAliases() );
     }
 
+    public List<Models.ReaderAliasModel> GetReaderAliases( int bookId )
+    {
+      return ReaderAliasAdapter.TransformToUiModel( Provider.GetReaderAliases( bookId ) );
+    }
+
     #endregion
 
     private rbnBLL.Providers.UserProfileProvider provider;

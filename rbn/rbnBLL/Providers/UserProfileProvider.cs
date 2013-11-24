@@ -25,6 +25,21 @@ namespace rbnBLL.Providers
       }
     }
 
+    public IEnumerable<Models.UserProfile> GetReaderAliases( int bookId )
+    {
+      using (var db = new rbndbEntities())
+      {
+        var readerAliases = (from up in db.GetReaderAliasesForBook( bookId )
+                             select new Models.UserProfile()
+                             {
+                               UserId = up.UserId,
+                               UserName = up.UserName
+                             }).ToList();
+
+        return readerAliases;
+      }
+    }
+
     #endregion
   }
 }

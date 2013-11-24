@@ -47,5 +47,14 @@ namespace rbnDLL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccountUsingUserName_Result>("GetUserAccountUsingUserName", userNameParameter);
         }
+    
+        public virtual ObjectResult<GetReaderAliasesForBook_Result> GetReaderAliasesForBook(Nullable<int> bookId)
+        {
+            var bookIdParameter = bookId.HasValue ?
+                new ObjectParameter("bookId", bookId) :
+                new ObjectParameter("bookId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetReaderAliasesForBook_Result>("GetReaderAliasesForBook", bookIdParameter);
+        }
     }
 }
