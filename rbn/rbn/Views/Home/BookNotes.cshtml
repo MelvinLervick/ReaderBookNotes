@@ -11,7 +11,7 @@
     <h2>@ViewBag.Title</h2>
     <h3>&nbsp;for&nbsp;</h3>
     <div class="ReaderAlias">
-      @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList, " --Select Reader Alias-- ", 
+      @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList, " --Select Reader Alias-- ",
           htmlAttributes: new { onchange = "document.getElementById('BookNotes').submit();" } )
     </div>
 
@@ -22,27 +22,28 @@
     @Html.HiddenFor( model => model.AuthorId )
     @Html.HiddenFor( model => model.AuthorName )
     @Html.HiddenFor( model => model.Rating )
+    @Html.HiddenFor( model => model.ReaderRating )
 
     <div class="AuthorTitleRating">
       @Html.LabelFor( model => model.Title, new { @class = "LabelTitle" } )
       @Html.Label( Model.Title, new { @class = "Title" } )
       @Html.LabelFor( model => model.AuthorName, new { @class = "LabelAuthor" } )
       @Html.Label( Model.AuthorName, new { @class = "AuthorName" } )
-      @Html.LabelFor( model => model.Rating, new { @class = "LabelRating" } )
-      @Html.Label( Model.Rating.ToString(), new { @class = "Rating" } )
+      @Html.LabelFor( model => model.ReaderRating, new { @class = "LabelReaderRating" } )
+      @Html.Label( Model.ReaderRating.ToString(), new { @class = "ReaderRating" } )
     </div>
 
     if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ))
     {
-      <div class="contributorNotes">
-        Contributor Body
-      </div>
+    <div class="contributorNotes">
+      Contributor Body
+    </div>
     }
     else
     {
-      <div class="readerNotes">
-        Reader Body
-      </div>
+    <div class="readerNotes">
+      Reader Body
+    </div>
     }
     <div class="Audience">
       <input type="submit" class="Previous" name="buttons" value="Previous" />
@@ -50,8 +51,18 @@
       @Html.LabelFor( model => model.AudienceId, new { @class = "Label" } )
       @Html.DropDownList( "AudienceId", "--Select Audience--" )
       @Html.LabelFor( model => model.Notify, new { @class = "NotifyLabel" } )
-      @Html.CheckBoxFor(model => model.Notify, new {@class = "Notify"} )
-      <input type="submit" class="SaveChanges" name="buttons" value="Save Changes" />
+      @Html.CheckBoxFor( model => model.Notify, new { @class = "Notify" } )
+      <input type="submit" class="SaveChanges" name="buttons" value="Add Note" />
+    </div>
+    <div class="ReviewerRatingBlock">
+      @Html.LabelFor( model => model.Rating, new { @class = "LabelRating" } )
+      @*@Html.TextBoxFor( model => model.Rating, new { @class = "ReviewerRating" } )*@
+      <div class="ReviewerRating">
+        @for (var i = 1; i < 10; i++)
+        {
+          <input type="submit" name="buttons" value="@i.ToString()" />
+        }
+      </div>
     </div>
   }
 </div>

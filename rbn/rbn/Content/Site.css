@@ -1255,6 +1255,29 @@ tr.pager td {
     margin: 0px;
     font-size: 1.2em;
   }
+  
+  /* Reader Alias Selector
+  -----------------------------------------------------*/
+  .Notes .ReaderAlias {
+    position: absolute;
+    color: darkblue;
+    left: 265px;
+    top: 3px;
+    padding: 0px;
+    margin: 0px;
+    font-size: 1.2em;
+  }
+
+    .Notes .ReaderAlias select {
+      width: 360px;
+      margin: 0px;
+      padding: 5px 5px 3px 5px;
+      font-size: 1.2em;
+      color: darkblue;
+      background-color: #cacceb;
+    }
+  /*---------------------------------------------------
+    Reader Alias Selector */
 
   .Notes .AuthorTitleRating {
     position: absolute;
@@ -1296,7 +1319,7 @@ tr.pager td {
       font-size: 1.2em;
     }
 
-    .Notes .AuthorTitleRating .LabelRating {
+    .Notes .AuthorTitleRating .LabelReaderRating {
       position: absolute;
       bottom: 0px;
       right: 50px;
@@ -1304,7 +1327,7 @@ tr.pager td {
       font-weight: bold;
     }
 
-    .Notes .AuthorTitleRating .Rating {
+    .Notes .AuthorTitleRating .ReaderRating {
       position: absolute;
       bottom: 0px;
       right: 25px;
@@ -1353,7 +1376,7 @@ tr.pager td {
     font-size: 1.2em;
     font-weight: bold;
     border: 1px solid darkgrey;
-    background-color: lightblue;
+    background-color: #cfb1f1;
     color: darkblue;
   }
 
@@ -1366,7 +1389,7 @@ tr.pager td {
     font-size: 1.2em;
     font-weight: bold;
     border: 1px solid darkgrey;
-    background-color: lightblue;
+    background-color: #cfb1f1;
     color: darkblue;
   }
 
@@ -1411,29 +1434,43 @@ tr.pager td {
     font-size: 1.2em;
     font-weight: bold;
     border: 1px solid darkgrey;
-    background-color: lightblue;
+    background-color: #cfb1f1;
     color: darkblue;
   }
 
-  /* Reader Alias Selector
-  -----------------------------------------------------*/
-  .Notes .ReaderAlias {
+  .Notes .ReviewerRatingBlock {
     position: absolute;
-    color: darkblue;
-    left: 265px;
-    top: 3px;
+    left: 5px;
+    bottom: 10px;
+    right: 5px;
     padding: 0px;
     margin: 0px;
-    font-size: 1.2em;
+    height: 20px;
   }
 
-    .Notes .ReaderAlias select {
-      width: 360px;
-      margin: 0px;
-      padding: 5px 5px 3px 5px;
+    .Notes .ReviewerRatingBlock .LabelRating {
+      position: absolute;
+      bottom: 0px;
+      left: 25px;
       font-size: 1.2em;
-      color: darkblue;
-      background-color: #cacceb;
+      font-weight: bold;
+    }
+
+    .Notes .ReviewerRatingBlock .ReviewerRating {
+      position: absolute;
+      bottom: -10px;
+      left: 505px;
+      font-size: 1.2em;
+      background-color: #e6daf4;
+    }
+
+    .Notes .ReviewerRatingBlock .ReviewerRating input {
+      font-size: .9em;
+      background-color: #cfb1f1;
+      border: 1px solid darkgrey;
+      width: 20px;
+      text-align: center;
+      padding: 2px;
     }
 
 /* Change Password

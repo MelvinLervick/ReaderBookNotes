@@ -38,7 +38,14 @@ namespace rbn.Models
     [Display( Name = "Author:" )]
     public string AuthorName { get; set; }
 
-    [Display( Name = "Rating:" )]
+    [Display( Name = "Reader Rating:" )]
+    public int ReaderRating
+    {
+      get;
+      set;
+    }
+
+    [Display( Name = "Please Rate the Comments on a Scale of 1-9 (where 9 is best):" )]
     [Range( 1, 9 )]
     public int Rating
     {

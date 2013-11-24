@@ -72,7 +72,8 @@ namespace rbn.Controllers
         AuthorName = "Doe, John",
         BookId = id ?? 0,
         Title = "Test Title",
-        Rating = 1,
+        ReaderRating = 1,
+        Rating = 2,
         ReaderId = 4,
         ReaderNoteId = 1,
         Notify = true
@@ -96,6 +97,18 @@ namespace rbn.Controllers
       return items; // INSTEAD OF:: new SelectList( ReaderAliasProvider.GetReaderAliases(), "ReaderId", "Alias", id );
     }
 
+    /// <summary>
+    /// Handle Drpodowl List (Reader Change) and Notes
+    /// </summary>
+    /// <param name="model"></param>
+    /// <param name="buttons">
+    /// null: reader change
+    /// previous: display previous note
+    /// next: display next note
+    /// Add Note: if reader is registered, allow reader to add a new note.
+    /// Save Changes: if reader is registered, allow the reader to save notes.
+    /// </param>
+    /// <returns></returns>
     [HttpPost]
     public ActionResult BookNotes( ReaderNotesModel model, string buttons )
     {
