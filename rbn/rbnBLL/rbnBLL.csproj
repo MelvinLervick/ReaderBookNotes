@@ -55,6 +55,7 @@
     <Compile Include="Models\Audience.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\PageSelector.cs" />
     <Compile Include="Models\Ratings.cs" />
     <Compile Include="Models\ReaderNotes.cs" />
     <Compile Include="Models\UserAccount.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Providers\AudienceProvider.cs" />
     <Compile Include="Providers\AuthorProvider.cs" />
     <Compile Include="Providers\BookProvider.cs" />
+    <Compile Include="Providers\ReaderNotesProvider.cs" />
     <Compile Include="Providers\UserAccountProvider.cs" />
     <Compile Include="Providers\UserProfileProvider.cs" />
   </ItemGroup>

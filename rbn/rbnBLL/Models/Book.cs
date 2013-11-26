@@ -15,6 +15,5 @@ namespace rbnBLL.Models
 
     public virtual Audience Audience { get; set; }
     public virtual Author Author { get; set; }
-    //public virtual ICollection<ReaderNotes> ReaderNotes { get; set; }
   }
 }

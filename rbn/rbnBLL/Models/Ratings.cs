@@ -13,6 +13,5 @@ namespace rbnBLL.Models
     public int ReaderNoteId { get; set; }
     public int Rating { get; set; }
     public int? AudienceId { get; set; }
-    public System.DateTime CreatedDate { get; set; }
   }
 }

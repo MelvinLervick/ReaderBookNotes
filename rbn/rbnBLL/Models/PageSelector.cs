@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace rbn.Models
+﻿namespace rbnBLL.Models
 {
-  public class PageSelectorModel
+  public class PageSelector
   {
     public int BookId { get; set; }
     public int NotesTotal { get; set; }
@@ -13,7 +8,7 @@ namespace rbn.Models
     public int TotalPages { get; set; }
     public bool NextPage { get; set; } // true - next page, false - previous page
 
-    public PageSelectorModel()
+    public PageSelector()
     {
       this.BookId = 0;
       this.NotesTotal = 0;
@@ -22,7 +17,7 @@ namespace rbn.Models
       this.NextPage = true;
     }
 
-    public PageSelectorModel(int bookId, int notesTotal, int page, int totalPages, bool nextPage)
+    public PageSelector(int bookId, int notesTotal, int page, int totalPages, bool nextPage)
     {
       this.BookId = bookId;
       this.NotesTotal = notesTotal;

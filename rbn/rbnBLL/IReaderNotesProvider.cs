@@ -5,9 +5,8 @@ namespace rbnBLL
 {
   public interface IReaderNotesProvider
   {
-    IEnumerable<ReaderNotes> GetReaderNotesList();
-    ReaderNotes GetReaderNotesDetails( int readerNotesId );
-    void UpdateReaderNotesDetails( ReaderNotes readerNotes );
+    ReaderNotes GetReaderNote( PageSelector page );
+    void SaveReaderNotes( ReaderNotes readerNotes );
     void EnableReaderNotes( int readerNotesId, bool enableFlag );
   }
 }
