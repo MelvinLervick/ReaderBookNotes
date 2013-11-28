@@ -76,7 +76,7 @@ namespace rbn.Controllers
       ViewBag.Message = READER_BOOK_NOTES;
       var model = ReaderNotesProvider.GetReaderNote( new PageSelectorModel( id ?? 0, 0, 0, 0, true ) );
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
-      ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
+      ViewBag.AudienceId = FillAudienceList( model.AudienceId );
 
       return View( model );
     }
@@ -92,6 +92,19 @@ namespace rbn.Controllers
                   };
 
       return items; // INSTEAD OF:: new SelectList( ReaderAliasProvider.GetReaderAliases(), "ReaderId", "Alias", id );
+    }
+
+    private IEnumerable<SelectListItem> FillAudienceList( int id )
+    {
+      var items = from value in AudienceProvider.GetAudienceList()
+                  select new SelectListItem
+                  {
+                    Text = value.Name,
+                    Value = value.AudienceId.ToString(),
+                    Selected = value.AudienceId == id,
+                  };
+
+      return items; // INSTEAD OF:: new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
     }
 
     /// <summary>
@@ -131,7 +144,7 @@ namespace rbn.Controllers
         }
       }
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
-      ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
+      ViewBag.AudienceId = FillAudienceList( model.AudienceId );
       ModelState.Clear();
 
       return View( "BookNotes", model );
@@ -155,7 +168,7 @@ namespace rbn.Controllers
         Notify = true
       };
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
-      ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
+      ViewBag.AudienceId = FillAudienceList( model.AudienceId );
 
       return PartialView( "BookNotes", model );
     }

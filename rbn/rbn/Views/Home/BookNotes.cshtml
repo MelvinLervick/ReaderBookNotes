@@ -58,10 +58,17 @@
         @Html.TextBoxFor( model => model.TotalPages, new { @class = "PagesTotal", @readonly = "readonly" } )
         <input type="submit" class="Next" name="buttons" value="Next" />
         @Html.LabelFor( model => model.AudienceId, new { @class = "Label" } )
-        @Html.DropDownList( "AudienceId", "--Select Audience--" )
-        @Html.LabelFor( model => model.Notify, new { @class = "NotifyLabel" } )
-        @Html.CheckBoxFor( model => model.Notify, new { @class = "Notify" } )
-        <input type="submit" class="SaveChanges" name="buttons" value="Add Note" />
+        @if ( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ) )
+        {
+          @Html.DropDownList( "AudienceId", "--Select Audience--" )
+          @Html.LabelFor( model => model.Notify, new {@class = "NotifyLabel"} )
+          @Html.CheckBoxFor( model => model.Notify, new {@class = "Notify"} )
+          <input type="submit" class="SaveChanges" name="buttons" value="Add Note" />
+        }
+        else
+        {
+          @Html.DropDownListFor( m => m.AudienceId, ViewBag.AudienceId as SelectList, "--Select Audience--", htmlAttributes: new { @disabled = "disabled" } )
+        }
       </div>
       <div class="ReviewerRatingBlock">
         @Html.Label( "Please Rate (where 9 is best)", new { @class = "LabelRatingFixed" } )
@@ -89,3 +96,4 @@
 @section Scripts {
   @Scripts.Render( "~/bundles/jqueryval" )
 }
+
