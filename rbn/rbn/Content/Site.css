@@ -1359,9 +1359,17 @@ tr.pager td {
     top: 70px;
     right: 5px;
     bottom: 80px;
-    overflow-x: scroll;
-    overflow-y: scroll;
     padding: 5px;
+  }
+
+  .Notes .readerNotes .readerNoteEdit {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    background-color: #e6daf4;
+    color: darkblue;
   }
 
   .Notes .contributorNotes {
@@ -1371,9 +1379,17 @@ tr.pager td {
     top: 70px;
     right: 5px;
     bottom: 80px;
-    overflow-x: scroll;
-    overflow-y: scroll;
     padding: 5px;
+  }
+
+  .Notes .contributorNotes .contributorNoteEdit {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    background-color: #e6daf4;
+    color: darkblue;
   }
 
   .Notes .Audience {

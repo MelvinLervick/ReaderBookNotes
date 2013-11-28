@@ -5,83 +5,83 @@
   Layout = "~/Views/Shared/_LayoutBooks.cshtml";
 }
 
-  <div class="Notes">
+<div class="Notes">
   @using (Html.BeginForm( "BookNotes", "Home", FormMethod.Post, new { id = "BookNotes" } ))
   {
     <fieldset>
       <legend>@ViewBag.Title</legend>
       <h2>@ViewBag.Title</h2>
-    <h3>&nbsp;for&nbsp;</h3>
-    <div class="ReaderAlias">
-      @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList, " --Select Reader Alias-- ",
+      <h3>&nbsp;for&nbsp;</h3>
+      <div class="ReaderAlias">
+        @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList, " --Select Reader Alias-- ",
           htmlAttributes: new { onchange = "document.getElementById('BookNotes').submit();" } )
-    </div>
-    @Html.LabelFor( model => model.ReaderRating, new { @class = "LabelReaderRating" } )
-    @Html.Label( Model.ReaderRating.ToString(), new { @class = "ReaderRating" } )
+      </div>
+      @Html.LabelFor( model => model.ReaderRating, new { @class = "LabelReaderRating" } )
+      <div class="ReaderRating">@Model.ReaderRating</div>
 
-    @Html.AntiForgeryToken()
+      @Html.AntiForgeryToken()
 
-    @Html.HiddenFor( model => model.BookId )
-    @Html.HiddenFor( model => model.Title )
-    @Html.HiddenFor( model => model.AuthorId )
-    @Html.HiddenFor( model => model.AuthorName )
-    @Html.HiddenFor( model => model.ReviewerCommentRating )
-    @Html.HiddenFor( model => model.ReviewerBookRating )
-    @Html.HiddenFor( model => model.ReaderRating )
-    @Html.HiddenFor( model => model.BookRating )
+      @Html.HiddenFor( model => model.BookId )
+      @Html.HiddenFor( model => model.Title )
+      @Html.HiddenFor( model => model.AuthorId )
+      @Html.HiddenFor( model => model.AuthorName )
+      @Html.HiddenFor( model => model.ReviewerCommentRating )
+      @Html.HiddenFor( model => model.ReviewerBookRating )
+      @Html.HiddenFor( model => model.ReaderRating )
+      @Html.HiddenFor( model => model.BookRating )
 
-    <div class="AuthorTitleRating">
-      @Html.LabelFor( model => model.Title, new { @class = "LabelTitle" } )
-      @Html.Label( Model.Title, new { @class = "Title" } )
-      @Html.LabelFor( model => model.AuthorName, new { @class = "LabelAuthor" } )
-      @Html.Label( Model.AuthorName, new { @class = "LabelAuthorName" } )
-      @Html.LabelFor( model => model.BookRating, new { @class = "LabelBookRating" } )
-      @Html.Label( Model.BookRating.ToString(), new { @class = "BookRating" } )
-    </div>
+      <div class="AuthorTitleRating">
+        @Html.LabelFor( model => model.Title, new { @class = "LabelTitle" } )
+        <div class="Title">@Model.Title</div>
+        @Html.LabelFor( model => model.AuthorName, new { @class = "LabelAuthor" } )
+        <div class="LabelAuthorName">@Model.AuthorName</div>
+        @Html.LabelFor( model => model.BookRating, new { @class = "LabelBookRating" } )
+        <div class="BookRating">@Model.BookRating</div>
+      </div>
 
-    @if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ))
-    {
-    <div class="contributorNotes">
-      @Html.TextAreaFor( model => model.Note )
-    </div>
-    }
-    else
-    {
-    <div class="readerNotes">
-      @Html.TextAreaFor( model => model.Note )
-    </div>
-    }
-    <div class="Audience">
-      <input type="submit" class="Previous" name="buttons" value="Previous" />
-      @Html.TextBoxFor( model => model.Page, new { @class = "PageCurrent", @readonly="readonly" } )
-      @Html.Label( "of", new { @class = "PageOf" } )
-      @Html.TextBoxFor( model => model.TotalPages, new { @class = "PagesTotal", @readonly="readonly" } )
-      <input type="submit" class="Next" name="buttons" value="Next" />
-      @Html.LabelFor( model => model.AudienceId, new { @class = "Label" } )
-      @Html.DropDownList( "AudienceId", "--Select Audience--" )
-      @Html.LabelFor( model => model.Notify, new { @class = "NotifyLabel" } )
-      @Html.CheckBoxFor( model => model.Notify, new { @class = "Notify" } )
-      <input type="submit" class="SaveChanges" name="buttons" value="Add Note" />
-    </div>
-    <div class="ReviewerRatingBlock">
-      @Html.Label( "Please Rate (where 9 is best)", new { @class = "LabelRatingFixed" } )
-      <div class="ReviewerRating">
-        <div class="inline">
-          @Html.LabelFor( model => model.ReviewerCommentRating, new { @class = "LabelRating" } )
-          @for (var i = 1; i < 10; i++)
-          {
-            <input type="submit" name="buttons" value="@i.ToString()" />
-          }
+      @if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ))
+      {
+        <div class="contributorNotes">
+          @Html.TextAreaFor( model => model.Note, new { @class = "contributorNoteEdit" } )
         </div>
-        <div class="inline">
-          @Html.LabelFor( model => model.ReviewerBookRating, new { @class = "LabelBookRating" } )
-          @for (var i = 1; i < 10; i++)
-          {
-            <input type="submit" name="bookButtons" value="@i.ToString()" />
-          }
+      }
+      else
+      {
+        <div class="readerNotes">
+          @Html.TextAreaFor( model => model.Note, new { @readonly="readonly", @class = "readerNoteEdit" } )
+        </div>
+      }
+      <div class="Audience">
+        <input type="submit" class="Previous" name="buttons" value="Previous" />
+        @Html.TextBoxFor( model => model.Page, new { @class = "PageCurrent", @readonly = "readonly" } )
+        @Html.Label( "of", new { @class = "PageOf" } )
+        @Html.TextBoxFor( model => model.TotalPages, new { @class = "PagesTotal", @readonly = "readonly" } )
+        <input type="submit" class="Next" name="buttons" value="Next" />
+        @Html.LabelFor( model => model.AudienceId, new { @class = "Label" } )
+        @Html.DropDownList( "AudienceId", "--Select Audience--" )
+        @Html.LabelFor( model => model.Notify, new { @class = "NotifyLabel" } )
+        @Html.CheckBoxFor( model => model.Notify, new { @class = "Notify" } )
+        <input type="submit" class="SaveChanges" name="buttons" value="Add Note" />
+      </div>
+      <div class="ReviewerRatingBlock">
+        @Html.Label( "Please Rate (where 9 is best)", new { @class = "LabelRatingFixed" } )
+        <div class="ReviewerRating">
+          <div class="inline">
+            @Html.LabelFor( model => model.ReviewerCommentRating, new { @class = "LabelRating" } )
+            @for (var i = 1; i < 10; i++)
+            {
+              <input type="submit" name="buttons" value="@i.ToString()" />
+            }
+          </div>
+          <div class="inline">
+            @Html.LabelFor( model => model.ReviewerBookRating, new { @class = "LabelBookRating" } )
+            @for (var i = 1; i < 10; i++)
+            {
+              <input type="submit" name="bookButtons" value="@i.ToString()" />
+            }
+          </div>
         </div>
       </div>
-    </div>
     </fieldset>
   }
 </div>
