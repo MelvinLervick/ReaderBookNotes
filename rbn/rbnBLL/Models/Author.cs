@@ -11,7 +11,5 @@ namespace rbnBLL.Models
     public int Rating { get; set; }
     public System.DateTime LastModifiedDate { get; set; }
     public bool Enabled { get; set; }
-
-    //public virtual ICollection<Book> Books { get; set; }
   }
 }

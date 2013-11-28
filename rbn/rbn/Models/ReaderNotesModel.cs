@@ -32,6 +32,8 @@ namespace rbn.Models
     [Display( Name = "Book Rating:" )]
     public int BookRating { get; set; }
 
+    public string Note { get; set; }
+
     [Display( Name = "Comment:" )]
     [Range( 1, 9 )]
     public int ReviewerCommentRating { get; set; }
@@ -45,6 +47,9 @@ namespace rbn.Models
     [Display( Name = "Notify:" )]
     public bool Notify { get; set; }
 
-    public PageSelectorModel Page { get; set; }
+    public int NotesThatCanBeViewed { get; set; }
+    public int Page { get; set; }
+    public int TotalPages { get; set; }
+    public bool NextPage { get; set; } // true - next page, false - previous page
   }
 }

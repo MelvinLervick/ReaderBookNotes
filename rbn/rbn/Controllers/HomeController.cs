@@ -40,6 +40,15 @@ namespace rbn.Controllers
       }
     }
 
+    private IReaderNotesProvider readerNotesProvider;
+    internal IReaderNotesProvider ReaderNotesProvider
+    {
+      get
+      {
+        return readerNotesProvider ?? (readerNotesProvider = new ReaderNotesProvider());
+      }
+    }
+
     public ActionResult Index()
     {
       ViewBag.Message = "Read what other readers have to say about your favorite book.";
@@ -65,19 +74,7 @@ namespace rbn.Controllers
     public ActionResult BookNotes( int? id )
     {
       ViewBag.Message = READER_BOOK_NOTES;
-      var model = new ReaderNotesModel
-      {
-        AudienceId = 1,
-        AuthorId = 1,
-        AuthorName = "Doe, John",
-        BookId = id ?? 0,
-        Title = "Test Title",
-        ReaderRating = 1,
-        BookRating = 2,
-        ReaderId = 4,
-        ReaderNoteId = 1,
-        Notify = true
-      };
+      var model = ReaderNotesProvider.GetReaderNote( new PageSelectorModel( id ?? 0, 0, 0, 0, true ) );
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
       ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
 
@@ -114,8 +111,28 @@ namespace rbn.Controllers
     public ActionResult BookNotes( ReaderNotesModel model, string buttons, string bookButtons )
     {
       ViewBag.Message = READER_BOOK_NOTES;
+      if ( buttons != null )
+      {
+        switch ( buttons.ToLower() )
+        {
+          case "next":
+            model = ReaderNotesProvider.GetReaderNote( new PageSelectorModel(model.BookId, model.NotesThatCanBeViewed, model.Page, model.TotalPages, true));
+            break;
+          case "previous":
+            model = ReaderNotesProvider.GetReaderNote( new PageSelectorModel(model.BookId, model.NotesThatCanBeViewed, model.Page, model.TotalPages, false));
+            break;
+        }
+      }
+      else
+      {
+        if ( bookButtons != null )
+        {
+          // Book Rating
+        }
+      }
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
       ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
+      ModelState.Clear();
 
       return View( "BookNotes", model );
     }

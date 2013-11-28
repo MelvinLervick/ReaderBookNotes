@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using rbn.Models;
+using rbnBLL.Models;
 
 namespace rbn.Providers.RbnBLL.Adapters
 {
@@ -12,43 +13,45 @@ namespace rbn.Providers.RbnBLL.Adapters
     {
       return new ReaderNotesModel
       {
-        BookId = fields.BookId,
-        Title = fields.Title,
-        ISBN = fields.ISBN,
-        AuthorId = fields.AuthorId ?? 0,
+        ReaderNoteId = fields.ReaderNoteId,
+        ReaderId = fields.ReaderId,
+        BookId = fields.Book.BookId,
+        Title = fields.Book.Title,
+        AuthorId = fields.Author.AuthorId,
         AuthorName = String.Format( "{0}, {1} {2}", fields.Author.LastName, fields.Author.FirstName, fields.Author.MiddleName ),
-        AudienceId = fields.AudienceId ?? 0,
-        AudienceName = fields.Audience.Name,
-        Rating = fields.Rating,
-        Enabled = fields.Enabled
+        ReaderRating = fields.ReaderRating,
+        BookRating = fields.Book.Rating,
+        ReviewerCommentRating = 0,
+        ReviewerBookRating = 0,
+        AudienceId = fields.AudienceId,
+        Note = fields.Note,
+        Notify = false,
+        NotesThatCanBeViewed = fields.Page.NotesThatCanBeViewed,
+        Page = fields.Page.Page, 
+        TotalPages = fields.Page.TotalPages, 
+        NextPage = fields.Page.NextPage
       };
     }
 
-    internal static rbnBLL.Models.ReaderNotes TransformToBLLModel( PageSelectorModel fields )
+    internal static rbnBLL.Models.PageSelector TransformToBLLModel( PageSelectorModel fields )
     {
-      return new rbnBLL.Models.ReaderNotes
-      {
-        BookId = fields.BookId,
-        Title = fields.Title,
-        ISBN = fields.ISBN,
-        AuthorId = fields.AuthorId,
-        AudienceId = fields.AudienceId,
-        Rating = fields.Rating,
-        Enabled = fields.Enabled
-      };
+      return new PageSelector( fields.BookId, fields.NotesThatCanBeViewed, fields.Page, fields.TotalPages, fields.NextPage );
     }
 
     internal static rbnBLL.Models.ReaderNotes TransformToBLLModel( ReaderNotesModel fields )
     {
       return new rbnBLL.Models.ReaderNotes
       {
-        BookId = fields.BookId,
-        Title = fields.Title,
-        ISBN = fields.ISBN,
-        AuthorId = fields.AuthorId,
+        ReaderNoteId = fields.ReaderNoteId,
+        ReaderId = fields.ReaderId,
+        Book = new Book{ BookId = fields.BookId },
+        ReaderRating = fields.ReaderRating,
+        Note = fields.Note,
+        ReviewerCommentRating = fields.ReviewerCommentRating,
+        ReviewerBookRating = fields.ReviewerBookRating,
         AudienceId = fields.AudienceId,
-        Rating = fields.Rating,
-        Enabled = fields.Enabled
+        Notify = fields.Notify,
+        Page = new PageSelector( fields.BookId, fields.NotesThatCanBeViewed, fields.Page, fields.TotalPages, fields.NextPage )
       };
     }
   }

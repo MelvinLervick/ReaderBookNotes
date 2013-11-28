@@ -8,7 +8,7 @@ namespace rbn.Models
   public class PageSelectorModel
   {
     public int BookId { get; set; }
-    public int NotesTotal { get; set; }
+    public int NotesThatCanBeViewed { get; set; }
     public int Page { get; set; }
     public int TotalPages { get; set; }
     public bool NextPage { get; set; } // true - next page, false - previous page
@@ -16,16 +16,16 @@ namespace rbn.Models
     public PageSelectorModel()
     {
       this.BookId = 0;
-      this.NotesTotal = 0;
+      this.NotesThatCanBeViewed = 0;
       this.Page = 0;
       this.TotalPages = 0;
       this.NextPage = true;
     }
 
-    public PageSelectorModel(int bookId, int notesTotal, int page, int totalPages, bool nextPage)
+    public PageSelectorModel(int bookId, int notesThatCanBeViewed, int page, int totalPages, bool nextPage)
     {
       this.BookId = bookId;
-      this.NotesTotal = notesTotal;
+      this.NotesThatCanBeViewed = notesThatCanBeViewed;
       this.Page = page;
       this.TotalPages = totalPages;
       this.NextPage = nextPage;

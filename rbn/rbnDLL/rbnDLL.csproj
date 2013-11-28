@@ -55,6 +55,9 @@
     <Compile Include="Book.cs">
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetNextReaderNote_Result.cs">
+      <DependentUpon>rbn.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetReaderAliasesForBook_Result.cs">
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>

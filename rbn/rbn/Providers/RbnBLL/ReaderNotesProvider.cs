@@ -1,5 +1,6 @@
 ﻿using System;
 using rbn.Models;
+using rbn.Providers.RbnBLL.Adapters;
 
 namespace rbn.Providers.RbnBLL
 {
@@ -12,7 +13,7 @@ namespace rbn.Providers.RbnBLL
 
     public ReaderNotesModel GetReaderNote( PageSelectorModel page )
     {
-      throw new NotImplementedException();
+      return ReaderNotesAdapter.TransformToUiModel( Provider.GetReaderNote( ReaderNotesAdapter.TransformToBLLModel(page) ) );
     }
 
     public void SaveReaderNote( ReaderNotesModel readerNote )

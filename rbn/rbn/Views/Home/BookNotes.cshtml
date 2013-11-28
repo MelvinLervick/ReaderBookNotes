@@ -5,10 +5,12 @@
   Layout = "~/Views/Shared/_LayoutBooks.cshtml";
 }
 
-<div class="Notes">
+  <div class="Notes">
   @using (Html.BeginForm( "BookNotes", "Home", FormMethod.Post, new { id = "BookNotes" } ))
   {
-    <h2>@ViewBag.Title</h2>
+    <fieldset>
+      <legend>@ViewBag.Title</legend>
+      <h2>@ViewBag.Title</h2>
     <h3>&nbsp;for&nbsp;</h3>
     <div class="ReaderAlias">
       @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList, " --Select Reader Alias-- ",
@@ -32,25 +34,28 @@
       @Html.LabelFor( model => model.Title, new { @class = "LabelTitle" } )
       @Html.Label( Model.Title, new { @class = "Title" } )
       @Html.LabelFor( model => model.AuthorName, new { @class = "LabelAuthor" } )
-      @Html.Label( Model.AuthorName, new { @class = "AuthorName" } )
+      @Html.Label( Model.AuthorName, new { @class = "LabelAuthorName" } )
       @Html.LabelFor( model => model.BookRating, new { @class = "LabelBookRating" } )
       @Html.Label( Model.BookRating.ToString(), new { @class = "BookRating" } )
     </div>
 
-    if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ))
+    @if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ))
     {
     <div class="contributorNotes">
-      Contributor Body
+      @Html.TextAreaFor( model => model.Note )
     </div>
     }
     else
     {
     <div class="readerNotes">
-      Reader Body
+      @Html.TextAreaFor( model => model.Note )
     </div>
     }
     <div class="Audience">
       <input type="submit" class="Previous" name="buttons" value="Previous" />
+      @Html.TextBoxFor( model => model.Page, new { @class = "PageCurrent", @readonly="readonly" } )
+      @Html.Label( "of", new { @class = "PageOf" } )
+      @Html.TextBoxFor( model => model.TotalPages, new { @class = "PagesTotal", @readonly="readonly" } )
       <input type="submit" class="Next" name="buttons" value="Next" />
       @Html.LabelFor( model => model.AudienceId, new { @class = "Label" } )
       @Html.DropDownList( "AudienceId", "--Select Audience--" )
@@ -77,6 +82,7 @@
         </div>
       </div>
     </div>
+    </fieldset>
   }
 </div>
 

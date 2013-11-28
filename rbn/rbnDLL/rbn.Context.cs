@@ -56,5 +56,30 @@ namespace rbnDLL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetReaderAliasesForBook_Result>("GetReaderAliasesForBook", bookIdParameter);
         }
+    
+        public virtual ObjectResult<GetNextReaderNote_Result> GetNextReaderNote(Nullable<int> bookId, Nullable<int> notesThatCanBeViewed, Nullable<int> page, Nullable<int> totalPages, Nullable<bool> next)
+        {
+            var bookIdParameter = bookId.HasValue ?
+                new ObjectParameter("bookId", bookId) :
+                new ObjectParameter("bookId", typeof(int));
+    
+            var notesThatCanBeViewedParameter = notesThatCanBeViewed.HasValue ?
+                new ObjectParameter("notesThatCanBeViewed", notesThatCanBeViewed) :
+                new ObjectParameter("notesThatCanBeViewed", typeof(int));
+    
+            var pageParameter = page.HasValue ?
+                new ObjectParameter("page", page) :
+                new ObjectParameter("page", typeof(int));
+    
+            var totalPagesParameter = totalPages.HasValue ?
+                new ObjectParameter("totalPages", totalPages) :
+                new ObjectParameter("totalPages", typeof(int));
+    
+            var nextParameter = next.HasValue ?
+                new ObjectParameter("next", next) :
+                new ObjectParameter("next", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetNextReaderNote_Result>("GetNextReaderNote", bookIdParameter, notesThatCanBeViewedParameter, pageParameter, totalPagesParameter, nextParameter);
+        }
     }
 }

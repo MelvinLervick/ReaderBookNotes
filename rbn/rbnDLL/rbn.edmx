@@ -321,6 +321,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetNextReaderNote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bookId" Type="int" Mode="In" />
+          <Parameter Name="notesThatCanBeViewed" Type="int" Mode="In" />
+          <Parameter Name="page" Type="int" Mode="In" />
+          <Parameter Name="totalPages" Type="int" Mode="In" />
+          <Parameter Name="next" Type="bit" Mode="In" />
+        </Function>
         <Function Name="GetReaderAliasesForBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="bookId" Type="int" Mode="In" />
         </Function>
@@ -386,7 +393,14 @@
           <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetReaderAliasesForBook" ReturnType="Collection(rbndbModel.GetReaderAliasesForBook_Result)">
+          <Parameter Name="bookId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetNextReaderNote" ReturnType="Collection(rbndbModel.GetNextReaderNote_Result)">
             <Parameter Name="bookId" Mode="In" Type="Int32" />
+            <Parameter Name="notesThatCanBeViewed" Mode="In" Type="Int32" />
+            <Parameter Name="page" Mode="In" Type="Int32" />
+            <Parameter Name="totalPages" Mode="In" Type="Int32" />
+            <Parameter Name="next" Mode="In" Type="Boolean" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="UserAccount">
@@ -658,6 +672,18 @@
           <Property Type="Int32" Name="UserId" Nullable="false" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="GetNextReaderNote_Result">
+          <Property Type="Int64" Name="Page" Nullable="true" />
+          <Property Type="Int32" Name="ReaderNoteId" Nullable="false" />
+          <Property Type="Int32" Name="BookId" Nullable="false" />
+          <Property Type="Int32" Name="ReaderId" Nullable="false" />
+          <Property Type="Int32" Name="Rating" Nullable="false" />
+          <Property Type="Int32" Name="AudienceId" Nullable="false" />
+          <Property Type="String" Name="Note" Nullable="false" />
+          <Property Type="Boolean" Name="Notify" Nullable="false" />
+          <Property Type="Int32" Name="ReaderRating" Nullable="true" />
+          <Property Type="Int32" Name="TotalNotes" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -823,6 +849,22 @@
               <ComplexTypeMapping TypeName="rbndbModel.GetReaderAliasesForBook_Result">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetNextReaderNote" FunctionName="rbndbModel.Store.GetNextReaderNote">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="rbndbModel.GetNextReaderNote_Result">
+                <ScalarProperty Name="Page" ColumnName="Page" />
+                <ScalarProperty Name="ReaderNoteId" ColumnName="ReaderNoteId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="ReaderId" ColumnName="ReaderId" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="AudienceId" ColumnName="AudienceId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Notify" ColumnName="Notify" />
+                <ScalarProperty Name="ReaderRating" ColumnName="ReaderRating" />
+                <ScalarProperty Name="TotalNotes" ColumnName="TotalNotes" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

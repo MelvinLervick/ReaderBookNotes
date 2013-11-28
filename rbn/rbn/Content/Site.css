@@ -1329,11 +1329,12 @@ tr.pager td {
       font-weight: bold;
     }
 
-    .Notes .AuthorTitleRating .AuthorName {
+    .Notes .AuthorTitleRating .LabelAuthorName {
       position: absolute;
       bottom: 0px;
       left: 450px;
       font-size: 1.2em;
+      color: darkblue;
     }
 
     .Notes .AuthorTitleRating .LabelBookRating {
@@ -1396,6 +1397,42 @@ tr.pager td {
     background-color: #cfb1f1;
     color: darkblue;
   }
+
+    .Notes .Audience .PageCurrent {
+      position: absolute;
+      bottom: 7px;
+      left: 90px;
+      font-size: 0.8em;
+      width: 25px;
+      text-align: center;
+      color: darkblue;
+      padding: 0px;
+      margin: 0px;
+      background-color: #e6daf4;
+    }
+    .Notes .Audience .PageOf {
+      position: absolute;
+      bottom: 7px;
+      left: 120px;
+      font-size: 0.8em;
+      width: 10px;
+      text-align: center;
+      color: darkblue;
+      padding: 0px;
+      margin: 0px;
+    }
+    .Notes .Audience .PagesTotal {
+      position: absolute;
+      bottom: 7px;
+      left: 140px;
+      font-size: 0.8em;
+      width: 25px;
+      text-align: center;
+      color: darkblue;
+      padding: 0px;
+      margin: 0px;
+      background-color: #e6daf4;
+    }
 
   .Notes .Audience input.Next {
     position: absolute;
