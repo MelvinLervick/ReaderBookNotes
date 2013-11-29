@@ -78,6 +78,10 @@ namespace rbn.Controllers
       if ( id != null && id > 0 )
       {
         model = ReaderNotesProvider.GetReaderNote( new PageSelectorModel( id ?? 0, 0, 0, 0, true ) );
+        if ( model.ReaderNoteId == 0 )
+        {
+          model.CreateNewEmptyNote( AccountProvider, User.Identity.Name );
+        }
       }
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
       ViewBag.AudienceId = FillAudienceList( model.AudienceId );
@@ -149,14 +153,13 @@ namespace rbn.Controllers
             }
             break;
           case "add new note":
-            var userAccount = AccountProvider.GetUserManagedFieldsFromUserAccount( User.Identity.Name ); 
-            model.ReaderNoteId = 0;
-            model.ReaderId = userAccount.UserId;
-            model.Notify = false;
-            model.Note = string.Empty;
-            model.ReaderRating = userAccount.Rating;
+            model.CreateNewEmptyNote( AccountProvider, User.Identity.Name );
             break;
           case "save new note":
+            ReaderNotesProvider.SaveReaderNote( model );
+            model =
+                ReaderNotesProvider.GetReaderNote( new PageSelectorModel( model.BookId, model.NotesThatCanBeViewed,
+                  0, 0, true ) );
             break;
           case "cancel":
             if ( model.BookId > 0 )
@@ -203,6 +206,27 @@ namespace rbn.Controllers
       ViewBag.AudienceId = FillAudienceList( model.AudienceId );
 
       return PartialView( "BookNotes", model );
+    }
+  }
+
+  public static class Extensions
+  {
+    public static ReaderNotesModel CreateNewEmptyNote( this ReaderNotesModel model, IUserAccountProvider provider, string userName )
+    {
+      var userAccount = provider.GetUserManagedFieldsFromUserAccount( userName );
+
+      if ( model == null )
+      {
+        return model;
+      }
+
+      model.ReaderNoteId = 0;
+      model.ReaderId = userAccount.UserId;
+      model.Notify = false;
+      model.Note = string.Empty;
+      model.ReaderRating = userAccount.Rating;
+
+      return model;
     }
   }
 }

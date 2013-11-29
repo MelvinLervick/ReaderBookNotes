@@ -11,6 +11,8 @@ namespace rbn.Providers.RbnBLL.Adapters
   {
     internal static ReaderNotesModel TransformToUiModel( rbnBLL.Models.ReaderNotes fields )
     {
+      if (fields == null) return new ReaderNotesModel();
+
       return new ReaderNotesModel
       {
         ReaderNoteId = fields.ReaderNoteId,

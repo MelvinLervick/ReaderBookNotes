@@ -18,7 +18,7 @@ namespace rbn.Providers.RbnBLL
 
     public void SaveReaderNote( ReaderNotesModel readerNote )
     {
-      throw new NotImplementedException();
+      Provider.SaveReaderNotes( ReaderNotesAdapter.TransformToBLLModel( readerNote ) );
     }
 
     #endregion

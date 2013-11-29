@@ -22,7 +22,5 @@ namespace rbnBLL.Models
     public string Answer2 { get; set; }
     public System.DateTime LastModifiedDate { get; set; }
     public DateTime DateOfBirth { get; set; }
-
-    //public virtual UserProfile UserProfile { get; set; }
   }
 }
