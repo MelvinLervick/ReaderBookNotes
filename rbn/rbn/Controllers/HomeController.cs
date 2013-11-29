@@ -73,8 +73,12 @@ namespace rbn.Controllers
 
     public ActionResult BookNotes( int? id )
     {
+      var model = new ReaderNotesModel();
       ViewBag.Message = READER_BOOK_NOTES;
-      var model = ReaderNotesProvider.GetReaderNote( new PageSelectorModel( id ?? 0, 0, 0, 0, true ) );
+      if ( id != null && id > 0 )
+      {
+        model = ReaderNotesProvider.GetReaderNote( new PageSelectorModel( id ?? 0, 0, 0, 0, true ) );
+      }
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
       ViewBag.AudienceId = FillAudienceList( model.AudienceId );
 
@@ -129,10 +133,38 @@ namespace rbn.Controllers
         switch ( buttons.ToLower() )
         {
           case "next":
-            model = ReaderNotesProvider.GetReaderNote( new PageSelectorModel(model.BookId, model.NotesThatCanBeViewed, model.Page, model.TotalPages, true));
+            if ( model.BookId > 0 )
+            {
+              model =
+                ReaderNotesProvider.GetReaderNote( new PageSelectorModel( model.BookId, model.NotesThatCanBeViewed,
+                  model.Page, model.TotalPages, true ) );
+            }
             break;
           case "previous":
-            model = ReaderNotesProvider.GetReaderNote( new PageSelectorModel(model.BookId, model.NotesThatCanBeViewed, model.Page, model.TotalPages, false));
+            if ( model.BookId > 0 )
+            {
+              model =
+                ReaderNotesProvider.GetReaderNote( new PageSelectorModel( model.BookId, model.NotesThatCanBeViewed,
+                  model.Page, model.TotalPages, false ) );
+            }
+            break;
+          case "add new note":
+            var userAccount = AccountProvider.GetUserManagedFieldsFromUserAccount( User.Identity.Name ); 
+            model.ReaderNoteId = 0;
+            model.ReaderId = userAccount.UserId;
+            model.Notify = false;
+            model.Note = string.Empty;
+            model.ReaderRating = userAccount.Rating;
+            break;
+          case "save new note":
+            break;
+          case "cancel":
+            if ( model.BookId > 0 )
+            {
+              model =
+                ReaderNotesProvider.GetReaderNote( new PageSelectorModel( model.BookId, model.NotesThatCanBeViewed,
+                  model.Page-1, model.TotalPages, true ) );
+            }
             break;
         }
       }

@@ -26,6 +26,7 @@ namespace rbnBLL.Providers
                                Answer1 = ua.Answer1,
                                Question2 = ua.Question2,
                                Answer2 = ua.Answer2,
+                               Rating = ua.Rating ?? 0,
                                AccountLocked = ua.AccountLocked ?? false
                              }).FirstOrDefault();
 

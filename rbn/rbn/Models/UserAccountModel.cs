@@ -92,5 +92,7 @@ namespace rbn.Models
       get;
       set;
     }
+
+    public int Rating { get; set; }
   }
 }

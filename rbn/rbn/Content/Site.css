@@ -1497,11 +1497,37 @@ tr.pager td {
     font-size: 1.2em;
   }
 
-  .Notes .Audience input.SaveChanges {
+  .Notes .Audience input.Add {
     position: absolute;
     bottom: -4px;
     right: 0px;
     padding: 3px 25px 3px 25px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 1px solid darkgrey;
+    background-color: #cfb1f1;
+    color: darkblue;
+  }
+
+  .Notes .Audience input.Save {
+    position: absolute;
+    bottom: -4px;
+    right: 90px;
+    padding: 3px 15px 3px 15px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 1px solid darkgrey;
+    background-color: #cfb1f1;
+    color: darkblue;
+  }
+
+  .Notes .Audience input.Cancel {
+    position: absolute;
+    bottom: -4px;
+    right: 0px;
+    padding: 3px 15px 3px 15px;
     text-decoration: none;
     font-size: 1.2em;
     font-weight: bold;

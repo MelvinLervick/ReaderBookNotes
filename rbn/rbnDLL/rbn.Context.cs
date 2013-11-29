@@ -39,15 +39,6 @@ namespace rbnDLL
         public DbSet<ReaderNotes> ReaderNotes { get; set; }
         public DbSet<Ratings> Ratings { get; set; }
     
-        public virtual ObjectResult<GetUserAccountUsingUserName_Result> GetUserAccountUsingUserName(string userName)
-        {
-            var userNameParameter = userName != null ?
-                new ObjectParameter("UserName", userName) :
-                new ObjectParameter("UserName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccountUsingUserName_Result>("GetUserAccountUsingUserName", userNameParameter);
-        }
-    
         public virtual ObjectResult<GetReaderAliasesForBook_Result> GetReaderAliasesForBook(Nullable<int> bookId)
         {
             var bookIdParameter = bookId.HasValue ?
@@ -80,6 +71,15 @@ namespace rbnDLL
                 new ObjectParameter("next", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetNextReaderNote_Result>("GetNextReaderNote", bookIdParameter, notesThatCanBeViewedParameter, pageParameter, totalPagesParameter, nextParameter);
+        }
+    
+        public virtual ObjectResult<GetUserAccountUsingUserName_Result> GetUserAccountUsingUserName(string userName)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccountUsingUserName_Result>("GetUserAccountUsingUserName", userNameParameter);
         }
     }
 }

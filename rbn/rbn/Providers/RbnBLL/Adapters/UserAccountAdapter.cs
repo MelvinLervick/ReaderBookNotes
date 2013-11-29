@@ -18,6 +18,7 @@ namespace rbn.Providers.RbnBLL.Adapters
         Answer1 = fields.Answer1,
         Question2 = fields.Question2,
         Answer2 = fields.Answer2,
+        Rating = fields.Rating,
         AccountLocked = fields.AccountLocked
       };
     }

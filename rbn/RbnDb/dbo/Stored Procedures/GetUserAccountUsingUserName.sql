@@ -16,6 +16,7 @@ BEGIN
     , dbo.UserAccount.Answer1
     , dbo.UserAccount.Question2
     , dbo.UserAccount.Answer2
+    , dbo.UserAccount.Rating
     , dbo.UserAccount.AccountLocked
 	FROM dbo.UserProfile 
 	LEFT JOIN dbo.UserAccount ON dbo.UserProfile.UserId = dbo.UserAccount.UserId

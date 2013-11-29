@@ -21,10 +21,12 @@
 
       @Html.AntiForgeryToken()
 
+      @Html.HiddenFor( model => model.ReaderNoteId )
       @Html.HiddenFor( model => model.BookId )
       @Html.HiddenFor( model => model.Title )
       @Html.HiddenFor( model => model.AuthorId )
       @Html.HiddenFor( model => model.AuthorName )
+      @Html.HiddenFor( model => model.AudienceId )
       @Html.HiddenFor( model => model.ReviewerCommentRating )
       @Html.HiddenFor( model => model.ReviewerBookRating )
       @Html.HiddenFor( model => model.ReaderRating )
@@ -39,7 +41,7 @@
         <div class="BookRating">@Model.BookRating</div>
       </div>
 
-      @if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ))
+      @if ((Model.ReaderNoteId == 0) && (Model.BookId > 0) && (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" )))
       {
         <div class="contributorNotes">
           @Html.TextAreaFor( model => model.Note, new { @class = "contributorNoteEdit" } )
@@ -58,16 +60,25 @@
         @Html.TextBoxFor( model => model.TotalPages, new { @class = "PagesTotal", @readonly = "readonly" } )
         <input type="submit" class="Next" name="buttons" value="Next" />
         @Html.LabelFor( model => model.AudienceId, new { @class = "Label" } )
-        @if ( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ) )
+        @if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ) )
         {
-          @Html.DropDownList( "AudienceId", "--Select Audience--" )
-          @Html.LabelFor( model => model.Notify, new {@class = "NotifyLabel"} )
-          @Html.CheckBoxFor( model => model.Notify, new {@class = "Notify"} )
-          <input type="submit" class="SaveChanges" name="buttons" value="Add Note" />
+          if ( (Model.ReaderNoteId == 0) && (Model.BookId > 0) )
+          {
+            @Html.DropDownListFor( model => model.AudienceId, ViewBag.AudienceId as SelectList, "--Select Audience--" )
+            @Html.LabelFor( model => model.Notify, new {@class = "NotifyLabel"} )
+            @Html.CheckBoxFor( model => model.Notify, new {@class = "Notify"} )
+            <input type="submit" class="Save" name="buttons" value="Save New Note" />
+            <input type="submit" class="Cancel" name="buttons" value="Cancel" />
+          }
+          else
+          {
+            @Html.DropDownListFor( model => model.AudienceId, ViewBag.AudienceId as SelectList, "--Select Audience--", htmlAttributes: new { @disabled = "disabled" } )
+            <input type="submit" class="Add" name="buttons" value="Add New Note" />
+          }
         }
         else
         {
-          @Html.DropDownListFor( m => m.AudienceId, ViewBag.AudienceId as SelectList, "--Select Audience--", htmlAttributes: new { @disabled = "disabled" } )
+          @Html.DropDownListFor( model => model.AudienceId, ViewBag.AudienceId as SelectList, "--Select Audience--", htmlAttributes: new { @disabled = "disabled" } )
         }
       </div>
       <div class="ReviewerRatingBlock">

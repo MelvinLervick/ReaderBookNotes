@@ -24,6 +24,7 @@ namespace rbnDLL
         public string Answer1 { get; set; }
         public string Question2 { get; set; }
         public string Answer2 { get; set; }
+        public Nullable<int> Rating { get; set; }
         public Nullable<bool> AccountLocked { get; set; }
     }
 }
