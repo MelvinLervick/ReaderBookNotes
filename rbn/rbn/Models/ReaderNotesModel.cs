@@ -32,6 +32,8 @@ namespace rbn.Models
     [Display( Name = "Book Rating:" )]
     public int BookRating { get; set; }
 
+    [Required]
+    [MinLength( 50 )]
     public string Note { get; set; }
 
     [Display( Name = "Comment:" )]

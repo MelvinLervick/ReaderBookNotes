@@ -26,7 +26,6 @@
       @Html.HiddenFor( model => model.Title )
       @Html.HiddenFor( model => model.AuthorId )
       @Html.HiddenFor( model => model.AuthorName )
-      @*@Html.HiddenFor( model => model.AudienceId )*@
       @Html.HiddenFor( model => model.ReviewerCommentRating )
       @Html.HiddenFor( model => model.ReviewerBookRating )
       @Html.HiddenFor( model => model.ReaderRating )
@@ -45,6 +44,7 @@
       {
         <div class="contributorNotes">
           @Html.TextAreaFor( model => model.Note, new { @class = "contributorNoteEdit" } )
+          @Html.ValidationMessageFor( model => model.Note, "You must enter a comment before selecting 'Save New Note'.", htmlAttributes: new { @class = "ValidationMessageNote"} )
         </div>
       }
       else
@@ -65,6 +65,7 @@
           if ( (Model.ReaderNoteId == 0) && (Model.BookId > 0) )
           {
             @Html.DropDownListFor( model => model.AudienceId, ViewBag.AudienceId as SelectList, "--Select Audience--" )
+            @Html.ValidationMessage( "AudienceId", "An Audience must be selected.", htmlAttributes: new { @class = "ValidationMessage1"} )
             @Html.LabelFor( model => model.Notify, new {@class = "NotifyLabel"} )
             @Html.CheckBoxFor( model => model.Notify, new {@class = "Notify"} )
             <input type="submit" class="Save" name="buttons" value="Save New Note" />

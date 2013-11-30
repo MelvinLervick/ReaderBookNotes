@@ -1392,6 +1392,13 @@ tr.pager td {
     color: darkblue;
   }
 
+  .Notes .contributorNotes .ValidationMessageNote {
+    position: absolute;
+    color: red;
+    left: 100px;
+    top: -100px;
+  }
+
   .Notes .Audience {
     position: absolute;
     border: none;
@@ -1399,6 +1406,13 @@ tr.pager td {
     right: 5px;
     bottom: 40px;
     padding: 5px;
+  }
+
+  .Notes .Audience .ValidationMessage1 {
+    position: absolute;
+    color: red;
+    left: 350px;
+    top: -60px;
   }
 
   .Notes .Audience input.Previous {
