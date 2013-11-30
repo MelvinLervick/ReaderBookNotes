@@ -64,7 +64,7 @@
           </td>
           <td class="Separator"></td>
           <td class="Buttons">
-            @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator"))
+            @if (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" ))
             {
               @Html.ActionLink("Edit", "Update", new {id = item.BookId}, new {@class = "Button", type = "button"})
             }

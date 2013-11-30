@@ -40,11 +40,18 @@
             @Html.TextBoxFor( model => model.Rating, new { @class = "Rating" } )
             @Html.ValidationMessageFor( model => model.Rating )
           </li>
-          <li>
-            @Html.LabelFor( model => model.Enabled, new { @class = "Label" } )
-            @Html.CheckBoxFor( model => model.Enabled, new { @class = "Enabled" } )
-            @Html.ValidationMessageFor( model => model.Enabled )
-          </li>
+          @if ( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) )
+          {
+            <li>
+              @Html.LabelFor( model => model.Enabled, new {@class = "Label"} )
+              @Html.CheckBoxFor( model => model.Enabled, new {@class = "Enabled"} )
+              @Html.ValidationMessageFor( model => model.Enabled )
+            </li>
+          }
+          else
+          {
+            @Html.HiddenFor(model => model.Enabled)
+          }
         </ol>
 
         <p>
