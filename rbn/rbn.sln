@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rbn", "rbn\rbn.csproj", "{60566B01-1E85-4171-A450-2331801B79AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rbn.Tests", "rbn.Tests\rbn.Tests.csproj", "{170B21AE-67E5-4553-86E1-AAE0A1EF4C6D}"
