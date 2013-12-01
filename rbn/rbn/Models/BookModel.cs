@@ -29,6 +29,7 @@ namespace rbn.Models
       set;
     }
 
+    [Required]
     [Display( Name = "Author Name" )]
     public int AuthorId
     {
@@ -43,6 +44,7 @@ namespace rbn.Models
       set;
     }
 
+    [Required]
     [Display( Name = "Audience" )]
     public int AudienceId
     {
@@ -58,6 +60,7 @@ namespace rbn.Models
     }
 
     [Display( Name = "Rating" )]
+    [Range( 1, 9 )]
     public int Rating
     {
       get;

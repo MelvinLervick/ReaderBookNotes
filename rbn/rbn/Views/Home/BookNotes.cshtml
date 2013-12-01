@@ -13,7 +13,7 @@
       <h2>@ViewBag.Title</h2>
       <h3>&nbsp;for&nbsp;</h3>
       <div class="ReaderAlias">
-        @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList, " --Select Reader Alias-- ",
+        @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList,
           htmlAttributes: new { onchange = "document.getElementById('BookNotes').submit();" } )
       </div>
       @Html.LabelFor( model => model.ReaderRating, new { @class = "LabelReaderRating" } )
@@ -69,12 +69,15 @@
             @Html.LabelFor( model => model.Notify, new {@class = "NotifyLabel"} )
             @Html.CheckBoxFor( model => model.Notify, new {@class = "Notify"} )
             <input type="submit" class="Save" name="buttons" value="Save New Note" />
-            <input type="submit" class="Cancel" name="buttons" value="Cancel" />
+            <input type="submit" class="Cancel cancel" name="buttons" value="Cancel" />
           }
           else
           {
-            @Html.DropDownListFor( model => model.AudienceId, ViewBag.AudienceId as SelectList, "--Select Audience--", htmlAttributes: new { @disabled = "disabled" } )
-            <input type="submit" class="Add" name="buttons" value="Add New Note" />
+            if ( Model.BookId > 0 )
+            {
+              @Html.DropDownListFor( model => model.AudienceId, ViewBag.AudienceId as SelectList, "--Select Audience--", htmlAttributes: new {@disabled = "disabled"} )
+              <input type="submit" class="Add" name="buttons" value="Add New Note" />
+            }
           }
         }
         else
@@ -82,25 +85,28 @@
           @Html.DropDownListFor( model => model.AudienceId, ViewBag.AudienceId as SelectList, "--Select Audience--", htmlAttributes: new { @disabled = "disabled" } )
         }
       </div>
-      <div class="ReviewerRatingBlock">
-        @Html.Label( "Please Rate (where 9 is best)", new { @class = "LabelRatingFixed" } )
-        <div class="ReviewerRating">
-          <div class="inline">
-            @Html.LabelFor( model => model.ReviewerCommentRating, new { @class = "LabelRating" } )
-            @for (var i = 1; i < 10; i++)
-            {
-              <input type="submit" name="buttons" value="@i.ToString()" />
-            }
-          </div>
-          <div class="inline">
-            @Html.LabelFor( model => model.ReviewerBookRating, new { @class = "LabelBookRating" } )
-            @for (var i = 1; i < 10; i++)
-            {
-              <input type="submit" name="bookButtons" value="@i.ToString()" />
-            }
+      @if ( (Model.BookId > 0) && (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" )) )
+      {
+        <div class="ReviewerRatingBlock">
+          @Html.Label( "Please Rate (where 9 is best)", new {@class = "LabelRatingFixed"} )
+          <div class="ReviewerRating">
+            <div class="inline">
+              @Html.LabelFor( model => model.ReviewerCommentRating, new {@class = "LabelRating"} )
+              @for ( var i = 1; i < 10; i++ )
+              {
+                <input type="submit" name="buttons" value="@i.ToString()" />
+              }
+            </div>
+            <div class="inline">
+              @Html.LabelFor( model => model.ReviewerBookRating, new {@class = "LabelBookRating"} )
+              @for ( var i = 1; i < 10; i++ )
+              {
+                <input type="submit" name="bookButtons" value="@i.ToString()" />
+              }
+            </div>
           </div>
         </div>
-      </div>
+      }
     </fieldset>
   }
 </div>

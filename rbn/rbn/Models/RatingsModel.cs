@@ -17,14 +17,14 @@ namespace rbn.Models
       set;
     }
 
-    [Display( Name = "Reader" )]
+    [Display( Name = "ReaderId" )]
     public int UserId
     {
       get;
       set;
     }
 
-    [Display( Name = "Notes" )]
+    [Display( Name = "NoteId" )]
     public int ReaderNoteId
     {
       get;
@@ -39,21 +39,8 @@ namespace rbn.Models
     }
 
     [Display( Name = "Rating" )]
+    [Range( 1, 9 )]
     public int Rating
-    {
-      get;
-      set;
-    }
-
-    [Display( Name = "Note" )]
-    public string Note
-    {
-      get;
-      set;
-    }
-
-    [Display( Name = "Notify" )]
-    public bool Notify
     {
       get;
       set;

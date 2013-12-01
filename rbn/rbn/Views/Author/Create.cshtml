@@ -23,22 +23,18 @@
           <li>
             @Html.LabelFor( model => model.FirstName, new { @class = "Label" } )
             @Html.TextBoxFor( model => model.FirstName, new { @class = "FirstName" } )
-            @Html.ValidationMessageFor( model => model.FirstName )
           </li>
           <li>
             @Html.LabelFor( model => model.MiddleName, new { @class = "Label" } )
             @Html.TextBoxFor( model => model.MiddleName, new { @class = "MiddleName" } )
-            @Html.ValidationMessageFor( model => model.MiddleName )
           </li>
           <li>
             @Html.LabelFor( model => model.LastName, new { @class = "Label" } )
             @Html.TextBoxFor( model => model.LastName, new { @class = "LastName" } )
-            @Html.ValidationMessageFor( model => model.LastName )
           </li>
           <li>
             @Html.LabelFor( model => model.Rating, new { @class = "Label" } )
             @Html.TextBoxFor( model => model.Rating, new { @class = "Rating" } )
-            @Html.ValidationMessageFor( model => model.Rating )
           </li>
         </ol>
 

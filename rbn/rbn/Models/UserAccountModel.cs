@@ -93,6 +93,7 @@ namespace rbn.Models
       set;
     }
 
+    [Range( 1, 9 )]
     public int Rating { get; set; }
   }
 }

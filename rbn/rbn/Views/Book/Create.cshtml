@@ -23,27 +23,22 @@
           <li>
             @Html.LabelFor( model => model.Title, new { @class = "Label" } )
             @Html.TextBoxFor( model => model.Title, new { @class = "Title" } )
-            @Html.ValidationMessageFor( model => model.Title )
           </li>
           <li>
             @Html.LabelFor( model => model.ISBN, new { @class = "Label" } )
             @Html.TextBoxFor( model => model.ISBN, new { @class = "ISBN" } )
-            @Html.ValidationMessageFor( model => model.ISBN )
           </li>
           <li>
             @Html.LabelFor( model => model.AuthorId, new { @class = "Label" } )
             @Html.DropDownList("AuthorId", string.Empty)
-            @Html.ValidationMessage( "AuthorId", "An Author must be selected." )
           </li>
           <li>
             @Html.LabelFor( model => model.AudienceId, new { @class = "Label" } )
             @Html.DropDownList("AudienceId", string.Empty)
-            @Html.ValidationMessage( "AudienceId", "An Audience must be selected." )
           </li>
           <li>
             @Html.LabelFor( model => model.Rating, new { @class = "Label" } )
             @Html.TextBoxFor( model => model.Rating, new { @class = "Rating" } )
-            @Html.ValidationMessageFor( model => model.Rating )
           </li>
         </ol>
 

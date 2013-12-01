@@ -73,7 +73,9 @@ namespace rbn.Controllers
 
     public ActionResult BookNotes( int? id )
     {
+      var addOnlyCurrentUserNameToReaderList = false;
       var model = new ReaderNotesModel();
+
       ViewBag.Message = READER_BOOK_NOTES;
       if ( id != null && id > 0 )
       {
@@ -81,35 +83,48 @@ namespace rbn.Controllers
         if ( model.ReaderNoteId == 0 )
         {
           model.CreateNewEmptyNote( AccountProvider, User.Identity.Name );
+          addOnlyCurrentUserNameToReaderList = true;
         }
       }
-      ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
+      ViewBag.ReaderId = FillReaderAliasList( model.ReaderId, model.BookId, addOnlyCurrentUserNameToReaderList );
       ViewBag.AudienceId = FillAudienceList( model.AudienceId );
 
       return View( model );
     }
 
-    private IEnumerable<SelectListItem> FillReaderAliasList( int id )
+    private IEnumerable<SelectListItem> FillReaderAliasList( int readerId, int bookId, bool addOnlyCurrentReaderAliasToList = false )
     {
-      var items = from value in ReaderAliasProvider.GetReaderAliases()
-                  select new SelectListItem
-                  {
-                    Text = value.Alias,
-                    Value = value.ReaderId.ToString(),
-                    Selected = value.ReaderId == id,
-                  };
+      List<SelectListItem> items;
 
-      return items; // INSTEAD OF:: new SelectList( ReaderAliasProvider.GetReaderAliases(), "ReaderId", "Alias", id );
+      if ( addOnlyCurrentReaderAliasToList )
+      {
+        items = new List<SelectListItem>
+        {
+          new SelectListItem {Text = User.Identity.Name, Value = readerId.ToString(), Selected = true}
+        };
+      }
+      else
+      {
+        items = (from value in ReaderAliasProvider.GetReaderAliases( bookId )
+                select new SelectListItem
+                {
+                  Text = value.Alias,
+                  Value = value.ReaderId.ToString(),
+                  Selected = value.ReaderId == readerId,
+                }).ToList();
+      }
+
+      return items; // INSTEAD OF:: new SelectList( ReaderAliasProvider.GetReaderAliases( bookId ), "ReaderId", "Alias", id );
     }
 
-    private IEnumerable<SelectListItem> FillAudienceList( int id )
+    private IEnumerable<SelectListItem> FillAudienceList( int audienceId )
     {
       var items = from value in AudienceProvider.GetAudienceList()
                   select new SelectListItem
                   {
                     Text = value.Name,
                     Value = value.AudienceId.ToString(),
-                    Selected = value.AudienceId == id,
+                    Selected = value.AudienceId == audienceId,
                   };
 
       return items; // INSTEAD OF:: new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
@@ -127,10 +142,13 @@ namespace rbn.Controllers
     /// Save Changes: if reader is registered, allow the reader to save notes.
     /// </param>
     /// <param name="bookButtons"></param>
+    /// <param name="readerId"></param>
     /// <returns></returns>
     [HttpPost]
-    public ActionResult BookNotes( ReaderNotesModel model, string buttons, string bookButtons )
+    public ActionResult BookNotes( ReaderNotesModel model, string buttons, string bookButtons, string readerId )
     {
+      var addOnlyCurrentUserNameToReaderList = false;
+
       ViewBag.Message = READER_BOOK_NOTES;
       if ( buttons != null )
       {
@@ -154,6 +172,7 @@ namespace rbn.Controllers
             break;
           case "add new note":
             model.CreateNewEmptyNote( AccountProvider, User.Identity.Name );
+            addOnlyCurrentUserNameToReaderList = true;
             break;
           case "save new note":
             ReaderNotesProvider.SaveReaderNote( model );
@@ -167,6 +186,19 @@ namespace rbn.Controllers
               model =
                 ReaderNotesProvider.GetReaderNote( new PageSelectorModel( model.BookId, model.NotesThatCanBeViewed,
                   model.Page-1, model.TotalPages, true ) );
+
+              if (model.TotalPages == 0)
+              {
+                model.CreateNewEmptyNote( AccountProvider, User.Identity.Name );
+                addOnlyCurrentUserNameToReaderList = true;
+              }
+            }
+            break;
+          default:
+            int commentRating;
+            if ( Int32.TryParse( buttons, out commentRating ) )
+            {
+              // add rating record
             }
             break;
         }
@@ -176,9 +208,14 @@ namespace rbn.Controllers
         if ( bookButtons != null )
         {
           // Book Rating
+          int bookRating;
+          if (Int32.TryParse( bookButtons, out bookRating ))
+          {
+            // add rating record0
+          }
         }
       }
-      ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
+      ViewBag.ReaderId = FillReaderAliasList( model.ReaderId, model.BookId, addOnlyCurrentUserNameToReaderList );
       ViewBag.AudienceId = FillAudienceList( model.AudienceId );
       ModelState.Clear();
 
@@ -202,7 +239,7 @@ namespace rbn.Controllers
         ReaderNoteId = 1,
         Notify = true
       };
-      ViewBag.ReaderId = FillReaderAliasList( model.ReaderId );
+      ViewBag.ReaderId = FillReaderAliasList( model.ReaderId, model.BookId );
       ViewBag.AudienceId = FillAudienceList( model.AudienceId );
 
       return PartialView( "BookNotes", model );
