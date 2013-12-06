@@ -40,8 +40,8 @@ namespace rbn.Controllers
 
     public ActionResult Create( int id )
     {
-      var model = new AuthorModel();
-      model.Enabled = true;
+      var model = new AuthorModel{Rating = 1, Enabled = true};
+
       return View( model );
     }
 

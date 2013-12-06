@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Deployment.Internal;
 using rbnBLL.Models;
 
 namespace rbnBLL
 {
   public interface IRatingsProvider
   {
-    IEnumerable<Ratings> GetAuthorRatingsList( int authorId );
-    void CreateAuthorRating( Ratings newRating );
+    void SaveReaderRating( Ratings rating );
+    void SaveBookRating( Ratings rating );
   }
 }

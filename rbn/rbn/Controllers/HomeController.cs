@@ -49,6 +49,15 @@ namespace rbn.Controllers
       }
     }
 
+    private IRatingsProvider ratingsProvider;
+    internal IRatingsProvider RatingsProvider
+    {
+      get
+      {
+        return ratingsProvider ?? (ratingsProvider = new RatingsProvider());
+      }
+    }
+
     public ActionResult Index()
     {
       ViewBag.Message = "Read what other readers have to say about your favorite book.";
@@ -198,7 +207,13 @@ namespace rbn.Controllers
             int commentRating;
             if ( Int32.TryParse( buttons, out commentRating ) )
             {
-              // add rating record
+              RatingsProvider.SaveReaderRating( new RatingsModel
+              {
+                IdBeingRated = model.ReaderNoteId,
+                Rating = commentRating,
+                RatingId = 0,
+                UserId = model.ReaderId
+              } );
             }
             break;
         }
@@ -211,12 +226,20 @@ namespace rbn.Controllers
           int bookRating;
           if (Int32.TryParse( bookButtons, out bookRating ))
           {
-            // add rating record0
+            RatingsProvider.SaveBookRating( new RatingsModel
+            {
+              IdBeingRated = model.BookId,
+              Rating = bookRating,
+              RatingId = 0,
+              UserId = model.ReaderId
+            } );
           }
         }
       }
+
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId, model.BookId, addOnlyCurrentUserNameToReaderList );
       ViewBag.AudienceId = FillAudienceList( model.AudienceId );
+
       ModelState.Clear();
 
       return View( "BookNotes", model );

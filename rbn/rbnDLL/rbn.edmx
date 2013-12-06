@@ -25,14 +25,6 @@
             <End Role="Author" EntitySet="Author" />
             <End Role="Book" EntitySet="Book" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ratings_Audience" Association="rbndbModel.Store.FK_Ratings_Audience">
-            <End Role="Audience" EntitySet="Audience" />
-            <End Role="Ratings" EntitySet="Ratings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ratings_ReaderNotes" Association="rbndbModel.Store.FK_Ratings_ReaderNotes">
-            <End Role="ReaderNotes" EntitySet="ReaderNotes" />
-            <End Role="Ratings" EntitySet="Ratings" />
-          </AssociationSet>
           <AssociationSet Name="FK_Ratings_UserProfile" Association="rbndbModel.Store.FK_Ratings_UserProfile">
             <End Role="UserProfile" EntitySet="UserProfile" />
             <End Role="Ratings" EntitySet="Ratings" />
@@ -101,9 +93,9 @@
           </Key>
           <Property Name="RatingId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="ReaderNoteId" Type="int" Nullable="false" />
+          <Property Name="RatingType" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="IdBeingRated" Type="int" Nullable="false" />
           <Property Name="Rating" Type="int" Nullable="false" />
-          <Property Name="AudienceId" Type="int" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="ReaderNotes">
@@ -210,30 +202,6 @@
             </Principal>
             <Dependent Role="Book">
               <PropertyRef Name="AuthorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ratings_Audience">
-          <End Role="Audience" Type="rbndbModel.Store.Audience" Multiplicity="0..1" />
-          <End Role="Ratings" Type="rbndbModel.Store.Ratings" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Audience">
-              <PropertyRef Name="AudienceId" />
-            </Principal>
-            <Dependent Role="Ratings">
-              <PropertyRef Name="AudienceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ratings_ReaderNotes">
-          <End Role="ReaderNotes" Type="rbndbModel.Store.ReaderNotes" Multiplicity="1" />
-          <End Role="Ratings" Type="rbndbModel.Store.Ratings" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ReaderNotes">
-              <PropertyRef Name="ReaderNoteId" />
-            </Principal>
-            <Dependent Role="Ratings">
-              <PropertyRef Name="ReaderNoteId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -376,19 +344,6 @@
             <End Role="UserProfile" EntitySet="UserProfiles" />
             <End Role="ReaderNote" EntitySet="ReaderNotes" />
           </AssociationSet>
-          <EntitySet Name="Ratings" EntityType="rbndbModel.Ratings" />
-          <AssociationSet Name="FK_Ratings_Audience" Association="rbndbModel.FK_Ratings_Audience">
-            <End Role="Audience" EntitySet="Audiences" />
-            <End Role="Rating" EntitySet="Ratings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ratings_ReaderNotes" Association="rbndbModel.FK_Ratings_ReaderNotes">
-            <End Role="ReaderNote" EntitySet="ReaderNotes" />
-            <End Role="Rating" EntitySet="Ratings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ratings_UserProfile" Association="rbndbModel.FK_Ratings_UserProfile">
-            <End Role="UserProfile" EntitySet="UserProfiles" />
-            <End Role="Rating" EntitySet="Ratings" />
-          </AssociationSet>
           <FunctionImport Name="GetReaderAliasesForBook" ReturnType="Collection(rbndbModel.GetReaderAliasesForBook_Result)">
           <Parameter Name="bookId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -400,9 +355,14 @@
             <Parameter Name="next" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="GetUserAccountUsingUserName" ReturnType="Collection(rbndbModel.GetUserAccountUsingUserName_Result)">
-            <Parameter Name="UserName" Mode="In" Type="String" />
+          <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
-        </EntityContainer>
+          <EntitySet Name="Ratings" EntityType="rbndbModel.Ratings" />
+          <AssociationSet Name="FK_Ratings_UserProfile" Association="rbndbModel.FK_Ratings_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="UserAccount">
           <Key>
             <PropertyRef Name="UserId" />
@@ -492,7 +452,6 @@
           <Property Type="String" Name="Name" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="rbndbModel.FK_Book_Audience" FromRole="Audience" ToRole="Book" />
           <NavigationProperty Name="ReaderNotes" Relationship="rbndbModel.FK_ReaderNote_Audience" FromRole="Audience" ToRole="ReaderNote" />
-          <NavigationProperty Name="Ratings" Relationship="rbndbModel.FK_Ratings_Audience" FromRole="Audience" ToRole="Rating" />
           <Property Type="Boolean" Name="Enabled" Nullable="false" />
         </EntityType>
         <EntityType Name="Author">
@@ -541,7 +500,6 @@
           <NavigationProperty Name="Audience" Relationship="rbndbModel.FK_ReaderNote_Audience" FromRole="ReaderNote" ToRole="Audience" />
           <NavigationProperty Name="Book" Relationship="rbndbModel.FK_ReaderNote_Book" FromRole="ReaderNote" ToRole="Book" />
           <NavigationProperty Name="UserProfile" Relationship="rbndbModel.FK_ReaderNote_UserProfile" FromRole="ReaderNote" ToRole="UserProfile" />
-          <NavigationProperty Name="Ratings" Relationship="rbndbModel.FK_Ratings_ReaderNotes" FromRole="ReaderNote" ToRole="Rating" />
           <Property Type="Boolean" Name="Enabled" Nullable="false" />
         </EntityType>
         <Association Name="FK_Book_Audience">
@@ -604,56 +562,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Ratings">
-          <Key>
-            <PropertyRef Name="RatingId" />
-          </Key>
-          <Property Type="Int32" Name="RatingId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserId" Nullable="false" />
-          <Property Type="Int32" Name="ReaderNoteId" Nullable="false" />
-          <Property Type="Int32" Name="Rating" Nullable="false" />
-          <Property Type="Int32" Name="AudienceId" />
-          <NavigationProperty Name="Audience" Relationship="rbndbModel.FK_Ratings_Audience" FromRole="Rating" ToRole="Audience" />
-          <NavigationProperty Name="ReaderNote" Relationship="rbndbModel.FK_Ratings_ReaderNotes" FromRole="Rating" ToRole="ReaderNote" />
-          <NavigationProperty Name="UserProfile" Relationship="rbndbModel.FK_Ratings_UserProfile" FromRole="Rating" ToRole="UserProfile" />
-          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
-        </EntityType>
-        <Association Name="FK_Ratings_Audience">
-          <End Type="rbndbModel.Audience" Role="Audience" Multiplicity="0..1" />
-          <End Type="rbndbModel.Ratings" Role="Rating" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Audience">
-              <PropertyRef Name="AudienceId" />
-            </Principal>
-            <Dependent Role="Rating">
-              <PropertyRef Name="AudienceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ratings_ReaderNotes">
-          <End Type="rbndbModel.ReaderNotes" Role="ReaderNote" Multiplicity="1" />
-          <End Type="rbndbModel.Ratings" Role="Rating" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ReaderNote">
-              <PropertyRef Name="ReaderNoteId" />
-            </Principal>
-            <Dependent Role="Rating">
-              <PropertyRef Name="ReaderNoteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ratings_UserProfile">
-          <End Type="rbndbModel.UserProfile" Role="UserProfile" Multiplicity="1" />
-          <End Type="rbndbModel.Ratings" Role="Rating" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserProfile">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Rating">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="GetReaderAliasesForBook_Result">
           <Property Type="Int32" Name="UserId" Nullable="false" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
@@ -685,7 +593,31 @@
           <Property Type="Int32" Name="Rating" Nullable="true" />
           <Property Type="Boolean" Name="AccountLocked" Nullable="true" />
         </ComplexType>
-      </Schema>
+        <EntityType Name="Ratings">
+          <Key>
+            <PropertyRef Name="RatingId" />
+          </Key>
+          <Property Type="Int32" Name="RatingId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="RatingType" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IdBeingRated" Nullable="false" />
+          <Property Type="Int32" Name="Rating" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UserProfile" Relationship="rbndbModel.FK_Ratings_UserProfile" FromRole="Rating" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_Ratings_UserProfile">
+          <End Type="rbndbModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="rbndbModel.Ratings" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -815,18 +747,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Ratings">
-            <EntityTypeMapping TypeName="rbndbModel.Ratings">
-              <MappingFragment StoreEntitySet="Ratings">
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="AudienceId" ColumnName="AudienceId" />
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="ReaderNoteId" ColumnName="ReaderNoteId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetReaderAliasesForBook" FunctionName="rbndbModel.Store.GetReaderAliasesForBook">
             <ResultMapping>
               <ComplexTypeMapping TypeName="rbndbModel.GetReaderAliasesForBook_Result">
@@ -870,6 +790,18 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="rbndbModel.Ratings">
+              <MappingFragment StoreEntitySet="Ratings">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="IdBeingRated" ColumnName="IdBeingRated" />
+                <ScalarProperty Name="RatingType" ColumnName="RatingType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -184,6 +184,7 @@
     <Compile Include="Providers\RbnBLL\Adapters\AudienceAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\AuthorAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\BookAdapter.cs" />
+    <Compile Include="Providers\RbnBLL\Adapters\RatingsAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\ReaderAliasAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\ReaderNotesAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\UserAccountAdapter.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Providers\RbnBLL\AuthorProvider.cs" />
     <Compile Include="Providers\RbnBLL\BookProvider.cs" />
     <Compile Include="Providers\IReaderAliasProvider.cs" />
+    <Compile Include="Providers\RbnBLL\RatingsProvider.cs" />
     <Compile Include="Providers\RbnBLL\ReaderAliasProvider.cs" />
     <Compile Include="Providers\RbnBLL\ReaderNotesProvider.cs" />
     <Compile Include="Providers\RbnBLL\UserAccountProvider.cs" />

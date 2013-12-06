@@ -58,7 +58,7 @@ namespace rbn.Controllers
 
     public ActionResult Create( int id )
     {
-      var model = new BookDetailsModel {Enabled = true};
+      var model = new BookDetailsModel {Rating = 1, Enabled = true};
       ViewBag.AuthorId = new SelectList(AuthorProvider.GetAuthorSelectorList(), "AuthorId", "AuthorName", model.AuthorId);
       ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
       return View( model );
