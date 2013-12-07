@@ -248,7 +248,7 @@ namespace rbn.Controllers
     [HttpPost]
     public PartialViewResult Search( SearchBarModel search )
     {
-      ViewBag.Message = "Search Book Notes";
+      ViewBag.Message = "Search";
       var model = new ReaderNotesModel
       {
         AudienceId = 2,

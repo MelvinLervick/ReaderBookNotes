@@ -81,15 +81,6 @@ namespace rbn.Controllers
       }
     }
 
-
-    [HttpPost]
-    public PartialViewResult Search( SearchBarModel search )
-    {
-      ViewBag.Message = "Search Book Notes";
-
-      return PartialView( "Index" );
-    }
-
     public ActionResult Delete( int id = 0, int enabled = 0 )
     {
       if (id > 0)
