@@ -14,7 +14,7 @@
       <h3>&nbsp;for&nbsp;</h3>
       <div class="ReaderAlias">
         @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList,
-          htmlAttributes: new { onchange = "document.getElementById('BookNotes').submit();" } )
+          htmlAttributes: new { @disabled="disabled" } )
       </div>
       @Html.LabelFor( model => model.ReaderRating, new { @class = "LabelReaderRating" } )
       <div class="ReaderRating">@Model.ReaderRating</div>

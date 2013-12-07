@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -50,9 +51,25 @@ namespace rbn.Controllers
     //
     // GET: /Book/
 
-    public ActionResult Index()
+    //public ActionResult Index()
+    //{
+    //  var model = BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+    //  return View( model );
+    //}
+
+    public ActionResult Index( int? id )
     {
-      var model = BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+      List<BookModel> model;
+
+      if (id != null && id > 0)
+      {
+        model = BookProvider.GetBookListForAuthor( (int)id, Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+      }
+      else
+      {
+        model = BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+      }
+
       return View( model );
     }
 

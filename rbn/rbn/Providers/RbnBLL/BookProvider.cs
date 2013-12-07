@@ -17,6 +17,11 @@ namespace rbn.Providers.RbnBLL
       return BookAdapter.TransformToUiModel( Provider.GetBookList( adminUser ) );
     }
 
+    public List<Models.BookModel> GetBookListForAuthor( int authorId, bool adminUser )
+    {
+      return BookAdapter.TransformToUiModel( Provider.GetBookListForAuthor( authorId, adminUser ) );
+    }
+
     public Models.BookDetailsModel GetBookDetails( int bookId )
     {
       var bookDetails = Provider.GetBookDetails( bookId );
