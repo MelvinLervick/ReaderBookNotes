@@ -40,6 +40,24 @@ namespace rbn.Controllers
       }
     }
 
+    private IAuthorProvider authorProvider;
+    internal IAuthorProvider AuthorProvider
+    {
+      get
+      {
+        return authorProvider ?? (authorProvider = new AuthorProvider());
+      }
+    }
+
+    private IBookProvider bookProvider;
+    internal IBookProvider BookProvider
+    {
+      get
+      {
+        return bookProvider ?? (bookProvider = new BookProvider());
+      }
+    }
+
     private IReaderNotesProvider readerNotesProvider;
     internal IReaderNotesProvider ReaderNotesProvider
     {
@@ -246,26 +264,27 @@ namespace rbn.Controllers
     }
 
     [HttpPost]
-    public PartialViewResult Search( SearchBarModel search )
+    public ViewResult Search( SearchBarModel search )
     {
-      ViewBag.Message = "Search";
-      var model = new ReaderNotesModel
-      {
-        AudienceId = 2,
-        AuthorId = 2,
-        AuthorName = "Doe, Jack",
-        BookId = 1,
-        Title = "Test Title",
-        ReaderRating = 2,
-        BookRating = 2,
-        ReaderId = 4,
-        ReaderNoteId = 1,
-        Notify = true
-      };
-      ViewBag.ReaderId = FillReaderAliasList( model.ReaderId, model.BookId );
-      ViewBag.AudienceId = FillAudienceList( model.AudienceId );
+      string view = "BookNotes";
 
-      return PartialView( "BookNotes", model );
+      switch ( search.SearchBy.ToLower() )
+      {
+        case "title":
+          var model1 = BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+          view = "~/Views/Book/Index.cshtml";
+          return View( view, model1 );
+        case "isbn":
+          var model2 = BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+          view = "~/Views/Book/Index.cshtml";
+          return View( view, model2 );
+        case "author":
+          var model3 = AuthorProvider.GetAuthorList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+          view = "~/Views/Author/Index.cshtml";
+          return View( view, model3 );
+      }
+
+      return View( "Error" );
     }
   }
 
