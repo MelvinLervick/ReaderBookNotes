@@ -21,6 +21,6 @@ namespace rbnBLL.Models
     public string Question2 { get; set; }
     public string Answer2 { get; set; }
     public System.DateTime LastModifiedDate { get; set; }
-    public DateTime DateOfBirth { get; set; }
+    public System.DateTime DateOfBirth { get; set; }
   }
 }

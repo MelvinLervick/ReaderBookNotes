@@ -72,8 +72,15 @@ namespace rbn.Controllers
     {
       if (ModelState.IsValid)
       {
-        AccountProvider.SaveUserManagedFieldsInUserAccount(model);
-        return RedirectToLocal( returnUrl );
+        try
+        {
+          AccountProvider.SaveUserManagedFieldsInUserAccount( model );
+          return RedirectToLocal( returnUrl );
+        }
+        catch ( Exception ex )
+        {
+          ModelState.AddModelError( "SaveUserData", ex.Message );
+        }
       }
       return View( model );
     }
