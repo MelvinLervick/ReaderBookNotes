@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="RbnDb.publish.xml" />
+    <None Include="ReaderBookNotes.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\webpages_Membership.sql" />
