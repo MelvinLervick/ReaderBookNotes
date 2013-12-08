@@ -22,6 +22,16 @@ namespace rbn.Providers.RbnBLL
       return BookAdapter.TransformToUiModel( Provider.GetBookListForAuthor( authorId, adminUser ) );
     }
 
+    public List<Models.BookModel> SearchForBooksByTitle( string searchFor, bool adminUser )
+    {
+      return BookAdapter.TransformToUiModel( Provider.SearchForBooksByTitle( searchFor, adminUser ) );
+    }
+
+    public List<Models.BookModel> SearchForBooksByISBN( string searchFor, bool adminUser )
+    {
+      return BookAdapter.TransformToUiModel( Provider.SearchForBooksByISBN( searchFor, adminUser ) );
+    }
+
     public Models.BookDetailsModel GetBookDetails( int bookId )
     {
       var bookDetails = Provider.GetBookDetails( bookId );

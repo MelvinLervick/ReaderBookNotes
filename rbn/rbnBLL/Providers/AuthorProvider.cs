@@ -32,6 +32,27 @@ namespace rbnBLL.Providers
       }
     }
 
+    public IEnumerable<Models.Author> SearchForAuthor( string searchFor, bool adminUser = false )
+    {
+      using (var db = new rbndbEntities())
+      {
+        var fieldData = (from ua in db.Authors
+                         where (ua.Enabled == !adminUser || ua.Enabled) && (ua.FirstName.Contains( searchFor ) || ua.LastName.Contains( searchFor ) || ua.MiddleName.Contains( searchFor ) )
+                         orderby ua.LastName
+                         select new Models.Author
+                         {
+                           AuthorId = ua.AuthorId,
+                           FirstName = ua.FirstName,
+                           MiddleName = ua.MiddleName,
+                           LastName = ua.LastName,
+                           Rating = ua.Rating,
+                           Enabled = ua.Enabled
+                         }).ToList();
+
+        return fieldData;
+      }
+    }
+
     public Models.Author GetAuthorDetails( int authorId )
     {
       using (var db = new rbndbEntities())

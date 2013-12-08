@@ -18,6 +18,11 @@ namespace rbn.Providers.RbnBLL
       return AuthorAdapter.TransformToUiModel(Provider.GetAuthorList( adminUser ));
     }
 
+    public List<AuthorModel> SearchForAuthor( string searchFor, bool adminUser )
+    {
+      return AuthorAdapter.TransformToUiModel( Provider.SearchForAuthor( searchFor, adminUser ) );
+    }
+
     public List<AuthorSelectorModel> GetAuthorSelectorList()
     {
       const bool GET_ALL_AUTHORS = true;

@@ -271,15 +271,15 @@ namespace rbn.Controllers
       switch ( search.SearchBy.ToLower() )
       {
         case "title":
-          var model1 = BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+          var model1 = BookProvider.SearchForBooksByTitle( search.SearchFor, Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
           view = "~/Views/Book/Index.cshtml";
           return View( view, model1 );
         case "isbn":
-          var model2 = BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+          var model2 = BookProvider.SearchForBooksByISBN( search.SearchFor, Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
           view = "~/Views/Book/Index.cshtml";
           return View( view, model2 );
         case "author":
-          var model3 = AuthorProvider.GetAuthorList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+          var model3 = AuthorProvider.SearchForAuthor( search.SearchFor, Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
           view = "~/Views/Author/Index.cshtml";
           return View( view, model3 );
       }

@@ -80,6 +80,74 @@ namespace rbnBLL.Providers
       }
     }
 
+    public IEnumerable<Models.Book> SearchForBooksByTitle( string searchFor, bool adminUser = false )
+    {
+      using (var db = new rbndbEntities())
+      {
+        var fieldData = (from ua in db.Books
+                         where (ua.Enabled == !adminUser || ua.Enabled) && (ua.Title.Contains( searchFor ))
+                         orderby ua.Title
+                         select new Models.Book()
+                         {
+                           BookId = ua.BookId,
+                           ISBN = ua.ISBN,
+                           Title = ua.Title,
+                           AuthorId = ua.AuthorId,
+                           Author = new rbnBLL.Models.Author
+                           {
+                             AuthorId = ua.Author.AuthorId,
+                             FirstName = ua.Author.FirstName,
+                             MiddleName = ua.Author.MiddleName,
+                             LastName = ua.Author.LastName
+                           },
+                           AudienceId = ua.AudienceId,
+                           Audience = new rbnBLL.Models.Audience
+                           {
+                             AudienceId = ua.Audience.AudienceId,
+                             Name = ua.Audience.Name
+                           },
+                           Rating = ua.Rating,
+                           Enabled = ua.Enabled
+                         }).ToList();
+
+        return fieldData;
+      }
+    }
+
+    public IEnumerable<Models.Book> SearchForBooksByISBN( string searchFor, bool adminUser = false )
+    {
+      using (var db = new rbndbEntities())
+      {
+        var fieldData = (from ua in db.Books
+                         where (ua.Enabled == !adminUser || ua.Enabled) && (ua.ISBN.Contains( searchFor ))
+                         orderby ua.Title
+                         select new Models.Book()
+                         {
+                           BookId = ua.BookId,
+                           ISBN = ua.ISBN,
+                           Title = ua.Title,
+                           AuthorId = ua.AuthorId,
+                           Author = new rbnBLL.Models.Author
+                           {
+                             AuthorId = ua.Author.AuthorId,
+                             FirstName = ua.Author.FirstName,
+                             MiddleName = ua.Author.MiddleName,
+                             LastName = ua.Author.LastName
+                           },
+                           AudienceId = ua.AudienceId,
+                           Audience = new rbnBLL.Models.Audience
+                           {
+                             AudienceId = ua.Audience.AudienceId,
+                             Name = ua.Audience.Name
+                           },
+                           Rating = ua.Rating,
+                           Enabled = ua.Enabled
+                         }).ToList();
+
+        return fieldData;
+      }
+    }
+
     public Models.Book GetBookDetails( int bookId )
     {
       if (bookId < 1) { return new Models.Book(); }
