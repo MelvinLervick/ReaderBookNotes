@@ -107,7 +107,7 @@ namespace rbn.Controllers
       if ( id != null && id > 0 )
       {
         model = ReaderNotesProvider.GetReaderNote( new PageSelectorModel( id ?? 0, 0, 0, 0, true ) );
-        if ( model.ReaderNoteId == 0 )
+        if (model.ReaderNoteId == 0 && (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" )))
         {
           model.CreateNewEmptyNote( AccountProvider, User.Identity.Name );
           addOnlyCurrentUserNameToReaderList = true;
@@ -172,7 +172,7 @@ namespace rbn.Controllers
     /// <param name="readerId"></param>
     /// <returns></returns>
     [HttpPost]
-    public ActionResult BookNotes( ReaderNotesModel model, string buttons, string bookButtons, string readerId )
+    public ActionResult BookNotes( ReaderNotesModel model, string buttons, string bookButtons, string readerId, string AudienceId )
     {
       var addOnlyCurrentUserNameToReaderList = false;
 

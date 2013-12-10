@@ -14,6 +14,7 @@
       <h2>@ViewBag.Title</h2>
       <h3>&nbsp;for&nbsp;</h3>
       <div class="ReaderAlias">
+        @Html.HiddenFor( model => model.ReaderId )
         @Html.DropDownList( "ReaderId", ViewBag.ReaderId as SelectList,
           htmlAttributes: new { @disabled="disabled" } )
       </div>
@@ -31,7 +32,6 @@
       @Html.HiddenFor( model => model.ReviewerBookRating )
       @Html.HiddenFor( model => model.ReaderRating )
       @Html.HiddenFor( model => model.BookRating )
-      @Html.HiddenFor( model => model.AudienceId )
 
       <div class="AuthorTitleRating">
         @Html.LabelFor( model => model.Title, new { @class = "LabelTitle" } )
@@ -77,6 +77,7 @@
           {
             if ( Model.BookId > 0 )
             {
+              @Html.HiddenFor( model => model.AudienceId )
               @Html.DropDownListFor( model => model.AudienceId, ViewBag.AudienceId as SelectList, "--Select Audience--", htmlAttributes: new {@disabled = "disabled"} )
               <input type="submit" class="Add" name="buttons" value="Add New Note" />
             }
@@ -84,6 +85,7 @@
         }
         else
         {
+          @Html.HiddenFor( model => model.AudienceId )
           @Html.DropDownListFor( model => model.AudienceId, ViewBag.AudienceId as SelectList, "--Select Audience--", htmlAttributes: new { @disabled = "disabled" } )
         }
       </div>
