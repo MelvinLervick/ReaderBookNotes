@@ -83,6 +83,7 @@
     <Build Include="dbo\Tables\Ratings.sql" />
     <Build Include="dbo\Stored Procedures\GetReaderAliasesForBook.sql" />
     <Build Include="dbo\Stored Procedures\GetNextReaderNote.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateRatings.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="RbnDb.refactorlog" />
