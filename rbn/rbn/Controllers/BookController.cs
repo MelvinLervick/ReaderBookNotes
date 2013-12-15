@@ -6,6 +6,7 @@ using System.Web.Security;
 using Microsoft.Ajax.Utilities;
 using rbn.Models;
 using rbn.Providers;
+using rbn.Providers.Api;
 using rbn.Providers.RbnBLL;
 
 namespace rbn.Controllers
@@ -90,6 +91,12 @@ namespace rbn.Controllers
         ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
         return View( model );
       }
+
+      // Test ISBNDB API Request
+      //string apiKey = "W7M9VQ8L";
+      //string urlForApi = string.Format( "http://isbndb.com/api/v2/json/{0}/book/{1}", apiKey, model.ISBN );
+      //var request = new WebRequestApiProvider( urlForApi );
+      //var value = request.GetResponse();
 
       try
       {

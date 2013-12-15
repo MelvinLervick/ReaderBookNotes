@@ -51,7 +51,7 @@ namespace rbnBLL.Providers
             ReaderNoteId = result.ReaderNoteId,
             ReaderId = result.ReaderId,
             Book = new BookProvider().GetBookDetails(result.BookId),
-            ReaderRating = result.ReaderRating ?? 0,
+            ReaderRating = result.Rating,
             Note = result.Note,
             AudienceId = result.AudienceId,
             ReviewerBookRating = 1,

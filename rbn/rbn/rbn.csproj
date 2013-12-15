@@ -175,12 +175,14 @@
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Models\ReaderAliasModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\Api\WebRequestApiProvider.cs" />
     <Compile Include="Providers\IAudienceProvider.cs" />
     <Compile Include="Providers\IAuthorProvider.cs" />
     <Compile Include="Providers\IRatingsProvider.cs" />
     <Compile Include="Providers\IReaderNotesProvider.cs" />
     <Compile Include="Providers\IBookProvider.cs" />
     <Compile Include="Providers\IUserAccountProvider.cs" />
+    <Compile Include="Providers\IWebRequestApiProvider.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\AudienceAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\AuthorAdapter.cs" />
     <Compile Include="Providers\RbnBLL\Adapters\BookAdapter.cs" />
