@@ -98,4 +98,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="RatingId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="e259af86-afde-4453-a224-8649bcc20bb6" ChangeDateTime="12/15/2013 16:38:51">
+    <Property Name="ElementName" Value="[dbo].[BookSource].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BookSource]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BookSourceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1f3bd4c4-a72b-4f0f-a8df-94438d400a49" ChangeDateTime="12/15/2013 16:51:12">
+    <Property Name="ElementName" Value="[dbo].[BookToBookSource].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BookToBookSource]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BookToBookSourceId" />
+  </Operation>
 </Operations>

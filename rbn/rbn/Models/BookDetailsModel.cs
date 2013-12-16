@@ -25,6 +25,7 @@ namespace rbn.Models
       set;
     }
 
+    [Required]
     [Display( Name = "ISBN" )]
     [StringLength( 32 )]
     public string ISBN

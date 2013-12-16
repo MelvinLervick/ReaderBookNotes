@@ -153,6 +153,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -259,6 +260,7 @@
     <Content Include="Web - rbn.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web - rbn.Debug.config">
       <DependentUpon>Web - rbn.config</DependentUpon>
     </None>

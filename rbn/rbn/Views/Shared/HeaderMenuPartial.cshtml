@@ -18,6 +18,10 @@
         <li>@Html.ActionLink( "Home", "Index", "Home" )</li>
         <li>@Html.ActionLink( "About", "About", "Home" )</li>
         <li>@Html.ActionLink( "Contact", "Contact", "Home" )</li>
+        @if ( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) )
+        {
+          <li>@Html.ActionLink( "Admin", "Index", "Admin" )</li>
+        }
       </ul>
     </nav>
   </div>
