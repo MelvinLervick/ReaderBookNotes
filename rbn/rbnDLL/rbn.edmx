@@ -302,6 +302,7 @@
         <Function Name="GetUserAccountUsingUserName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="UpdateRatings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -362,6 +363,7 @@
             <End Role="UserProfile" EntitySet="UserProfiles" />
             <End Role="Rating" EntitySet="Ratings" />
           </AssociationSet>
+          <FunctionImport Name="UpdateRatings" />
           </EntityContainer>
         <EntityType Name="UserAccount">
           <Key>
@@ -802,6 +804,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="UpdateRatings" FunctionName="rbndbModel.Store.UpdateRatings" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -45,6 +45,8 @@ namespace rbnBLL.Providers
         } );
 
         db.SaveChanges();
+
+        db.UpdateRatings();
       }
     }
   }

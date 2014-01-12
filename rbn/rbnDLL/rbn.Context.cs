@@ -81,5 +81,10 @@ namespace rbnDLL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccountUsingUserName_Result>("GetUserAccountUsingUserName", userNameParameter);
         }
+    
+        public virtual int UpdateRatings()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateRatings");
+        }
     }
 }
