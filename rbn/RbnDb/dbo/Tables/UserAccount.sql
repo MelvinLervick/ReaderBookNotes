@@ -10,7 +10,7 @@
     [Answer1] NVARCHAR(100) NULL, 
     [Question2] NVARCHAR(100) NULL, 
     [Answer2] NVARCHAR(100) NULL, 
-    [Rating] INT NULL DEFAULT 0, 
+    [Rating] INT NULL DEFAULT 1, 
     [NeedsApproval] BIT NULL DEFAULT 0, 
     [AccountLocked] BIT NULL DEFAULT 0, 
     [LastModifiedDate] DATETIME NOT NULL DEFAULT getdate(), 

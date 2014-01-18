@@ -7,7 +7,7 @@ BEGIN
   DECLARE @UserId As Int
   DECLARE @RoleId As Int
   Select @UserId = i.UserId From inserted i;
-  Select @RoleId = RoleId From webpages_Roles Where RoleName = 'Reader';
+  Select @RoleId = RoleId From webpages_Roles Where RoleName = 'Contributor';
 
   IF EXISTS(Select UserId From UserProfile Where UserId = @UserId)
   BEGIN

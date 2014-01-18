@@ -40,8 +40,8 @@ namespace rbn.Controllers
 
     public ActionResult Create( int id )
     {
-      var model = new AuthorModel();
-      model.Enabled = true;
+      var model = new AuthorModel{Rating = 1, Enabled = true};
+
       return View( model );
     }
 
@@ -79,15 +79,6 @@ namespace rbn.Controllers
         ModelState.AddModelError( "error", ex.Message );
         return View(model);
       }
-    }
-
-
-    [HttpPost]
-    public PartialViewResult Search( SearchBarModel search )
-    {
-      ViewBag.Message = "Search Book Notes";
-
-      return PartialView( "Index" );
     }
 
     public ActionResult Delete( int id = 0, int enabled = 0 )

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace rbnBLL.Models
 {
@@ -10,8 +6,9 @@ namespace rbnBLL.Models
   {
     public int RatingId { get; set; }
     public int UserId { get; set; }
-    public int ReaderNoteId { get; set; }
+    public string RatingType { get; set; }
+    public int IdBeingRated { get; set; }
     public int Rating { get; set; }
-    public int? AudienceId { get; set; }
+    public DateTime CreatedDate { get; set; }
   }
 }

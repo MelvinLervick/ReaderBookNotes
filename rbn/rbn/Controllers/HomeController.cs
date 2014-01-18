@@ -40,12 +40,39 @@ namespace rbn.Controllers
       }
     }
 
+    private IAuthorProvider authorProvider;
+    internal IAuthorProvider AuthorProvider
+    {
+      get
+      {
+        return authorProvider ?? (authorProvider = new AuthorProvider());
+      }
+    }
+
+    private IBookProvider bookProvider;
+    internal IBookProvider BookProvider
+    {
+      get
+      {
+        return bookProvider ?? (bookProvider = new BookProvider());
+      }
+    }
+
     private IReaderNotesProvider readerNotesProvider;
     internal IReaderNotesProvider ReaderNotesProvider
     {
       get
       {
         return readerNotesProvider ?? (readerNotesProvider = new ReaderNotesProvider());
+      }
+    }
+
+    private IRatingsProvider ratingsProvider;
+    internal IRatingsProvider RatingsProvider
+    {
+      get
+      {
+        return ratingsProvider ?? (ratingsProvider = new RatingsProvider());
       }
     }
 
@@ -80,7 +107,7 @@ namespace rbn.Controllers
       if ( id != null && id > 0 )
       {
         model = ReaderNotesProvider.GetReaderNote( new PageSelectorModel( id ?? 0, 0, 0, 0, true ) );
-        if ( model.ReaderNoteId == 0 )
+        if (model.ReaderNoteId == 0 && (Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) || Roles.GetRolesForUser( User.Identity.Name ).Contains( "Contributor" )))
         {
           model.CreateNewEmptyNote( AccountProvider, User.Identity.Name );
           addOnlyCurrentUserNameToReaderList = true;
@@ -145,7 +172,7 @@ namespace rbn.Controllers
     /// <param name="readerId"></param>
     /// <returns></returns>
     [HttpPost]
-    public ActionResult BookNotes( ReaderNotesModel model, string buttons, string bookButtons, string readerId )
+    public ActionResult BookNotes( ReaderNotesModel model, string buttons, string bookButtons, string readerId, string AudienceId )
     {
       var addOnlyCurrentUserNameToReaderList = false;
 
@@ -198,7 +225,13 @@ namespace rbn.Controllers
             int commentRating;
             if ( Int32.TryParse( buttons, out commentRating ) )
             {
-              // add rating record
+              RatingsProvider.SaveReaderRating( new RatingsModel
+              {
+                IdBeingRated = model.ReaderNoteId,
+                Rating = commentRating,
+                RatingId = 0,
+                UserId = model.ReaderId
+              } );
             }
             break;
         }
@@ -211,38 +244,47 @@ namespace rbn.Controllers
           int bookRating;
           if (Int32.TryParse( bookButtons, out bookRating ))
           {
-            // add rating record0
+            RatingsProvider.SaveBookRating( new RatingsModel
+            {
+              IdBeingRated = model.BookId,
+              Rating = bookRating,
+              RatingId = 0,
+              UserId = model.ReaderId
+            } );
           }
         }
       }
+
       ViewBag.ReaderId = FillReaderAliasList( model.ReaderId, model.BookId, addOnlyCurrentUserNameToReaderList );
       ViewBag.AudienceId = FillAudienceList( model.AudienceId );
+
       ModelState.Clear();
 
       return View( "BookNotes", model );
     }
 
     [HttpPost]
-    public PartialViewResult Search( SearchBarModel search )
+    public ViewResult Search( SearchBarModel search )
     {
-      ViewBag.Message = "Search Book Notes";
-      var model = new ReaderNotesModel
-      {
-        AudienceId = 2,
-        AuthorId = 2,
-        AuthorName = "Doe, Jack",
-        BookId = 1,
-        Title = "Test Title",
-        ReaderRating = 2,
-        BookRating = 2,
-        ReaderId = 4,
-        ReaderNoteId = 1,
-        Notify = true
-      };
-      ViewBag.ReaderId = FillReaderAliasList( model.ReaderId, model.BookId );
-      ViewBag.AudienceId = FillAudienceList( model.AudienceId );
+      string view = "BookNotes";
 
-      return PartialView( "BookNotes", model );
+      switch ( search.SearchBy.ToLower() )
+      {
+        case "title":
+          var model1 = BookProvider.SearchForBooksByTitle( search.SearchFor, Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+          view = "~/Views/Book/Index.cshtml";
+          return View( view, model1 );
+        case "isbn":
+          var model2 = BookProvider.SearchForBooksByISBN( search.SearchFor, Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+          view = "~/Views/Book/Index.cshtml";
+          return View( view, model2 );
+        case "author":
+          var model3 = AuthorProvider.SearchForAuthor( search.SearchFor, Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+          view = "~/Views/Author/Index.cshtml";
+          return View( view, model3 );
+      }
+
+      return View( "Error" );
     }
   }
 

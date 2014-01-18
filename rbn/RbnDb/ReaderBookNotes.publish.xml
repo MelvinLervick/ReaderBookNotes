@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseName>ReaderBookNotes</TargetDatabaseName>
+    <DeployScriptFileName>RbnDb.sql</DeployScriptFileName>
+    <TargetConnectionString>Data Source=P3NWDSH12SQL-v03.shr.prod.phx3.secureserver.net;Persist Security Info=True;User ID=ReaderBookNotes;Pooling=False</TargetConnectionString>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+    <ScriptDatabaseOptions>True</ScriptDatabaseOptions>
+    <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
+    <CommentOutSetVarDeclarations>True</CommentOutSetVarDeclarations>
+  </PropertyGroup>
+</Project>

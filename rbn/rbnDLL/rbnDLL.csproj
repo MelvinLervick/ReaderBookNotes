@@ -82,6 +82,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rbn.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rbn1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,7 +91,6 @@
     <Compile Include="ReaderNotes.cs">
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserAccount.cs">
       <DependentUpon>rbn.tt</DependentUpon>
     </Compile>

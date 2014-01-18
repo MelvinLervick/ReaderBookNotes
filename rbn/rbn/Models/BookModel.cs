@@ -13,6 +13,7 @@ namespace rbn.Models
       set;
     }
 
+    [Required]
     [Display( Name = "Title" )]
     [StringLength( 50 )]
     public string Title
@@ -21,6 +22,7 @@ namespace rbn.Models
       set;
     }
 
+    [Required]
     [Display( Name = "ISBN" )]
     [StringLength( 32 )]
     public string ISBN

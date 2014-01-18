@@ -1611,4 +1611,18 @@ tr.pager td {
   padding-left: 100px;
 }
 
+  .Edit .BackToList {
+    padding: 2px 5px;
+    margin: 10px 0px 0px;
+    text-decoration: none;
+    border: 1px solid darkgrey;
+    background-color: lightblue;
+    color: darkblue;
+  }
+
+    .Edit .BackToList:hover {
+      background-color: yellow;
+      color: darkblue;
+    }
+
 .inline { display: inline-block; }

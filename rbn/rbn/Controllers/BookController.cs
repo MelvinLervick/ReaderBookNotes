@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using Microsoft.Ajax.Utilities;
 using rbn.Models;
 using rbn.Providers;
+using rbn.Providers.Api;
 using rbn.Providers.RbnBLL;
 
 namespace rbn.Controllers
@@ -50,15 +52,31 @@ namespace rbn.Controllers
     //
     // GET: /Book/
 
-    public ActionResult Index()
+    //public ActionResult Index()
+    //{
+    //  var model = BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+    //  return View( model );
+    //}
+
+    public ActionResult Index( int? id )
     {
-      var model = BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+      List<BookModel> model;
+
+      if (id != null && id > 0)
+      {
+        model = BookProvider.GetBookListForAuthor( (int)id, Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+      }
+      else
+      {
+        model = BookProvider.GetBookList( Roles.GetRolesForUser( User.Identity.Name ).Contains( "Administrator" ) );
+      }
+
       return View( model );
     }
 
     public ActionResult Create( int id )
     {
-      var model = new BookDetailsModel {Enabled = true};
+      var model = new BookDetailsModel {Rating = 1, Enabled = true};
       ViewBag.AuthorId = new SelectList(AuthorProvider.GetAuthorSelectorList(), "AuthorId", "AuthorName", model.AuthorId);
       ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
       return View( model );
@@ -73,6 +91,12 @@ namespace rbn.Controllers
         ViewBag.AudienceId = new SelectList( AudienceProvider.GetAudienceList(), "AudienceId", "Name", model.AudienceId );
         return View( model );
       }
+
+      // Test ISBNDB API Request
+      //string apiKey = "W7M9VQ8L";
+      //string urlForApi = string.Format( "http://isbndb.com/api/v2/json/{0}/book/{1}", apiKey, model.ISBN );
+      //var request = new WebRequestApiProvider( urlForApi );
+      //var value = request.GetResponse();
 
       try
       {

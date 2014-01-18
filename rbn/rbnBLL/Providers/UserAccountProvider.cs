@@ -19,14 +19,14 @@ namespace rbnBLL.Providers
                                UserId = ua.UserId,
                                FirstName = ua.FirstName,
                                LastName = ua.LastName,
-                               DateOfBirth = ua.DateOfBirth ?? DateTime.Parse("1/1/0001"),
+                               DateOfBirth = ua.DateOfBirth ?? DateTime.Parse("1/1/1901"),
                                EmailAddress = ua.EmailAddress,
                                Country = ua.Country,
                                Question1 = ua.Question1,
                                Answer1 = ua.Answer1,
                                Question2 = ua.Question2,
                                Answer2 = ua.Answer2,
-                               Rating = ua.Rating ?? 0,
+                               Rating = ua.Rating ?? 1,
                                AccountLocked = ua.AccountLocked ?? false
                              }).FirstOrDefault();
 

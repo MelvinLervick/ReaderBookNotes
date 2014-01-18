@@ -16,13 +16,11 @@ namespace rbnDLL
     {
         public int RatingId { get; set; }
         public int UserId { get; set; }
-        public int ReaderNoteId { get; set; }
+        public string RatingType { get; set; }
+        public int IdBeingRated { get; set; }
         public int Rating { get; set; }
-        public Nullable<int> AudienceId { get; set; }
         public System.DateTime CreatedDate { get; set; }
     
-        public virtual Audience Audience { get; set; }
-        public virtual ReaderNotes ReaderNote { get; set; }
         public virtual UserProfile UserProfile { get; set; }
     }
 }

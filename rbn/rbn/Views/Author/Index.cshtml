@@ -2,6 +2,7 @@
 
 @{
   ViewBag.Title = "Author List";
+  ViewBag.Controller = "Author";
   Layout = "~/Views/Shared/_LayoutBooks.cshtml";
 }
 
@@ -61,7 +62,7 @@
               {
                   @Html.ActionLink("Edit", "Update", new {id = item.AuthorId}, new {@class = "Button", type = "button"})
               }
-              @Html.ActionLink( "Show Books", "ShowBooks", new { id = item.AuthorId }, new { @class="Button", type = "button" } )
+              @Html.ActionLink( "Show Books", "Index", "Book", new { id = item.AuthorId }, new { @class="Button", type = "button" } )
               @if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator"))
               {
                 if (item.Enabled)

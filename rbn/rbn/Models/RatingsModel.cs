@@ -11,39 +11,12 @@ namespace rbn.Models
   public class RatingsModel
   {
     [Key]
-    public int RatingId
-    {
-      get;
-      set;
-    }
+    public int RatingId { get; set; }
 
-    [Display( Name = "ReaderId" )]
-    public int UserId
-    {
-      get;
-      set;
-    }
+    public int UserId { get; set; }
 
-    [Display( Name = "NoteId" )]
-    public int ReaderNoteId
-    {
-      get;
-      set;
-    }
+    public int IdBeingRated { get; set; }
 
-    [Display( Name = "Audience" )]
-    public int AudienceId
-    {
-      get;
-      set;
-    }
-
-    [Display( Name = "Rating" )]
-    [Range( 1, 9 )]
-    public int Rating
-    {
-      get;
-      set;
-    }
+    public int Rating { get; set; }
   }
 }

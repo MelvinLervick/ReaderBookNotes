@@ -32,11 +32,11 @@ namespace rbnBLL.Providers
             ReaderNoteId = 0,
             ReaderId = 0,
             Book = new BookProvider().GetBookDetails( page.BookId ),
-            ReaderRating = 0,
+            ReaderRating = 1,
             Note = string.Empty,
             AudienceId = 0,
-            ReviewerBookRating = 0,
-            ReviewerCommentRating = 0,
+            ReviewerBookRating = 1,
+            ReviewerCommentRating = 1,
             Notify = false,
             Page = page
           };
@@ -51,11 +51,11 @@ namespace rbnBLL.Providers
             ReaderNoteId = result.ReaderNoteId,
             ReaderId = result.ReaderId,
             Book = new BookProvider().GetBookDetails(result.BookId),
-            ReaderRating = result.ReaderRating ?? 0,
+            ReaderRating = result.Rating,
             Note = result.Note,
             AudienceId = result.AudienceId,
-            ReviewerBookRating = 0,
-            ReviewerCommentRating = 0,
+            ReviewerBookRating = 1,
+            ReviewerCommentRating = 1,
             Notify = false,
             Page = page
           };
