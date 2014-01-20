@@ -10,3 +10,16 @@
     </div>
   </section>
 }
+
+<div class="Admin">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("")
+        @Html.ValidationSummary(true)
+        
+        <div class="AdminSelect">
+            <input id="btnAliases" type="button" name="admin" value="Manage Aliases" class="AdminSelect" />
+        </div>
+    }
+</div>

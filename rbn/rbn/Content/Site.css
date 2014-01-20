@@ -1626,3 +1626,19 @@ tr.pager td {
     }
 
 .inline { display: inline-block; }
+
+/* Admin
+  ----------------------------------------------------*/
+.Admin {
+    padding: 5px 10px;
+}
+
+.AdminSelect {
+    padding: 0px;
+}
+
+.AdminSelect input {
+    padding: 0px 10px;
+    height: 30px;
+    width: 150px;
+}

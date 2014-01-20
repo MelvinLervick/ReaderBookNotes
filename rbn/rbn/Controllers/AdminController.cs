@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using rbn.Models;
 
 namespace rbn.Controllers
 {
@@ -16,5 +17,10 @@ namespace rbn.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(AuthorModel model, string admin)
+        {
+            return View();
+        }
     }
 }
