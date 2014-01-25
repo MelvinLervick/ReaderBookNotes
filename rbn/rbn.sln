@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rbn", "rbn\rbn.csproj", "{60566B01-1E85-4171-A450-2331801B79AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rbn.Tests", "rbn.Tests\rbn.Tests.csproj", "{170B21AE-67E5-4553-86E1-AAE0A1EF4C6D}"
@@ -14,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Extensions.csproj", "{80B8EB31-A73E-47D7-9439-C0076CE5C7BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestExtensions", "TestExtensions\TestExtensions.csproj", "{6367B152-A017-46E1-89EC-2D16FF049A60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDAO", "BooksAndAuthorsAPI\LibraryDAO.csproj", "{C334F353-FF54-4A39-AB42-0A15C07795FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,10 @@ Global
 		{6367B152-A017-46E1-89EC-2D16FF049A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6367B152-A017-46E1-89EC-2D16FF049A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6367B152-A017-46E1-89EC-2D16FF049A60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C334F353-FF54-4A39-AB42-0A15C07795FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C334F353-FF54-4A39-AB42-0A15C07795FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C334F353-FF54-4A39-AB42-0A15C07795FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C334F353-FF54-4A39-AB42-0A15C07795FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
