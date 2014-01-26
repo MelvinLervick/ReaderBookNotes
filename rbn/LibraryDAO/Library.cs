@@ -15,7 +15,7 @@ namespace LibraryDAO
         }
         public IEnumerable<Book> GetBooks( string isbn )
         {
-            var bookProvider = new BookProvider
+            var bookProvider = new IsbndbBookProvider
             {
                 GetDigitalBook = GetDigitalBook,
                 GetPrintedBook = GetPrintedBook

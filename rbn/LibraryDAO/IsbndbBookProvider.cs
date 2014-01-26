@@ -5,21 +5,24 @@ using LibraryDAO.Models;
 
 namespace LibraryDAO
 {
-    public class BookProvider : IBookProvider
+    internal class IsbndbBookProvider : IBookProvider
     {
+        private const string ApiKey = "W7M9VQ8L";
+        private const string HttpIsbndbComApiV2Book = "http://isbndb.com/api/v2/json/{0}/book/{1}";
         public bool GetDigitalBook { get; set; }
         public bool GetPrintedBook { get; set; }
 
-        public BookProvider() { }
+        public IsbndbBookProvider() { }
 
         public IEnumerable<Book> GetBooks(string isbn)
         {
             // Test ISBNDB API Request
-            string apiKey = "W7M9VQ8L";
-            string urlForApi = string.Format("http://isbndb.com/api/v2/json/{0}/book/{1}", apiKey, isbn);
+            string urlForApi = string.Format(HttpIsbndbComApiV2Book, ApiKey, isbn);
             var request = new WebRequestApiProvider(urlForApi);
+
             var value = request.GetResponse();
-            throw new NotImplementedException();
+
+            return new List<Book>();
         }
     }
 }

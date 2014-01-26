@@ -339,6 +339,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LibraryDAO\LibraryDAO.csproj">
+      <Project>{c334f353-ff54-4a39-ab42-0a15c07795ff}</Project>
+      <Name>LibraryDAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\rbnBLL\rbnBLL.csproj">
       <Project>{5b5f6886-4573-4e25-8c5d-e95bcff5603a}</Project>
       <Name>rbnBLL</Name>

@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestExtensions", "TestExtensions\TestExtensions.csproj", "{6367B152-A017-46E1-89EC-2D16FF049A60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDAO", "BooksAndAuthorsAPI\LibraryDAO.csproj", "{C334F353-FF54-4A39-AB42-0A15C07795FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDAO", "LibraryDAO\LibraryDAO.csproj", "{C334F353-FF54-4A39-AB42-0A15C07795FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

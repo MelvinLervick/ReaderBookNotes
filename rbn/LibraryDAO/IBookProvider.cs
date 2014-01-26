@@ -3,7 +3,7 @@ using LibraryDAO.Models;
 
 namespace LibraryDAO
 {
-    public interface IBookProvider
+    internal interface IBookProvider
     {
         IEnumerable<Book> GetBooks( string isbn );
     }
