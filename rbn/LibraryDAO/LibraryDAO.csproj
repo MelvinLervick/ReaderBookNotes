@@ -40,9 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\WebRequestApiProvider.cs" />
-    <Compile Include="IsbndbBookProvider.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="BookProvider.cs" />
     <Compile Include="IBookProvider.cs" />
     <Compile Include="Api\IWebRequestApiProvider.cs" />
+    <Compile Include="IDAOProvider.cs" />
+    <Compile Include="IsbndbProvider.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Library.cs" />

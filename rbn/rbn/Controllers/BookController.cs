@@ -98,7 +98,7 @@ namespace rbn.Controllers
             //var request = new WebRequestApiProvider( urlForApi );
             //var value = request.GetResponse();
             var library = new Library(false, true);
-            var books = library.GetBooks(model.ISBN);
+            var books = library.GetBooksByIsbn( model.ISBN );
 
             try
             {
@@ -140,7 +140,7 @@ namespace rbn.Controllers
             //var request = new WebRequestApiProvider( urlForApi );
             //var value = request.GetResponse();
             var library = new Library(false, true);
-            var books = library.GetBooks(model.ISBN);
+            var books = library.GetBooksByIsbn(model.ISBN);
 
 
             try
