@@ -5,6 +5,7 @@ namespace LibraryDAO
 {
     internal interface IBookProvider
     {
-        IEnumerable<Book> GetBooks( string isbn );
+        Book GetBook(string isbn, SearchType getBy);
+        IEnumerable<Book> GetBooks(string isbn, SearchType getBy);
     }
 }

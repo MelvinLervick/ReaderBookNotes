@@ -1665,11 +1665,13 @@ tr.pager td {
         font-size: 1.2em;
     }
 
-    .Admin, ReaderAlias .har {
+    .Admin .ReaderAlias .har {
+        width: 150px;
         color: darkblue;
         font-size: 1.2em;
-        padding: 0px;
+        padding: 5px 0px 0px 0px;
         margin: 0px;
+        float: left;
     }
 
     .Admin .ReaderAlias select {
@@ -1679,6 +1681,36 @@ tr.pager td {
         font-size: 1.2em;
         color: darkblue;
         background-color: #cacceb;
+        float: left;
+    }
+
+    .Admin .Roles {
+        position: absolute;
+        color: darkblue;
+        left: 20px;
+        top: 80px;
+        padding: 0px;
+        margin: 0px;
+        font-size: 1.2em;
+    }
+
+    .Admin .Roles .har {
+        width: 150px;
+        color: darkblue;
+        font-size: 1.2em;
+        padding: 5px 0px 0px 0px;
+        margin: 0px;
+        float: left;
+    }
+
+    .Admin .Roles select {
+        width: 360px;
+        margin: 0px;
+        padding: 5px 5px 3px 5px;
+        font-size: 1.2em;
+        color: darkblue;
+        background-color: #cacceb;
+        float: left;
     }
 
     .Admin .AdminSelect {
@@ -1687,6 +1719,20 @@ tr.pager td {
         bottom: 5px;
         padding: 0px;
     }
+
+    .Admin .AdminSelect .Button {
+        padding: 0px 5px;
+        margin: 0px;
+        text-decoration: none;
+        border: 1px solid darkgrey;
+        background-color: lightblue;
+        color: darkblue;
+    }
+
+        .Admin .AdminSelect .Button:hover {
+            background-color: yellow;
+            color: darkblue;
+        }
 
         .Admin .AdminSelect input {
             font-size: 1.2em;

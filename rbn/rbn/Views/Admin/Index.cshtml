@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+@using (Html.BeginForm())
 {
     <fieldset class="Admin">
         <div class="content-wrapper">
@@ -20,12 +20,18 @@
         {
             <div class="ReaderAlias">
                 @Html.HiddenFor(model => model.ReaderId)
-                <span class="har">Reader's Alias</span>
+                <div class="har">Reader's Alias</div>
                 @Html.DropDownList("ReaderId", ViewBag.ReaderId as SelectList)
             </div>
 
+            <div class="Roles">
+                <div class="har">Roles</div>
+                @Html.DropDownList("Roles", ViewBag.Roles as SelectList)
+            </div>
+            
             <div class="AdminSelect">
-                <input id="btnAliases" type="button" name="admin" value="Manage Aliases" class="AdminSelect" />
+                @Html.ActionLink("Manage Aliases", "Index", "Admin", new { id = 1 }, new { @class = "Button", type = "button" })
+                @*<input id="btnAliases" type="button" name="admin" value="Manage Aliases" class="AdminSelect" />*@
             </div>
         }
     </fieldset>

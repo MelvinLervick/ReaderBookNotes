@@ -36,12 +36,13 @@ namespace rbn.Controllers
             if (Roles.GetRolesForUser(User.Identity.Name).Contains("Administrator"))
             {
                 ViewBag.ReaderId = FillReaderAliasList();
+                ViewBag.Roles = FillListOfRoles();
             }
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(string admin)
+        public ActionResult Index( int id )
         {
             return View();
         }
@@ -54,6 +55,18 @@ namespace rbn.Controllers
                     Text = value.Alias,
                     Value = value.ReaderId.ToString()
                 }).ToList();
+
+            return items;
+        }
+
+        private dynamic FillListOfRoles()
+        {
+            List<SelectListItem> items = (from value in Roles.GetAllRoles()
+                                          select new SelectListItem
+                                          {
+                                              Text = value,
+                                              Value = value
+                                          }).ToList();
 
             return items;
         }

@@ -9,18 +9,24 @@ namespace LibraryDAO
     {
         public bool GetDigitalBook { get; set; }
         public bool GetPrintedBook { get; set; }
-        public SearchType GetBy = SearchType.Isbn;
+        public SearchType GetBy { get; set; }
 
         protected IDAOProvider Service = null;
 
         public BookProvider(IDAOProvider service)
         {
             Service = service;
+            GetBy = SearchType.Isbn;
         }
 
-        public IEnumerable<Book> GetBooks(string isbn)
+        public Book GetBook(string searchFor, SearchType getBy = SearchType.Isbn)
         {
-            return Service.GetBooks( GetBy, isbn );
+            return Service.GetBook(GetBy, searchFor);
+        }
+
+        public IEnumerable<Book> GetBooks(string searchFor, SearchType getBy = SearchType.Isbn)
+        {
+            return Service.GetBooks(GetBy, searchFor);
         }
     }
 }

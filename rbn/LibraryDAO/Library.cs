@@ -14,7 +14,7 @@ namespace LibraryDAO
             GetPrintedBook = printed;
         }
 
-        public IEnumerable<Book> GetBooksByIsbn( string searchFor )
+        public Book GetBookByIsbn( string searchFor )
         {
             var bookProvider = new BookProvider( new IsbndbProvider() )
             {
@@ -23,7 +23,7 @@ namespace LibraryDAO
                 GetBy = SearchType.Isbn
             };
 
-            return bookProvider.GetBooks( searchFor );
+            return bookProvider.GetBook( searchFor );
         }
 
         public IEnumerable<Book> GetBooksByAuthor( string searchFor )
